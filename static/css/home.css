@@ -1,12 +1,35 @@
+body{
+	font-family: "Open-Sans";
+	font-style: normal;
+	font-weight: 400;
+}
+
 #home-view{
 	background-size: cover;
 	background-image: url(../images/background-image-blur.jpg);
 }
 
 #how-it-works-view{
-	background: #6a9891;
+	background: #b27300;
 }
 
 #about-view{
 
+}
+
+#site-text{
+	font-size: 40px;
+}
+
+#header{
+	position:fixed;
+	height: 82px;
+	display:block;
+	width: 100%;
+	background: url(../images/header.png) repeat-x;
+	background-size: 100% auto;
+  	border-bottom: 3px solid rgba(0,0,0,0.3);
+	z-index:9;
+	padding: 20px 0 0 0;
+	color: #fff;
 }
