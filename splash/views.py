@@ -6,3 +6,7 @@ splash = Blueprint('splash', __name__, template_folder="")
 @splash.route('/')
 def home():
     return render_template('templates/home.html')
+
+@splash.route('/login')
+def login():
+    return render_template('templates/login.html')

@@ -2,8 +2,6 @@ body{
 	font-family: "Open Sans";
 	font-weight: 400;
 	font-style: normal;
-	/*font-size: 36px;*/
-	/*line-height: 30px;*/
 }
 
 #home-view{
@@ -23,15 +21,50 @@ body{
 	font-size: 40px;
 }
 
+#name-container{
+	display: table-cell;
+    vertical-align: middle;
+    padding-left: 25px;
+}
+
 #header{
 	position:fixed;
-	height: 82px;
-	display:block;
+	height: 100px;
+	display:table;
 	width: 100%;
 	background: url(../images/header.png) repeat-x;
 	background-size: 100% auto;
-  	border-bottom: 3px solid rgba(0,0,0,0.3);
+  	/*border-bottom: 3px solid rgba(0,0,0,0.3);*/
 	z-index:9;
-	padding: 20px 0 0 0;
+	/*padding: 20px 0 0 0;*/
 	color: #fff;
+}
+
+#links-container{
+	display: table-cell;
+    vertical-align: middle;
+	float: right;
+	padding-left: 40px;
+}
+
+#SignIn{
+  border: 2px solid white;
+  background: transparent;
+  padding: 10px 35px;
+  /*margin: -21px 0px 0px -57px;*/
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  /*position:absolute;*/
+  /*top: 50%;*/
+  /*left: 50%;*/
+  outline: none;  
+}
+
+#hand{
+	position: absolute;
+	width: 50%;
+	height: auto;
+	left: 15;
+	top: 50;
 }
