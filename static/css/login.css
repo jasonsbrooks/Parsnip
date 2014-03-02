@@ -4,14 +4,15 @@
 }
 
 body {
-  font: 13px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font: 13px/20px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   /*color: #404040;*/
   background: url(../images/furley_bg.png) repeat center center;
 }
 
 .sign-up {
   position: relative;
-  margin: 90px auto;
+  top: 25%;
+  margin: auto;
   width: 280px;
   padding: 33px 25px 29px;
   background: white;

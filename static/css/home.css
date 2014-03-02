@@ -77,6 +77,7 @@ p{
 	float: right;
 	padding-left: 40px;
   line-height: 80px;
+  font-size: 16px;
 }
 
 #header-links{
@@ -116,4 +117,9 @@ p{
   width: 25%;
   padding-left: 5%;
   padding-right: 5%;
+}
+
+a:link,:visited,:hover,:active{
+  text-decoration:none;
+  color: inherit;
 }
