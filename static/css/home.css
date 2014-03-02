@@ -17,27 +17,32 @@ body{
 
 }
 
-#site-text{
-	font-size: 40px;
+#site-title{
+	font-family: 'Lobster', cursive;
+	font-size: 50px;
+	letter-spacing: 4px;
 }
 
 #name-container{
 	display: table-cell;
     vertical-align: middle;
-    padding-left: 25px;
+    padding-left: 45px;
 }
 
 #header{
 	position:fixed;
-	height: 100px;
+	height: 80px;
 	display:table;
 	width: 100%;
-	background: url(../images/header.png) repeat-x;
-	background-size: 100% auto;
+	background: url(../images/header.png) repeat center center;
+	/*background-size: 100% auto;*/
   	/*border-bottom: 3px solid rgba(0,0,0,0.3);*/
+  	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  	-webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 	z-index:9;
 	/*padding: 20px 0 0 0;*/
-	color: #fff;
+	color: #E76301;
 }
 
 #links-container{

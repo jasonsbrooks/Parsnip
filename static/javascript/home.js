@@ -1,4 +1,6 @@
 $(document).ready(function(){
+	
+
     $.fn.fullpage({
             // anchors: ['titlePage', 'vidPage', 'paperPage', 'macPage'],
             // navigation: true,
@@ -10,3 +12,4 @@ $(document).ready(function(){
             // autoScrolling: false
     });
 });
+

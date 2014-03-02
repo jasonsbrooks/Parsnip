@@ -1,11 +1,12 @@
 *{
     margin:0;
     padding:0;
-    background: #62c2e4;
 }
+
 body {
   font: 13px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #404040;
+  /*color: #404040;*/
+  background: url(../images/furley_bg.png) repeat center center;
 }
 
 .sign-up {
