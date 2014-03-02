@@ -46,10 +46,16 @@ body{
 }
 
 #links-container{
+  color: white;
 	display: table-cell;
     vertical-align: middle;
 	float: right;
 	padding-left: 40px;
+  line-height: 80px;
+}
+
+#header-links{
+  padding-right: 20px;
 }
 
 #SignIn{
