@@ -4,9 +4,22 @@ body{
 	font-style: normal;
 }
 
+h1{
+  font-weight: 300;
+  font-size: 30px;
+  font-style: normal;
+  color: #222;
+}
+
+h3{
+  font-weight:200;
+  font-size: 20px;
+}
+
 #home-view{
 	background-size: cover;
 	background-image: url(../images/background-image-blur.jpg);
+  text-align: center;
 }
 
 #how-it-works-view{
@@ -20,13 +33,13 @@ body{
 #site-title{
 	font-family: 'Lobster', cursive;
 	font-size: 50px;
-	letter-spacing: 4px;
-}
+/*	letter-spacing: 4px;
+*/}
 
 #name-container{
 	display: table-cell;
     vertical-align: middle;
-    padding-left: 45px;
+    padding-left: 30px;
 }
 
 #header{
@@ -62,6 +75,7 @@ body{
   border: 2px solid white;
   background: transparent;
   padding: 10px 35px;
+  font-size: 15px;
   /*margin: -21px 0px 0px -57px;*/
   color: white;
   border-radius: 20px;
