@@ -11,9 +11,17 @@ h1{
   color: #222;
 }
 
-h3{
+h2{
   font-weight:200;
   font-size: 20px;
+  color: #332100;
+  padding-bottom: 5px;
+}
+
+p{
+  font-weight:100;
+  font-size: 15px;
+  padding-bottom: 2px;
 }
 
 #home-view{
@@ -23,16 +31,17 @@ h3{
 }
 
 #how-it-works-view{
-	background: #b27300;
+	background: #E6E6FA;
 }
 
 #about-view{
-
+  background: #F0EAD6;
 }
 
 #site-title{
 	font-family: 'Lobster', cursive;
 	font-size: 50px;
+  z-index:8;
 /*	letter-spacing: 4px;
 */}
 
@@ -47,15 +56,18 @@ h3{
 	height: 80px;
 	display:table;
 	width: 100%;
-	background: url(../images/header.png) repeat center center;
-	/*background-size: 100% auto;*/
+/*	background: url(../images/header.png) repeat center center;
+*/	/*background-size: 100% auto;*/
   	/*border-bottom: 3px solid rgba(0,0,0,0.3);*/
-  	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+/*  	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
   	-webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
-	-moz-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);*/
 	z-index:9;
+  background-color: rgba(125,33,33,.1);
 	/*padding: 20px 0 0 0;*/
-	color: #E76301;
+/*	color: #E76301;
+*/
+  color: #FF6600;
 }
 
 #links-container{
@@ -86,10 +98,22 @@ h3{
   outline: none;  
 }
 
-#hand{
+/*#hand{
 	position: absolute;
 	width: 50%;
 	height: auto;
 	left: 15;
 	top: 50;
+}*/
+
+#body-container{
+  text-align:center;
+}
+
+#column{
+  display: inline-table;
+  vertical-align: top;
+  width: 25%;
+  padding-left: 5%;
+  padding-right: 5%;
 }
