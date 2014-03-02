@@ -1,1 +1,5 @@
 .DS__Store
+venv
+*.pyc
+*.swo
+*.swp
