@@ -9,9 +9,29 @@ body {
   background: url(../images/furley_bg.png) repeat center center;
 }
 
+#site-title{
+  color: white;
+}
+
+#header{
+  background: none;
+}
+
+#site-title, #header-links{
+  color: black;
+  text-shadow: none;
+}
+
+.underline:hover{
+  border-bottom: 1px solid black;
+  /*color: #FF6600;*/
+  padding-bottom: 5px;
+  text-shadow: rgba(0, 0, 0, 0.5) 0 1px 1px;
+}
+
 .sign-up {
   position: relative;
-  top: 25%;
+  top: 22%;
   margin: auto;
   width: 280px;
   padding: 33px 25px 29px;
