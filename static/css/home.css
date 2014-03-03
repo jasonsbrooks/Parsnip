@@ -296,4 +296,38 @@ body {
 	line-height: 2em;
 }
 
+#analytics-h2{
+	line-height: 1.3em;
+}
+
+.analytics-text{
+	font-size: 15px;
+	padding-bottom: 15px;
+}
+
+ul {
+  list-style: none;
+  float: left;
+  /*width: 23%;*/
+  padding: 1%;
+}
+
+li {
+  position: relative;
+  padding-left: 0.75em;
+}
+li:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  background: red;
+}
+.diamond li:before {
+  width: 0.375em;
+  height: 0.375em;
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
 
