@@ -14,7 +14,7 @@ from flask.ext.login import LoginManager
 app = Flask(__name__)
 app.debug = True
 # app.debug = os.getenv["DEBUG"] in ('True', 'true')
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['HEAPED_DATABASE_URL']
 db = SQLAlchemy(app)
 
 # for flaskext.auth -- secret key needed to use sessions
