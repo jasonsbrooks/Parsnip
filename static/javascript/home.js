@@ -2,7 +2,7 @@ $(document).ready(function(){
 	
 
     $.fn.fullpage({
-            // anchors: ['titlePage', 'vidPage', 'paperPage', 'macPage'],
+            anchors: ['home', 'analytics', 'interface'],
             // navigation: true,
             // navigationPosition: 'right',
             // navigationTooltips: ['Home', 'Video', 'White Paper', 'MAC Address Lookup'],
