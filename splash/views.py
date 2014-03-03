@@ -10,3 +10,7 @@ def home():
 @splash.route('/login')
 def login():
     return render_template('templates/login.html')
+
+@splash.route('/dashboard')
+def login():
+    return render_template('templates/dashboard.html')
