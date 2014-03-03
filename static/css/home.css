@@ -70,6 +70,8 @@ p{
 /*	color: #E76301;
 */
     color: #FF6600;
+    /*color: white;*/
+    text-shadow: rgba(0, 0, 0, 0.5) 0 1px 1px;
 }
 
 #main-text-2{
@@ -91,8 +93,8 @@ p{
 }
 
 .underline:hover{
-	border-bottom: 1px solid #FF6600;
-	color: #FF6600;
+	border-bottom: 1px solid white;
+	/*color: #FF6600;*/
 	padding-bottom: 5px;
 	text-shadow: rgba(0, 0, 0, 0.5) 0 1px 1px;
 }
