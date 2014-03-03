@@ -1,0 +1,22 @@
+#heatmapArea {
+	cursor:pointer;
+	width:50%;
+	padding:2px;
+	height:600px ;
+	display: inline-block;
+	border: 5px solid black;
+}
+
+#data-table {
+	width:30%;
+	height:600px;
+	margin-left: 100px;
+	display: inline-block;
+	overflow-y:scroll;
+	right:0px;
+}
+
+#replay {
+	position: fixed;
+	z-index:10000001;
+}

@@ -14,3 +14,7 @@ def login():
 @splash.route('/dashboard')
 def dashboard():
     return render_template('templates/dashboard.html')
+
+@splash.route('/visuals')
+def visuals():
+	return render_template('templates/visuals.html')
