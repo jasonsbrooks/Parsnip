@@ -12,7 +12,7 @@ def login():
     return render_template('templates/login.html')
 
 @splash.route('/dashboard')
-def login():
+def dashboard():
     return render_template('templates/dashboard.html')
 
 @splash.route('/visuals')

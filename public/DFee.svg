@@ -1,0 +1,28 @@
+<svg width="640" height="480" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
+ <g>
+  <title>Layer 1</title>
+  <path id="svg_3" d="m23,141c0,-1 -1,244 -1,244c0,0 129,1 129,1c0,0 0,43 0,43c0,0 76,0 76,0c0,0 -1,-43 -1,-43c0,0 401,2 401,1c0,-1 -2,-242 -2,-241c0,1 -602,-5 -602,-5z" stroke-width="5" stroke="#000000" fill="#ffffff"/>
+  <rect stroke="#000000" id="svg_5" height="67.000005" width="167.000001" y="145" x="178.999999" stroke-width="5" fill="#ffffff"/>
+  <rect id="svg_6" height="160" width="67" y="142" x="21" stroke-width="5" stroke="#000000" fill="#ffffff"/>
+  <rect id="svg_7" height="42" width="69" y="344" x="23" stroke-width="5" stroke="#000000" fill="#ffffff"/>
+  <rect id="svg_10" height="41" width="157" y="345" x="244" stroke-width="5" stroke="#000000" fill="#ffffff"/>
+  <rect id="svg_11" height="43" width="170" y="346" x="413" stroke-width="5" stroke="#000000" fill="#ffffff"/>
+  <rect id="svg_12" height="147" width="38" y="182" x="584" stroke-width="5" stroke="#000000" fill="#ffffff"/>
+  <rect id="svg_13" height="32" width="174" y="146" x="391" stroke-width="5" stroke="#000000" fill="#ffffff"/>
+  <rect stroke="#000000" id="svg_14" height="53" width="154.999995" y="231" x="391.000005" stroke-width="5" fill="#ffffff"/>
+  <text xml:space="preserve" text-anchor="middle" font-family="Sans-serif" font-size="24" id="svg_16" y="185" x="264" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" stroke="#000000" fill="#000000">Counter</text>
+  <text id="svg_17" xml:space="preserve" text-anchor="middle" font-family="Sans-serif" font-size="24" y="265.5" x="465" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" stroke="#000000" fill="#000000">Rack</text>
+  <text id="svg_18" xml:space="preserve" text-anchor="middle" font-family="Sans-serif" font-size="24" y="372.5" x="319" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" stroke="#000000" fill="#000000">Rack</text>
+  <text stroke="#000000" id="svg_20" xml:space="preserve" text-anchor="middle" font-family="Sans-serif" font-size="24" y="373.5" x="496" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#000000">Refrigerators</text>
+  <text transform="rotate(-90 52 220)" id="svg_21" stroke="#000000" xml:space="preserve" text-anchor="middle" font-family="Sans-serif" font-size="24" y="228.5" x="52" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#000000">Refrigerators</text>
+  <text id="svg_22" transform="rotate(91.4144 605 251)" stroke="#000000" xml:space="preserve" text-anchor="middle" font-family="Sans-serif" font-size="24" y="259.5" x="605" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#000000">Drinks</text>
+  <text id="svg_23" xml:space="preserve" text-anchor="middle" font-family="Sans-serif" font-size="24" y="372.5" x="57" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" stroke="#000000" fill="#000000">Rack</text>
+  <text id="svg_24" stroke="#000000" xml:space="preserve" text-anchor="middle" font-family="Sans-serif" font-size="24" y="169.499992" x="483" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#000000">Drinks</text>
+  <text xml:space="preserve" text-anchor="middle" font-family="Sans-serif" font-size="24" id="svg_28" y="458" x="186" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" stroke="#000000" fill="#000000">Main Entrance</text>
+  <circle fill="#ff0000" stroke="#000000" stroke-width="0" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="475" cy="345" r="7.81025" id="svg_1"/>
+  <circle fill="#ff0000" stroke="#000000" stroke-width="0" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="149" cy="387" r="7.28011" id="svg_2"/>
+  <circle fill="#ff0000" stroke="#000000" stroke-width="0" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="90" cy="220.000015" r="7.28011" id="svg_4"/>
+  <circle fill="#ff0000" stroke="#000000" stroke-width="0" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="475" cy="180.000015" r="7.28011" id="svg_8"/>
+ </g>
+</svg>
