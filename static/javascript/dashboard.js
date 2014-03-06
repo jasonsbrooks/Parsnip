@@ -1,7 +1,5 @@
 $(document).ready(function() {
 
-
-
   initBarChart("#chart2");
   initLineChart("#chart");
   initMultiGraph();
@@ -10,19 +8,24 @@ $(document).ready(function() {
 
 function initBarChart(target) {
 
+  // X's set the order of the bars. Y's are the value of bar.
   var data = [ { x:0, y:10 }, { x:1, y:30 }, { x:2, y:45 }, { x:3, y:25 }, { x:4, y:70 }, { x:5, y:75 }, { x:6, y:50 }, { x:7, y:80 }];
 
   var graph = new Rickshaw.Graph({
     element: document.querySelector(target),
+    width: 400,
     renderer: 'bar',
     series: [{
       data: data,
-      color: 'steelblue'
+      color: 'steelblue',
+      // NAME is the label to give the y-value of the bar.
+      name: 'Count'
     }]
   });
    
   graph.render();
 
+  // Maps a bar to a label.
   var map = {0:'Bottoms', 1:'Tops', 2:'Shoes', 3:'Accessories', 4:'Jackets', 5:'Underwear', 6:'Athletic Clothes', 7:'Jewelery'};
 
   var hoverDetail = new Rickshaw.Graph.HoverDetail( {
@@ -38,8 +41,7 @@ var palette = new Rickshaw.Color.Palette();
 
 var graph = new Rickshaw.Graph( {
         element: document.querySelector("#chart"),
-        width: 540,
-        height: 240,
+        width: 400,
         renderer: 'line',
         series: [
                 {
