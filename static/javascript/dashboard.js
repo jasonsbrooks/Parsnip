@@ -37,57 +37,57 @@ function initBarChart(target) {
 
 function initLineChart(target) {
 
-var palette = new Rickshaw.Color.Palette();
+  var palette = new Rickshaw.Color.Palette();
 
-var graph = new Rickshaw.Graph( {
-        element: document.querySelector("#chart"),
-        width: 400,
-        renderer: 'line',
-        series: [
-                {
-                  name: "Girls",
-                  data: [ { x:0, y:156 }, {x:1*60*60*24*5, y:153}, {x:2*60*60*24*5,y:250}, {x:3*60*60*24*5,y:603}, {x:4*60*60*24*5, y:650}, {x:5*60*60*24*5,y:642}, {x:6*60*60*24*5,y:654} ],
-                  color: palette.color()
-                },
-                {
-                  name: "Guys",
-                  data: [ { x:0, y:56 }, {x:1*60*60*24*5, y:103}, {x:2*60*60*24*5,y:257}, {x:3*60*60*24*5,y:503}, {x:4*60*60*24*5,y:642}, {x:5*60*60*24*5,y:654}, {x:6*60*60*24*5,y:630} ],
-                  color: palette.color()
-                }
-        ]
-} );
+  var graph = new Rickshaw.Graph( {
+    element: document.querySelector("#chart"),
+    width: 400,
+    renderer: 'line',
+    series: [
+      {
+        name: "Girls",
+        data: [ { x:0, y:156 }, {x:1*60*60*24*5, y:153}, {x:2*60*60*24*5,y:250}, {x:3*60*60*24*5,y:603}, {x:4*60*60*24*5, y:650}, {x:5*60*60*24*5,y:642}, {x:6*60*60*24*5,y:654} ],
+        color: palette.color()
+      },
+      {
+        name: "Guys",
+        data: [ { x:0, y:56 }, {x:1*60*60*24*5, y:103}, {x:2*60*60*24*5,y:257}, {x:3*60*60*24*5,y:503}, {x:4*60*60*24*5,y:642}, {x:5*60*60*24*5,y:654}, {x:6*60*60*24*5,y:630} ],
+        color: palette.color()
+      }
+    ]
+  } );
 
-var x_axis = new Rickshaw.Graph.Axis.Time( { graph: graph } );
+  var x_axis = new Rickshaw.Graph.Axis.Time( { graph: graph } );
 
-var y_axis = new Rickshaw.Graph.Axis.Y( {
-        graph: graph,
-        orientation: 'left',
-        tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
-        element: document.getElementById('y_axis'),
-} );
+  var y_axis = new Rickshaw.Graph.Axis.Y( {
+    graph: graph,
+    orientation: 'left',
+    tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
+    element: document.getElementById('y_axis')
+  } );
 
-var legend = new Rickshaw.Graph.Legend( {
-        element: document.querySelector('#legend'),
-        graph: graph
-} );
+  var legend = new Rickshaw.Graph.Legend( {
+    element: document.querySelector('#legend'),
+    graph: graph
+  } );
 
-var offsetForm = document.getElementById('offset_form');
+  var offsetForm = document.getElementById('offset_form');
 
-offsetForm.addEventListener('change', function(e) {
-        var offsetMode = e.target.value;
+  offsetForm.addEventListener('change', function(e) {
+    var offsetMode = e.target.value;
 
-        if (offsetMode == 'lines') {
-                graph.setRenderer('line');
-                graph.offset = 'zero';
-        } else {
-                graph.setRenderer('stack');
-                graph.offset = offsetMode;
-        }       
-        graph.render();
+    if (offsetMode == 'lines') {
+      graph.setRenderer('line');
+      graph.offset = 'zero';
+    } else {
+      graph.setRenderer('stack');
+      graph.offset = offsetMode;
+    }       
+    graph.render();
 
-}, false);
+  }, false);
 
-graph.render();
+  graph.render();
 
 }
 
@@ -98,6 +98,24 @@ function initMultiGraph() {
   for (var i = 0; i < 75; i++) {
     random.addData(seriesData);
   }
+
+  // SERIESDATA is basically an array of arrays, where each array stores objects
+  // with an x and y value. The x value is time in epoch seconds, and the y 
+  // value is the value of whatever the object and array of objects measures at 
+  // time x. For example, [ [ {"x":0, "y":55.32}, ...], ...], states that at
+  // time 0, the metric measured by the first array of objects had a value of 
+  // 55.32.
+  
+  // console.log('begin0');
+  // console.log(JSON.stringify(seriesData[0]));
+  // console.log('begin1');
+  // console.log(JSON.stringify(seriesData[1]));
+  // console.log('begin2');
+  // console.log(JSON.stringify(seriesData[2]));
+  // console.log('begin3');
+  // console.log(JSON.stringify(seriesData[3]));
+  // console.log('begin4');
+  // console.log(JSON.stringify(seriesData[4]));
 
   var graph = new Rickshaw.Graph( {
     element: document.getElementById("chart3"),
@@ -123,18 +141,19 @@ function initMultiGraph() {
         renderer: 'scatterplot'
       }, {
         name: 'Sales',
-        data: seriesData.shift().map(function(d) { return { x: d.x, y: d.y / 4 } }),
+        data: seriesData.shift().map(function(d) { return { x: d.x, y: d.y / 4 };}),
         color: 'rgba(0, 0, 127, 0.4)',
         renderer: 'bar'
       }, {
         name: 'Inventory',
-        data: seriesData.shift().map(function(d) { return { x: d.x, y: d.y } }),
+        data: seriesData.shift().map(function(d) { return { x: d.x, y: d.y };}),
         renderer: 'line',
         color: 'rgba(0, 0, 127, 0.25)'
       }
     ]
   } );
 
+  // TODO: Fix slider.
   //var slider = new Rickshaw.Graph.RangeSlider({
   //  graph: graph,
   //  element: $('#slider3')
