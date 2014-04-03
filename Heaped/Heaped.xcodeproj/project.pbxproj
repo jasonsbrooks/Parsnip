@@ -29,6 +29,7 @@
 		BB60E84C18ECEBB300F39CBC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB60E84B18ECEBB300F39CBC /* CoreLocation.framework */; };
 		BB60E85918ECF32400F39CBC /* libEstimoteSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB60E85818ECF32400F39CBC /* libEstimoteSDK.a */; };
 		BB60E85D18ECF40000F39CBC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB60E85C18ECF40000F39CBC /* SystemConfiguration.framework */; };
+		BB6FD8E418ED285E00AC2329 /* animal_personality.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB6FD8E318ED285E00AC2329 /* animal_personality.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		BB60E86718ECF48400F39CBC /* ESTBeaconManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconManager.h; sourceTree = "<group>"; };
 		BB60E86818ECF48400F39CBC /* ESTBeaconRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconRegion.h; sourceTree = "<group>"; };
 		BB60E86918ECF48400F39CBC /* ESTBeaconUpdateInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconUpdateInfo.h; sourceTree = "<group>"; };
+		BB6FD8E318ED285E00AC2329 /* animal_personality.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = animal_personality.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 				BB60E84018ECE60700F39CBC /* mainViewController.m */,
 				BB60E84618ECEABE00F39CBC /* HeapBeaconVC.h */,
 				BB60E84718ECEABE00F39CBC /* HeapBeaconVC.m */,
+				BB6FD8E318ED285E00AC2329 /* animal_personality.jpg */,
 				BB60E86418ECF48400F39CBC /* Headers */,
 				BB60E81B18ECE40B00F39CBC /* Images.xcassets */,
 				BB60E81818ECE40B00F39CBC /* Heaped.xcdatamodeld */,
@@ -245,7 +248,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = Heap;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Michael Zhao";
 				TargetAttributes = {
 					BB60E82018ECE40B00F39CBC = {
@@ -276,6 +279,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB6FD8E418ED285E00AC2329 /* animal_personality.jpg in Resources */,
 				BB60E83E18ECE4E100F39CBC /* Main.storyboard in Resources */,
 				BB60E81118ECE40B00F39CBC /* InfoPlist.strings in Resources */,
 				BB60E81C18ECE40B00F39CBC /* Images.xcassets in Resources */,
@@ -347,7 +351,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -378,6 +381,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "F1955494-FAB9-47D3-B8B1-6B81C571A245";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -387,7 +391,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -411,6 +414,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PROVISIONING_PROFILE = "F1955494-FAB9-47D3-B8B1-6B81C571A245";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -424,7 +428,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/michaelzhao/Desktop/Heaped,
+					/Users/michaelzhao/Desktop/spring14/software/Group2/Heaped,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Heaped/Heaped-Prefix.pch";
@@ -432,7 +436,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/michaelzhao/Desktop/Heaped,
+					/Users/michaelzhao/Desktop/spring14/software/Group2/Heaped,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -447,7 +451,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/michaelzhao/Desktop/Heaped,
+					/Users/michaelzhao/Desktop/spring14/software/Group2/Heaped,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Heaped/Heaped-Prefix.pch";
@@ -455,7 +459,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/michaelzhao/Desktop/Heaped,
+					/Users/michaelzhao/Desktop/spring14/software/Group2/Heaped,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -466,7 +470,6 @@
 		BB60E83718ECE40B00F39CBC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Heaped.app/Heaped";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -489,7 +492,6 @@
 		BB60E83818ECE40B00F39CBC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Heaped.app/Heaped";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

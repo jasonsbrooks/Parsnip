@@ -10,11 +10,10 @@
 
 @interface mainViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UIButton *distanceButton;
+@property (strong, nonatomic) IBOutlet UILabel *distance0;
+@property (strong, nonatomic) IBOutlet UILabel *distance1;
+@property (strong, nonatomic) IBOutlet UILabel *distance2;
 
-@property (strong, nonatomic) IBOutlet UILabel *distanceField;
-
-- (IBAction)showDistance:(id)sender;
 
 
 

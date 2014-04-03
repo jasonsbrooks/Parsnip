@@ -13,7 +13,6 @@
 
 @interface mainViewController () <ESTBeaconManagerDelegate>
 @property ESTBeaconManager *beaconManager;
-@property NSNumber *distance;
 @end
 
 @implementation mainViewController
@@ -32,18 +31,16 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.distance = [NSNumber numberWithInt:0];
     
     self.beaconManager = [[ESTBeaconManager alloc] init];
     self.beaconManager.delegate = self;
     self.beaconManager.avoidUnknownStateBeacons = YES;
     
-    ESTBeaconRegion *region = [[ESTBeaconRegion alloc] init];
+    ESTBeaconRegion *region = [[ESTBeaconRegion alloc] initWithProximityUUID:ESTIMOTE_PROXIMITY_UUID identifier:@"EstimoteSampleRegion"];
     
     [self.beaconManager startRangingBeaconsInRegion:region];
     
     [self setupView];
-    
 }
 
 -(void)setupView
@@ -53,10 +50,10 @@
     
     CGRect          screenRect          = [[UIScreen mainScreen] bounds];
     CGFloat         screenHeight        = screenRect.size.height;
-    UIImageView*    backgroundImage;
+    UIImageView    *backgroundImage;
     
     if (screenHeight > 480)
-        backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backgroundBig"]];
+        backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"animal_personality.jpg"]];
     else
         backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backgroundSmall"]];
     
@@ -68,18 +65,24 @@
      didRangeBeacons:(NSArray *)beacons
             inRegion:(ESTBeaconRegion *)region
 {
-    ESTBeacon* closestBeacon;
-    
+    ESTBeacon *beacon0;
+    ESTBeacon *beacon1;
+
+    // Detected a beacon
     if([beacons count] > 0)
     {
-        // beacon array is sorted based on distance
-        // closest beacon is the first one
-        closestBeacon = [beacons objectAtIndex:0];
+        // Show its distance in distance0.
+        beacon0 = [beacons objectAtIndex:0];
+        self.distance0.text = [beacon0.distance stringValue];
+
+//        // If more than 1 beacon, show its distance as well.
+//        if([beacons count] > 1) {
+//            beacon1 = [beacons objectAtIndex:1];
+//            self.distance1.text = [beacon1.distance stringValue];
+//        }
+
         
-        // calculate and set new y position
-        self.distance = closestBeacon.distance;
-        
-        NSLog([closestBeacon.distance stringValue]);
+        NSLog(@"%@", [beacon0.distance stringValue]);
     }
 }
 
@@ -89,7 +92,4 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)showDistance:(id)sender {
-    self.distanceField.text = [self.distance stringValue];
-}
 @end
