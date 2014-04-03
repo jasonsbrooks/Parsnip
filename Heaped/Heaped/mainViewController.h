@@ -9,12 +9,19 @@
 #import <UIKit/UIKit.h>
 
 @interface mainViewController : UIViewController
-
+// Distances from beacons.
 @property (strong, nonatomic) IBOutlet UILabel *distance0;
 @property (strong, nonatomic) IBOutlet UILabel *distance1;
 @property (strong, nonatomic) IBOutlet UILabel *distance2;
 
+// Beacon unique identifiers?
+@property (strong, nonatomic) IBOutlet UILabel *beaconID0;
+@property (strong, nonatomic) IBOutlet UILabel *beaconID1;
+@property (strong, nonatomic) IBOutlet UILabel *beaconID2;
 
+// Need to show major/minor for region identification.
 
+- (IBAction)startData:(id)sender;
+- (IBAction)stopData:(id)sender;
 
 @end

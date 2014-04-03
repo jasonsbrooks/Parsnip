@@ -24,12 +24,11 @@
 		BB60E83018ECE40B00F39CBC /* HeapedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BB60E82F18ECE40B00F39CBC /* HeapedTests.m */; };
 		BB60E83E18ECE4E100F39CBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB60E83D18ECE4E100F39CBC /* Main.storyboard */; };
 		BB60E84118ECE60700F39CBC /* mainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB60E84018ECE60700F39CBC /* mainViewController.m */; };
-		BB60E84818ECEABE00F39CBC /* HeapBeaconVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BB60E84718ECEABE00F39CBC /* HeapBeaconVC.m */; };
 		BB60E84A18ECEBA600F39CBC /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB60E84918ECEBA600F39CBC /* CoreBluetooth.framework */; };
 		BB60E84C18ECEBB300F39CBC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB60E84B18ECEBB300F39CBC /* CoreLocation.framework */; };
 		BB60E85918ECF32400F39CBC /* libEstimoteSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB60E85818ECF32400F39CBC /* libEstimoteSDK.a */; };
 		BB60E85D18ECF40000F39CBC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB60E85C18ECF40000F39CBC /* SystemConfiguration.framework */; };
-		BB6FD8E418ED285E00AC2329 /* animal_personality.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB6FD8E318ED285E00AC2329 /* animal_personality.jpg */; };
+		BBF49A5318EDA7B3008047D0 /* HeapTriangulate.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF49A5218EDA7B3008047D0 /* HeapTriangulate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,8 +63,6 @@
 		BB60E83D18ECE4E100F39CBC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BB60E83F18ECE60700F39CBC /* mainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mainViewController.h; sourceTree = "<group>"; };
 		BB60E84018ECE60700F39CBC /* mainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mainViewController.m; sourceTree = "<group>"; };
-		BB60E84618ECEABE00F39CBC /* HeapBeaconVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeapBeaconVC.h; sourceTree = "<group>"; };
-		BB60E84718ECEABE00F39CBC /* HeapBeaconVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeapBeaconVC.m; sourceTree = "<group>"; };
 		BB60E84918ECEBA600F39CBC /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		BB60E84B18ECEBB300F39CBC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		BB60E85818ECF32400F39CBC /* libEstimoteSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libEstimoteSDK.a; sourceTree = "<group>"; };
@@ -75,7 +72,8 @@
 		BB60E86718ECF48400F39CBC /* ESTBeaconManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconManager.h; sourceTree = "<group>"; };
 		BB60E86818ECF48400F39CBC /* ESTBeaconRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconRegion.h; sourceTree = "<group>"; };
 		BB60E86918ECF48400F39CBC /* ESTBeaconUpdateInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconUpdateInfo.h; sourceTree = "<group>"; };
-		BB6FD8E318ED285E00AC2329 /* animal_personality.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = animal_personality.jpg; sourceTree = "<group>"; };
+		BBF49A5118EDA7B3008047D0 /* HeapTriangulate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeapTriangulate.h; sourceTree = "<group>"; };
+		BBF49A5218EDA7B3008047D0 /* HeapTriangulate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeapTriangulate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,9 +149,8 @@
 				BB60E83D18ECE4E100F39CBC /* Main.storyboard */,
 				BB60E83F18ECE60700F39CBC /* mainViewController.h */,
 				BB60E84018ECE60700F39CBC /* mainViewController.m */,
-				BB60E84618ECEABE00F39CBC /* HeapBeaconVC.h */,
-				BB60E84718ECEABE00F39CBC /* HeapBeaconVC.m */,
-				BB6FD8E318ED285E00AC2329 /* animal_personality.jpg */,
+				BBF49A5118EDA7B3008047D0 /* HeapTriangulate.h */,
+				BBF49A5218EDA7B3008047D0 /* HeapTriangulate.m */,
 				BB60E86418ECF48400F39CBC /* Headers */,
 				BB60E81B18ECE40B00F39CBC /* Images.xcassets */,
 				BB60E81818ECE40B00F39CBC /* Heaped.xcdatamodeld */,
@@ -279,7 +276,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB6FD8E418ED285E00AC2329 /* animal_personality.jpg in Resources */,
 				BB60E83E18ECE4E100F39CBC /* Main.storyboard in Resources */,
 				BB60E81118ECE40B00F39CBC /* InfoPlist.strings in Resources */,
 				BB60E81C18ECE40B00F39CBC /* Images.xcassets in Resources */,
@@ -302,9 +298,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB60E81718ECE40B00F39CBC /* HeapAppDelegate.m in Sources */,
+				BBF49A5318EDA7B3008047D0 /* HeapTriangulate.m in Sources */,
 				BB60E81318ECE40B00F39CBC /* main.m in Sources */,
 				BB60E81A18ECE40B00F39CBC /* Heaped.xcdatamodeld in Sources */,
-				BB60E84818ECEABE00F39CBC /* HeapBeaconVC.m in Sources */,
 				BB60E84118ECE60700F39CBC /* mainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

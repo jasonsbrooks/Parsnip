@@ -7,12 +7,15 @@
 //
 
 #import "mainViewController.h"
-#import "HeapBeaconVC.h"
 #import "ESTBeaconManager.h"
 #import "ESTBeaconRegion.h"
 
 @interface mainViewController () <ESTBeaconManagerDelegate>
 @property ESTBeaconManager *beaconManager;
+@property ESTBeaconRegion *region;
+@property ESTBeacon *beacon0;
+@property ESTBeacon *beacon1;
+@property ESTBeacon *beacon2;
 @end
 
 @implementation mainViewController
@@ -29,20 +32,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
     
-    
+    // Beacon Manager discovers beacons.
     self.beaconManager = [[ESTBeaconManager alloc] init];
     self.beaconManager.delegate = self;
     self.beaconManager.avoidUnknownStateBeacons = YES;
     
-    ESTBeaconRegion *region = [[ESTBeaconRegion alloc] initWithProximityUUID:ESTIMOTE_PROXIMITY_UUID identifier:@"EstimoteSampleRegion"];
+    // Set the region (could be used to identify a store).
+    self.region = [[ESTBeaconRegion alloc] initWithProximityUUID:ESTIMOTE_PROXIMITY_UUID identifier:@"EstimoteSampleRegion"];
     
-    [self.beaconManager startRangingBeaconsInRegion:region];
+    // Search for beacons within region.
+//    [self.beaconManager startRangingBeaconsInRegion:self.region];
     
-    [self setupView];
+//    [self setupView];
 }
 
+// Set up background view for demo (not needed for our purposes.
 -(void)setupView
 {
     /////////////////////////////////////////////////////////////
@@ -53,7 +58,7 @@
     UIImageView    *backgroundImage;
     
     if (screenHeight > 480)
-        backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"animal_personality.jpg"]];
+        backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backgroundSmall"]];
     else
         backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backgroundSmall"]];
     
@@ -65,25 +70,38 @@
      didRangeBeacons:(NSArray *)beacons
             inRegion:(ESTBeaconRegion *)region
 {
-    ESTBeacon *beacon0;
-    ESTBeacon *beacon1;
-
     // Detected a beacon
     if([beacons count] > 0)
     {
         // Show its distance in distance0.
-        beacon0 = [beacons objectAtIndex:0];
-        self.distance0.text = [beacon0.distance stringValue];
-
-//        // If more than 1 beacon, show its distance as well.
-//        if([beacons count] > 1) {
-//            beacon1 = [beacons objectAtIndex:1];
-//            self.distance1.text = [beacon1.distance stringValue];
-//        }
-
+        self.beacon0 = [beacons objectAtIndex:0];
+        self.distance0.text = [self.beacon0.distance stringValue];
+        self.beaconID0.text = [self.beacon0.proximityUUID UUIDString];
         
-        NSLog(@"%@", [beacon0.distance stringValue]);
+        NSLog(@"Beacon0 Unique: %@", [self.beacon0.proximityUUID UUIDString]);
+        NSLog(@"Beacon0 distance: %@", [self.beacon0.distance stringValue]);
+
+        // If more than 1 beacon, show its distance as well.
+        if([beacons count] > 1) {
+            self.beacon1 = [beacons objectAtIndex:1];
+            self.distance1.text = [self.beacon1.distance stringValue];
+            self.beaconID1.text = [self.beacon1.proximityUUID UUIDString];
+            
+            if ([beacons count] > 2) {
+                self.beacon2 = [beacons objectAtIndex:2];
+                self.distance2.text = [self.beacon2.distance stringValue];
+                self.beaconID2.text = [self.beacon2.proximityUUID UUIDString];
+            }
+            else
+                NSLog(@"Couldn't find beacon 2.");
+
+        }
+        else
+            NSLog(@"Couldn't find beacon 1.");
+        
     }
+    else
+        NSLog(@"Couldn't find beacon 0.");
 }
 
 - (void)didReceiveMemoryWarning
@@ -92,4 +110,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)startData:(id)sender {
+    [self.beaconManager startRangingBeaconsInRegion:self.region];
+}
+
+- (IBAction)stopData:(id)sender {
+    [self.beacon0 disconnectBeacon];
+    [self.beacon1 disconnectBeacon];
+    [self.beacon2 disconnectBeacon];
+    
+//    Issue POST request here.
+}
 @end
