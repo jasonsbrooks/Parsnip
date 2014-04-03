@@ -1,0 +1,9 @@
+After pulling the project, you might need to change the Framework and Library Search Paths.
+
+In the Heaped target, go to 'Build Settings' and search 'search path,' then change the search paths to your own directories.
+
+DONE: Display UUID and distance from 1 iBeacon.
+PENDING: Display UUID and distance from 3 iBeacons.
+
+TODO: Write triangulation function to return the coordinates of iOS device given distances from three iBeacons.
+TODO: Issue the POST request with location data and beacon ID.
