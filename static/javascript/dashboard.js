@@ -1,8 +1,5 @@
 $(document).ready(function() {
 
-  initBarChart("#chart2");
-  initLineChart("#chart");
-  initMultiGraph();
 
 }); 
 
