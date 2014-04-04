@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="static/css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="static/css/home.css" />
+	<link rel="stylesheet" type="text/css" href="static/css/dashboard.css" />
+	<link rel="stylesheet" type="text/css" href="static/css/rickshaw.css" />
+	<link rel="stylesheet" type="text/css" href="static/css/bootstrap.css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+	<script src="static/javascript/d3.js"></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/2.7.4/d3.layout.min.js"></script>
+	<script src="static/javascript/rickshaw.js"></script>
+	<script src="static/javascript/dashboard.js"></script>
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,300,400italic,400,600italic,600,700italic,700,800italic,800" rel="stylesheet" type="text/css">
+	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+	<title>#heaped</title>
+</head>
+
+<body>
+<h1 id="dashboard-welcome">Welcome, Jason</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div id="chart2"></div>
+    </div>
+    <div class="col-md-6">
+      <div id="chart_container">
+        <div id="y_axis"></div>
+        <div id="chart"></div>
+        <div id="legend"></div>
+        <form id="offset_form" class="toggler">
+          <input type="radio" name="offset" id="lines" value="lines" checked>
+          <label class="lines" for="lines">lines</label><br>
+          <input type="radio" name="offset" id="stack" value="zero">
+          <label class="stack" for="stack">stack</label>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div id="chart3"></div>
+      <div id="legend3"></div>
+      <div id="slider3"></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+</body>
+</html>
