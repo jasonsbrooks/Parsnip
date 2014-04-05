@@ -18,3 +18,7 @@ def dashboard():
 @splash.route('/visuals')
 def visuals():
 	return render_template('templates/visuals.html')
+
+@splash.route('/heatmap')
+def heatmap():
+    return render_template('templates/heatmap.html')
