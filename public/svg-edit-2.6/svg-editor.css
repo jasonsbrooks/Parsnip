@@ -483,6 +483,7 @@ div.palette_item:first-child {
 	height: 40px;
 	border-bottom: none;
 	overflow: auto;
+	visibility: hidden;
 }
 
 #tools_top .tool_sep {
@@ -836,6 +837,7 @@ span.zoom_tool {
 	bottom: 0;
 	height: 40px;
 	overflow: visible;
+	visibility: hidden;
 }
 
  #tools_bottom_1 {
