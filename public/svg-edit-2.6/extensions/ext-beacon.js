@@ -65,7 +65,8 @@ svgEditor.addExtension("iBeacon", function() {
 							"stroke-linejoin": "null",
 							"stroke-linecap": "null",
 							"d": "m-30,0c0,-16.57458 13.42542,-30 30,-30c16.57458,0 30,13.42542 30,30c0,16.57458 -13.42542,30 -30,30c-16.57458,0 -30,-13.42542 -30,-30z",
-							"id": canv.getNextId()
+							"id": "beacon_" + canv.getNextId(),
+							"center": "(" +x +", " +y +")"
 						}
 					});
 					
