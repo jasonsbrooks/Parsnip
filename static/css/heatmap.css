@@ -1,8 +1,8 @@
 #heatmapArea {
 	cursor:pointer;
-	width:50%;
+	width: 540px;
 	padding:2px;
-	height:600px ;
+	height: 540px;
 	display: inline-block;
 	border: 5px solid black;
 }

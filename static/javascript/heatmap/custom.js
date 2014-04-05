@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	 // heatmap configuration
+// heatmap configuration
     var config = {
         element: document.getElementById("heatmapArea"),
         radius: 10,
@@ -10,7 +10,7 @@ $(document).ready(function () {
         }   
     };
     
-    var obj = {}    // Store the foot traffic data.
+    var obj = {};   // Store the foot traffic data.
     // obj = {1:[x, y, time], 2: ...}
 
     var i = 0;      // Number of data points in obj
@@ -24,11 +24,8 @@ $(document).ready(function () {
 
     var active = false, // true when mouse is clicked.
         firstClick = true;  // to set startTime
-    
-    
 
     $('#heatmapArea').mousedown(function() {
-        console.log("mouse down");
         active = true;
         if (firstClick) {
             firstClick = false;
@@ -37,39 +34,23 @@ $(document).ready(function () {
     });
 
     $('#heatmapArea').mouseup(function() {
-            console.log("mouse UP");
             active = false;
     });
 
-    setInterval(function(){       
-        if (active === true) {
-            console.log("active")
-        }
-    }, 100);
-
     $('#heatmapArea').mousemove(function(event) {
-        
-        
-        x = event.clientX,
-        y = event.clientY
-        
+        x = event.clientX - 220;
+        y = event.clientY - 20;
 
         if (active) {
-            var dTime = (new Date() - startTime) / 1000
-            $('#data-table').append(x + ", " + y + ", " + dTime + "<br>");
+            var dTime = (new Date() - startTime) / 1000;
             heatmap.store.addDataPoint(x, y, 3);
-            obj[i++] = [x, y, dTime]
+            obj[i++] = [x, y, dTime];
         }
     });
-    
-   
 
     $('#replay').click(function() {
-        console.log('REPLAY');
         $('#heatmapArea').html("");
-        heatmap = h337.create(config)
+        heatmap = h337.create(config);
         console.log(obj);
     });
-
-
 });
