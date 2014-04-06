@@ -13,6 +13,11 @@ html, body, div{
 	-webkit-user-drag: text;
 }
 
+/* Color of tools background */
+html{
+	background-color: #FFF;
+}
+
 #browser-not-supported {
         font-size: 0.8em;
         font-family: Verdana, Helvetica, Arial;
@@ -406,6 +411,7 @@ div.palette_item:first-child {
 	font-family: sans-serif;
 }
 
+/* SVG-Edit menu */
  #main_menu {
 	z-index: 12;
 	background: #eee;
@@ -490,6 +496,7 @@ div.palette_item:first-child {
 	margin-top: 5px;
 }
 
+/* Background of tools */
 #tools_left {
 	position: absolute;
 	border-right: none;
@@ -1423,6 +1430,7 @@ span.zoom_tool {
 }
 
 /* Generic context menu styles */
+/* Right click menu */
 .contextMenu {
 	position: absolute;
 	z-index: 99999;
