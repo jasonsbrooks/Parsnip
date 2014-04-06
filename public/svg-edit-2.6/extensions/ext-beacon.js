@@ -3,7 +3,7 @@
 svgEditor.addExtension("iBeacon", function() {
 
 		return {
-			name: "Hello World",
+			name: "iBeacon",
 			svgicons: "extensions/ibeacon-icon.xml",
 			
 			buttons: [{
@@ -24,6 +24,20 @@ svgEditor.addExtension("iBeacon", function() {
 						// For "mode" buttons, any other button will 
 						// automatically be de-pressed.
 						svgCanvas.setMode("ibeacon");
+					}
+				}
+			},
+			{
+				// Must match the icon ID
+				id: "isave", 
+				type: "context", 
+				panel: "editor_panel",
+				title: "Save file.",
+				
+				// Events
+				events: {
+					'click': function() {
+						console.log(svgCanvas.getSvgString())
 					}
 				}
 			}],
