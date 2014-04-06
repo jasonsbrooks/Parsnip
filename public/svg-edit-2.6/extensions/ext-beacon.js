@@ -1,8 +1,5 @@
 /* Extension that adds a button to draw iBeacons on canvas.
  */
- 
-console.log(svgCanvas.getSvgString())
-
 svgEditor.addExtension("iBeacon", function() {
 
 		return {
@@ -51,6 +48,7 @@ svgEditor.addExtension("iBeacon", function() {
 						});
 					}
 				}
+<<<<<<< HEAD
 			},
 			{
 				// Must match the icon ID
@@ -65,6 +63,8 @@ svgEditor.addExtension("iBeacon", function() {
 						//console.log(svgCanvas.setSvgString(lol))
 					}
 				}
+=======
+>>>>>>> c2b05a083b7efc5da491204cc7fef5f94c33af82
 			}],
 			// This is triggered when the main mouse button is pressed down 
 			// on the editor canvas (not the tool panels)
