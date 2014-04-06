@@ -7,4 +7,4 @@ class Layout(db.Model):
     floorplan_url = db.Column(db.String(500))
 
     def __repr__(self):
-        return '#%d: Name: %s  URL: %s' % (self.id, self.name, self.url)
+        return '#%d: Name: %s  URL: %s' % (self.id, self.name, self.floorplan_url)
