@@ -1,4 +1,3 @@
-/* lol */
 ﻿body {
 	background: #D0D0D0;
 }
@@ -11,11 +10,6 @@ html, body, div{
         user-select: text;
 	/* this will work for QtWebKit in future */
 	-webkit-user-drag: text;
-}
-
-/* Color of tools background */
-html{
-	background-color: #FFF;
 }
 
 #browser-not-supported {
@@ -59,7 +53,6 @@ html{
 	left: 0;
 }
 
-
  #svgcanvas {
 	line-height: normal;
 	display: inline-block;
@@ -74,7 +67,6 @@ html{
 	  A subtle gradient effect in the canvas.
 	  Just experimenting - not sure if this is worth it.
 	*/
-	/* Gradient behind canvas */
 	background: -moz-radial-gradient(45deg,#bbb,#222);
 	background: -webkit-gradient(radial, center center, 3, center center, 1000, from(#bbb), to(#222));
 }
@@ -168,7 +160,6 @@ html{
 	height: 16px;
 }
 
-/* Unknown */
 #workarea {
 	display: inline-table-cell;
 	position:absolute;
@@ -176,7 +167,7 @@ html{
 	left: 40px;
 	bottom: 40px;
 	right: 14px;
-	background-color: #FF0000;
+	background-color: #A0A0A0;
 	border: 1px solid #808080;
 	overflow: auto;
 	text-align: center;
@@ -215,7 +206,6 @@ html{
 	border-color: #666;
 	border-width: 0px 0px 0px 1px;	
 */
-/* Layers handle */
  #sidepanel_handle {
 	display: inline-block;
 	position: absolute;
@@ -411,7 +401,6 @@ div.palette_item:first-child {
 	font-family: sans-serif;
 }
 
-/* SVG-Edit menu */
  #main_menu {
 	z-index: 12;
 	background: #eee;
@@ -467,14 +456,12 @@ div.palette_item:first-child {
  .tool_button_current,
  .push_button_pressed
 {
-	/* Color of hovered buttons */
 	background-color: #ffc !important;
 }
 
  .tool_button_current,
  .push_button_pressed,
  .buttondown { 
-	/* Color of chosen tool */
 	background-color: #f4e284 !important;
 	-webkit-box-shadow: inset 1px 1px 2px rgba(0,0,0,0.4), 1px 1px  0 white  !important;
 	-moz-box-shadow: inset 1px 1px 2px rgba(0,0,0,0.4), 1px 1px  0 white  !important;
@@ -489,14 +476,12 @@ div.palette_item:first-child {
 	height: 40px;
 	border-bottom: none;
 	overflow: auto;
-	visibility: hidden;
 }
 
 #tools_top .tool_sep {
 	margin-top: 5px;
 }
 
-/* Background of tools */
 #tools_left {
 	position: absolute;
 	border-right: none;
@@ -632,7 +617,6 @@ span.zoom_tool {
 	position: relative;
 }
 
-/* Color of dropdown arrows */
  .dropdown button {
 	width: 15px;
 	height: 21px;
@@ -705,7 +689,6 @@ span.zoom_tool {
  .push_button,
  .tool_button_current,
  .push_button_pressed 
-/* Regular color of tool buttons */
 {
 	height: 24px;
 	width: 24px;
@@ -825,7 +808,6 @@ span.zoom_tool {
 	width: 30px;
 }
 
-/* Color of expanding tool buttons */
  .tools_flyout .tool_button {
 	float: left;
 	background-color: #E8E8E8;
@@ -844,7 +826,6 @@ span.zoom_tool {
 	bottom: 0;
 	height: 40px;
 	overflow: visible;
-	visibility: hidden;
 }
 
  #tools_bottom_1 {
@@ -1093,7 +1074,6 @@ span.zoom_tool {
 	display: none;
 }
 
-/* Black overlay on source */
 #svg_source_editor #svg_source_overlay {
 	position: absolute;
 	top: 0px;
@@ -1137,7 +1117,6 @@ span.zoom_tool {
 	position: static;
 }
 
-/* Changes code dialogue */
 #svg_docprops #svg_docprops_container,
 #svg_prefs #svg_prefs_container {
 	position: absolute;
@@ -1266,7 +1245,6 @@ span.zoom_tool {
 	margin-left: 0;
 }
 
-/* Unknown */
 #svg_docprops #svg_docprops_overlay,
 #svg_prefs #svg_prefs_overlay {
 	position: absolute;
@@ -1301,7 +1279,6 @@ span.zoom_tool {
 	-webkit-border-radius: 5px;
 }
 
-/* Change source dialogue buttons */
 .toolbar_button button:hover {
 	border: 1px #e0a874 solid;
 	border-top-color: #fcd9ba;
@@ -1430,7 +1407,6 @@ span.zoom_tool {
 }
 
 /* Generic context menu styles */
-/* Right click menu */
 .contextMenu {
 	position: absolute;
 	z-index: 99999;
