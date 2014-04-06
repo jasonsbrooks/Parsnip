@@ -1,9 +1,10 @@
 /* Extension that adds a button to draw iBeacons on canvas.
  */
+// console.log(svgCanvas.setSvgString(lol))
 svgEditor.addExtension("iBeacon", function() {
 
 		return {
-			name: "Hello World",
+			name: "iBeacon",
 			svgicons: "extensions/ibeacon-icon.xml",
 			
 			buttons: [{
@@ -24,6 +25,28 @@ svgEditor.addExtension("iBeacon", function() {
 						// For "mode" buttons, any other button will 
 						// automatically be de-pressed.
 						svgCanvas.setMode("ibeacon");
+					}
+				}
+			},
+			{
+				// Must match the icon ID
+				id: "isave", 
+				type: "context", 
+				panel: "editor_panel",
+				title: "Save file.",
+				
+				// Events
+				events: {
+					'click': function() {
+						var data = {fileContents: svgCanvas.getSvgString()}
+						$.ajax({
+						  type: "POST",
+						  url: 'http://localhost:5000/floorplan/modify_floorplan',
+						  data: data,
+						  success: function(data){
+						  	console.log(data);
+						  }
+						});
 					}
 				}
 			}],
