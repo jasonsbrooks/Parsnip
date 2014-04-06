@@ -25,4 +25,4 @@ def heatmap():
 
 @splash.route('/editor')
 def editor():
-	return render_template('templates/editor.html')
+	return render_template('templates/svg-edit-2.6/editor.html')
