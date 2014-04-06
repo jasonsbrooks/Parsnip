@@ -40,6 +40,20 @@ svgEditor.addExtension("iBeacon", function() {
 						console.log(svgCanvas.getSvgString())
 					}
 				}
+			},
+			{
+				// Must match the icon ID
+				id: "iload", 
+				type: "context", 
+				panel: "editor_panel",
+				title: "Load file.",
+				
+				// Events
+				events: {
+					'click': function() {
+						console.log(svgCanvas.setSvgString(lol))
+					}
+				}
 			}],
 			// This is triggered when the main mouse button is pressed down 
 			// on the editor canvas (not the tool panels)
