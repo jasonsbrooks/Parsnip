@@ -37,7 +37,15 @@ svgEditor.addExtension("iBeacon", function() {
 				// Events
 				events: {
 					'click': function() {
-						console.log(svgCanvas.getSvgString())
+						var data = {fileContents: svgCanvas.getSvgString()}
+						$.ajax({
+						  type: "POST",
+						  url: 'http://localhost:5000/floorplan/modify_floorplan',
+						  data: data,
+						  success: function(data){
+						  	console.log(data);
+						  }
+						});
 					}
 				}
 			}],
