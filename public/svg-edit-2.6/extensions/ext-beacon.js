@@ -1,5 +1,8 @@
 /* Extension that adds a button to draw iBeacons on canvas.
  */
+ 
+console.log(svgCanvas.getSvgString())
+
 svgEditor.addExtension("iBeacon", function() {
 
 		return {
@@ -59,7 +62,7 @@ svgEditor.addExtension("iBeacon", function() {
 				// Events
 				events: {
 					'click': function() {
-						console.log(svgCanvas.setSvgString(lol))
+						//console.log(svgCanvas.setSvgString(lol))
 					}
 				}
 			}],
