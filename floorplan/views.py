@@ -11,6 +11,7 @@ AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
 bucket_name = 'heaped'
 
+
 @floorplan.route('/modify_floorplan', methods=["POST"])
 def modify_floorplan():
     contents = request.form['fileContents']
