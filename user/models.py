@@ -14,9 +14,10 @@ class User(db.Model):
     	self.firstname = firstname
     	self.lastname = lastname
     	self.email = email
-    	self.password = 
+    	self.password = password
     	self.registered_on = datetime.utcnow()
 
 
     def __repr__(self):
-        return '#%d: First Name: %s, Last Name: %s, Email: %s' % (self.id, self.firstname, self.lastname, self.email)
+        return '#%d: First Name: %s, Last Name: %s, Email: %s, Registered On: %s' % (self.id, self.firstname, self.lastname, self.email, self.registered_on.strftime('%d/%b/%Y at %H:%M:%S'))
+
