@@ -179,7 +179,7 @@
       <!-- Some statistics -->
       <div class="row">
         <div class="col-xs-12">
-            <input type="text" value="" class="slider form-control" data-slider-min="-200" data-slider-max="200" data-slider-step="5" data-slider-value="[-100,100]" data-slider-orientation="horizontal" data-slider-selection="before" data-slider-tooltip="show" data-slider-id="blue" style=""></div>
+            <input type="text" value="" class="slider form-control" data-slider-min="0" data-slider-max="500" data-slider-step="5" data-slider-value="[0,100]" data-slider-orientation="horizontal" data-slider-selection="before" data-slider-tooltip="show" data-slider-id="blue" style="">
         </div>
       </div>
       <div class="row">
@@ -455,7 +455,11 @@
     //document.body.appendChild(heatmap.canvas);
 
     /* BOOTSTRAP SLIDER */
-    $('.slider').slider();
+    $('.slider').slider().on('slide', function(e) {
+        //console.log(e.value);
+        heatmap.clear();
+        paintAtCoords(data.slice(e.value[0],e.value[1]));
+    });
 
     var paintAtCoord = function(x, y){
         var count = 0;
@@ -537,7 +541,7 @@
       console.log("finished!");
     }
 
-    play(data, 0,data.length);
+    //play(data, 0,data.length);
 
     
 
