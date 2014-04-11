@@ -506,10 +506,6 @@
             
     }
 
-    // canvas.onclick = function(){
-    //     heatmap.clear()
-    // }
-
     var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
                              window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
 
@@ -525,6 +521,7 @@
     }
     raf(update);
 
+    // This function will replay a set of datapoints on the heatmap, putting a new point up every 50 ms.
     var play = function(list, start, end) {
       console.log("data.length = " + end);
       var i = start;
@@ -542,7 +539,6 @@
     }
 
     //play(data, 0,data.length);
-
     
 
 }
