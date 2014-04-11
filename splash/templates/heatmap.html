@@ -10,6 +10,8 @@
 <link href="static/css/font-awesome.css" rel="stylesheet" type="text/css" />
 <!-- Ionicons -->
 <link href="static/css/ionicons.css" rel="stylesheet" type="text/css" />
+<!-- bootstrap slider -->
+<link href="static/css/bootstrap-slider/slider.css" rel="stylesheet" type="text/css" />
 <!-- Theme style -->
 <!--link rel="stylesheet" type="text/css" href="static/css/dashboard.css" />
 <link rel="stylesheet" type="text/css" href="static/css/rickshaw.css" /-->
@@ -144,7 +146,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="active">
-        <a href="index.html">
+        <a href="dashboard">
           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
         </a>
         </li>
@@ -177,8 +179,12 @@
       <!-- Some statistics -->
       <div class="row">
         <div class="col-xs-12">
-          <div id="heatmapArea">
-          </div>
+            <input type="text" value="" class="slider form-control" data-slider-min="0" data-slider-max="500" data-slider-step="5" data-slider-value="[0,100]" data-slider-orientation="horizontal" data-slider-selection="before" data-slider-tooltip="show" data-slider-id="blue" style="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <canvas id="heatmap-area" width="540" height="540"></canvas>
         </div>
       </div><!-- /.row -->
     </section><!-- /.content -->
@@ -209,9 +215,334 @@
 <!-- AdminLTE App -->
 <script src="static/javascript/AdminLTE/app.js" type="text/javascript"></script>
 
+<!-- Bootstrap slider -->
+<script src="static/javascript/plugins/bootstrap-slider/bootstrap-slider.js" type="text/javascript"></script>
+<!-- Heatmap WebGL -->
+<script type="text/javascript" src="static/javascript/webgl-heatmap.js"></script>
+
 <!-- Page script -->
-<script type="text/javascript" src="static/javascript/heatmap/heatmap.js"></script>
-<script type="text/javascript" src="static/javascript/heatmap/custom.js"></script>
+<script type="text/javascript">
+  window.onload = function(){
+    var data = [
+      {x: 470, y: 306, size: 30, intensity: 1/3},
+      {x: 445, y: 309, size: 30, intensity: 1/3},
+      {x: 415, y: 315, size: 30, intensity: 1/3},
+      {x: 245, y: 332, size: 30, intensity: 1/3},
+      {x: 126, y: 347, size: 30, intensity: 1/3},
+      {x: 72, y: 352, size: 30, intensity: 1/3} ,
+      {x: 49, y: 353, size: 30, intensity: 1/3} ,
+      {x: 38, y: 348, size: 30, intensity: 1/3} ,
+      {x: 38, y: 347, size: 30, intensity: 1/3} ,
+      {x: 38, y: 312, size: 30, intensity: 1/3} ,
+      {x: 38, y: 302, size: 30, intensity: 1/3} ,
+      {x: 38, y: 297, size: 30, intensity: 1/3} ,
+      {x: 38, y: 277, size: 30, intensity: 1/3} ,
+      {x: 38, y: 248, size: 30, intensity: 1/3} ,
+      {x: 38, y: 214, size: 30, intensity: 1/3} ,
+      {x: 38, y: 202, size: 30, intensity: 1/3} ,
+      {x: 38, y: 194, size: 30, intensity: 1/3} ,
+      {x: 40, y: 194, size: 30, intensity: 1/3} ,
+      {x: 60, y: 194, size: 30, intensity: 1/3} ,
+      {x: 69, y: 194, size: 30, intensity: 1/3} ,
+      {x: 78, y: 194, size: 30, intensity: 1/3} ,
+      {x: 95, y: 195, size: 30, intensity: 1/3} ,
+      {x: 102, y: 195, size: 30, intensity: 1/3},
+      {x: 109, y: 195, size: 30, intensity: 1/3},
+      {x: 117, y: 195, size: 30, intensity: 1/3},
+      {x: 126, y: 195, size: 30, intensity: 1/3},
+      {x: 131, y: 194, size: 30, intensity: 1/3},
+      {x: 134, y: 192, size: 30, intensity: 1/3},
+      {x: 137, y: 192, size: 30, intensity: 1/3},
+      {x: 142, y: 192, size: 30, intensity: 1/3},
+      {x: 145, y: 192, size: 30, intensity: 1/3},
+      {x: 148, y: 192, size: 30, intensity: 1/3},
+      {x: 154, y: 192, size: 30, intensity: 1/3},
+      {x: 168, y: 192, size: 30, intensity: 1/3},
+      {x: 172, y: 192, size: 30, intensity: 1/3},
+      {x: 179, y: 192, size: 30, intensity: 1/3},
+      {x: 191, y: 191, size: 30, intensity: 1/3},
+      {x: 202, y: 190, size: 30, intensity: 1/3},
+      {x: 214, y: 190, size: 30, intensity: 1/3},
+      {x: 235, y: 189, size: 30, intensity: 1/3},
+      {x: 257, y: 188, size: 30, intensity: 1/3},
+      {x: 284, y: 186, size: 30, intensity: 1/3},
+      {x: 308, y: 182, size: 30, intensity: 1/3},
+      {x: 323, y: 179, size: 30, intensity: 1/3},
+      {x: 331, y: 177, size: 30, intensity: 1/3},
+      {x: 331, y: 175, size: 30, intensity: 1/3},
+      {x: 333, y: 175, size: 30, intensity: 1/3},
+      {x: 345, y: 175, size: 30, intensity: 1/3},
+      {x: 351, y: 176, size: 30, intensity: 1/3},
+      {x: 359, y: 176, size: 30, intensity: 1/3},
+      {x: 365, y: 176, size: 30, intensity: 1/3},
+      {x: 370, y: 176, size: 30, intensity: 1/3},
+      {x: 374, y: 176, size: 30, intensity: 1/3},
+      {x: 383, y: 176, size: 30, intensity: 1/3},
+      {x: 390, y: 176, size: 30, intensity: 1/3},
+      {x: 399, y: 173, size: 30, intensity: 1/3},
+      {x: 402, y: 171, size: 30, intensity: 1/3},
+      {x: 403, y: 171, size: 30, intensity: 1/3},
+      {x: 404, y: 171, size: 30, intensity: 1/3},
+      {x: 405, y: 171, size: 30, intensity: 1/3},
+      {x: 406, y: 170, size: 30, intensity: 1/3},
+      {x: 407, y: 169, size: 30, intensity: 1/3},
+      {x: 410, y: 169, size: 30, intensity: 1/3},
+      {x: 413, y: 168, size: 30, intensity: 1/3},
+      {x: 416, y: 166, size: 30, intensity: 1/3},
+      {x: 418, y: 165, size: 30, intensity: 1/3},
+      {x: 420, y: 164, size: 30, intensity: 1/3},
+      {x: 420, y: 162, size: 30, intensity: 1/3},
+      {x: 420, y: 161, size: 30, intensity: 1/3},
+      {x: 420, y: 160, size: 30, intensity: 1/3},
+      {x: 420, y: 160, size: 30, intensity: 1/3},
+      {x: 420, y: 158, size: 30, intensity: 1/3},
+      {x: 416, y: 156, size: 30, intensity: 1/3},
+      {x: 413, y: 155, size: 30, intensity: 1/3},
+      {x: 410, y: 155, size: 30, intensity: 1/3},
+      {x: 409, y: 154, size: 30, intensity: 1/3},
+      {x: 406, y: 154, size: 30, intensity: 1/3},
+      {x: 401, y: 154, size: 30, intensity: 1/3},
+      {x: 394, y: 153, size: 30, intensity: 1/3},
+      {x: 379, y: 153, size: 30, intensity: 1/3},
+      {x: 369, y: 153, size: 30, intensity: 1/3},
+      {x: 353, y: 157, size: 30, intensity: 1/3},
+      {x: 345, y: 161, size: 30, intensity: 1/3},
+      {x: 335, y: 168, size: 30, intensity: 1/3},
+      {x: 333, y: 169, size: 30, intensity: 1/3},
+      {x: 327, y: 175, size: 30, intensity: 1/3},
+      {x: 325, y: 177, size: 30, intensity: 1/3},
+      {x: 320, y: 184, size: 30, intensity: 1/3},
+      {x: 317, y: 189, size: 30, intensity: 1/3},
+      {x: 315, y: 194, size: 30, intensity: 1/3},
+      {x: 314, y: 197, size: 30, intensity: 1/3},
+      {x: 313, y: 200, size: 30, intensity: 1/3},
+      {x: 312, y: 203, size: 30, intensity: 1/3},
+      {x: 312, y: 207, size: 30, intensity: 1/3},
+      {x: 312, y: 213, size: 30, intensity: 1/3},
+      {x: 312, y: 217, size: 30, intensity: 1/3},
+      {x: 312, y: 219, size: 30, intensity: 1/3},
+      {x: 313, y: 226, size: 30, intensity: 1/3},
+      {x: 314, y: 229, size: 30, intensity: 1/3},
+      {x: 315, y: 230, size: 30, intensity: 1/3},
+      {x: 318, y: 232, size: 30, intensity: 1/3},
+      {x: 321, y: 237, size: 30, intensity: 1/3},
+      {x: 325, y: 241, size: 30, intensity: 1/3},
+      {x: 333, y: 247, size: 30, intensity: 1/3},
+      {x: 343, y: 253, size: 30, intensity: 1/3},
+      {x: 356, y: 260, size: 30, intensity: 1/3},
+      {x: 369, y: 263, size: 30, intensity: 1/3},
+      {x: 377, y: 264, size: 30, intensity: 1/3},
+      {x: 385, y: 265, size: 30, intensity: 1/3},
+      {x: 393, y: 268, size: 30, intensity: 1/3},
+      {x: 416, y: 268, size: 30, intensity: 1/3},
+      {x: 432, y: 268, size: 30, intensity: 1/3},
+      {x: 445, y: 268, size: 30, intensity: 1/3},
+      {x: 457, y: 266, size: 30, intensity: 1/3},
+      {x: 473, y: 260, size: 30, intensity: 1/3},
+      {x: 484, y: 255, size: 30, intensity: 1/3},
+      {x: 495, y: 252, size: 30, intensity: 1/3},
+      {x: 506, y: 247, size: 30, intensity: 1/3},
+      {x: 514, y: 245, size: 30, intensity: 1/3},
+      {x: 519, y: 243, size: 30, intensity: 1/3},
+      {x: 522, y: 241, size: 30, intensity: 1/3},
+      {x: 526, y: 238, size: 30, intensity: 1/3},
+      {x: 528, y: 237, size: 30, intensity: 1/3},
+      {x: 531, y: 235, size: 30, intensity: 1/3},
+      {x: 534, y: 232, size: 30, intensity: 1/3},
+      {x: 538, y: 230, size: 30, intensity: 1/3},
+      {x: 539, y: 217, size: 30, intensity: 1/3},
+      {x: 537, y: 217, size: 30, intensity: 1/3},
+      {x: 535, y: 217, size: 30, intensity: 1/3},
+      {x: 533, y: 217, size: 30, intensity: 1/3},
+      {x: 527, y: 217, size: 30, intensity: 1/3},
+      {x: 524, y: 218, size: 30, intensity: 1/3},
+      {x: 522, y: 220, size: 30, intensity: 1/3},
+      {x: 519, y: 221, size: 30, intensity: 1/3},
+      {x: 517, y: 224, size: 30, intensity: 1/3},
+      {x: 515, y: 226, size: 30, intensity: 1/3},
+      {x: 514, y: 227, size: 30, intensity: 1/3},
+      {x: 513, y: 230, size: 30, intensity: 1/3},
+      {x: 510, y: 234, size: 30, intensity: 1/3},
+      {x: 510, y: 235, size: 30, intensity: 1/3},
+      {x: 507, y: 237, size: 30, intensity: 1/3},
+      {x: 506, y: 239, size: 30, intensity: 1/3},
+      {x: 503, y: 243, size: 30, intensity: 1/3},
+      {x: 499, y: 246, size: 30, intensity: 1/3},
+      {x: 495, y: 249, size: 30, intensity: 1/3},
+      {x: 491, y: 252, size: 30, intensity: 1/3},
+      {x: 484, y: 255, size: 30, intensity: 1/3},
+      {x: 478, y: 260, size: 30, intensity: 1/3},
+      {x: 471, y: 262, size: 30, intensity: 1/3},
+      {x: 464, y: 264, size: 30, intensity: 1/3},
+      {x: 456, y: 266, size: 30, intensity: 1/3},
+      {x: 444, y: 266, size: 30, intensity: 1/3},
+      {x: 434, y: 268, size: 30, intensity: 1/3},
+      {x: 429, y: 269, size: 30, intensity: 1/3},
+      {x: 416, y: 274, size: 30, intensity: 1/3},
+      {x: 409, y: 276, size: 30, intensity: 1/3},
+      {x: 403, y: 279, size: 30, intensity: 1/3},
+      {x: 395, y: 282, size: 30, intensity: 1/3},
+      {x: 387, y: 285, size: 30, intensity: 1/3},
+      {x: 380, y: 287, size: 30, intensity: 1/3},
+      {x: 367, y: 289, size: 30, intensity: 1/3},
+      {x: 359, y: 290, size: 30, intensity: 1/3},
+      {x: 350, y: 292, size: 30, intensity: 1/3},
+      {x: 340, y: 294, size: 30, intensity: 1/3},
+      {x: 334, y: 296, size: 30, intensity: 1/3},
+      {x: 328, y: 300, size: 30, intensity: 1/3},
+      {x: 323, y: 305, size: 30, intensity: 1/3},
+      {x: 319, y: 310, size: 30, intensity: 1/3},
+      {x: 315, y: 315, size: 30, intensity: 1/3},
+      {x: 312, y: 318, size: 30, intensity: 1/3},
+      {x: 309, y: 320, size: 30, intensity: 1/3},
+      {x: 304, y: 324, size: 30, intensity: 1/3},
+      {x: 299, y: 327, size: 30, intensity: 1/3},
+      {x: 294, y: 329, size: 30, intensity: 1/3},
+      {x: 288, y: 331, size: 30, intensity: 1/3},
+      {x: 283, y: 335, size: 30, intensity: 1/3},
+      {x: 276, y: 338, size: 30, intensity: 1/3},
+      {x: 269, y: 340, size: 30, intensity: 1/3},
+      {x: 256, y: 346, size: 30, intensity: 1/3},
+      {x: 247, y: 349, size: 30, intensity: 1/3},
+      {x: 244, y: 350, size: 30, intensity: 1/3},
+      {x: 238, y: 352, size: 30, intensity: 1/3},
+      {x: 234, y: 352, size: 30, intensity: 1/3},
+      {x: 227, y: 354, size: 30, intensity: 1/3},
+      {x: 222, y: 357, size: 30, intensity: 1/3},
+      {x: 218, y: 358, size: 30, intensity: 1/3},
+      {x: 212, y: 358, size: 30, intensity: 1/3},
+      {x: 209, y: 360, size: 30, intensity: 1/3},
+      {x: 205, y: 360, size: 30, intensity: 1/3},
+      {x: 202, y: 360, size: 30, intensity: 1/3},
+      {x: 200, y: 360, size: 30, intensity: 1/3},
+      {x: 198, y: 360, size: 30, intensity: 1/3},
+      {x: 196, y: 358, size: 30, intensity: 1/3},
+      {x: 195, y: 356, size: 30, intensity: 1/3},
+      {x: 194, y: 353, size: 30, intensity: 1/3},
+      {x: 194, y: 349, size: 30, intensity: 1/3},
+      {x: 193, y: 346, size: 30, intensity: 1/3},
+      {x: 193, y: 345, size: 30, intensity: 1/3},
+      {x: 193, y: 344, size: 30, intensity: 1/3},
+      {x: 193, y: 342, size: 30, intensity: 1/3},
+      {x: 193, y: 341, size: 30, intensity: 1/3},
+      {x: 195, y: 341, size: 30, intensity: 1/3},
+      {x: 197, y: 340, size: 30, intensity: 1/3},
+      {x: 199, y: 339, size: 30, intensity: 1/3},
+      {x: 201, y: 338, size: 30, intensity: 1/3},
+      {x: 204, y: 338, size: 30, intensity: 1/3},
+      {x: 208, y: 338, size: 30, intensity: 1/3},
+      {x: 210, y: 338, size: 30, intensity: 1/3},
+      {x: 212, y: 338, size: 30, intensity: 1/3},
+      {x: 214, y: 338, size: 30, intensity: 1/3},
+      {x: 215, y: 338, size: 30, intensity: 1/3},
+      {x: 217, y: 338, size: 30, intensity: 1/3},
+      {x: 221, y: 338, size: 30, intensity: 1/3},
+      {x: 224, y: 338, size: 30, intensity: 1/3},
+      {x: 226, y: 337, size: 30, intensity: 1/3},
+      {x: 227, y: 337, size: 30, intensity: 1/3},
+      {x: 230, y: 336, size: 30, intensity: 1/3},
+      {x: 234, y: 336, size: 30, intensity: 1/3},
+      {x: 239, y: 309, size: 30, intensity: 1/3},
+      {x: 243, y: 307, size: 30, intensity: 1/3},
+      {x: 245, y: 307, size: 30, intensity: 1/3},
+      {x: 246, y: 321, size: 30, intensity: 1/3},
+      {x: 245, y: 346, size: 30, intensity: 1/3},
+      {x: 234, y: 380, size: 30, intensity: 1/3}
+    ]
+    var paintIntensity = 1/300;
+    var canvas = document.getElementById("heatmap-area");
+    var heatmap = createWebGLHeatmap({canvas: canvas, intensityToAlpha:true});
+    //document.body.appendChild(heatmap.canvas);
+
+    /* BOOTSTRAP SLIDER */
+    $('.slider').slider().on('slide', function(e) {
+        //console.log(e.value);
+        heatmap.clear();
+        paintAtCoords(data.slice(e.value[0],e.value[1]));
+    });
+
+    var paintAtCoord = function(x, y){
+        var count = 0;
+        while(count < 100){
+            var xoff = Math.random()*2-1;
+            var yoff = Math.random()*2-1;
+            var l = xoff*xoff + yoff*yoff;
+            if(l > 1){
+                continue;
+            }
+            var ls = Math.sqrt(l);
+            xoff/=ls; yoff/=ls;
+            xoff*=1-l; yoff*=1-l;
+            count += 1;
+            heatmap.addPoint(x+xoff*50, y+yoff*50, 30, paintIntensity);
+        }
+        //heatmap.addPoint(x, y, 60, 1/15);
+    }
+
+    var paintAtCoords = function(list) {
+      var end = list.length;
+      for (var i = 0; i < end; i++) {
+        paintAtCoord(list[i]["x"], list[i]["y"]);
+      }
+    }
+
+    // event handling
+    var onTouchMove = function(evt){
+        evt.preventDefault();
+        var touches = evt.changedTouches;
+        for(var i=0; i<touches.length; i++){
+            var touch = touches[i];
+            paintAtCoord(touch.pageX, touch.pageY);
+        }
+    };
+    canvas.addEventListener("touchmove", onTouchMove, false);
+
+    canvas.onmousemove = function(event){
+        var x = event.offsetX || event.clientX;
+        var y = event.offsetY || event.clientY;
+        console.log("{x: " + x + ", y: " + y + ", size: 30, intensity: 1/3}");
+
+        paintAtCoord(x, y);
+            
+    }
+
+    var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+                             window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+
+    var update = function(){
+        //heatmap.addPoint(100, 100, 100, 10/255);
+        heatmap.adjustSize(); // can be commented out for statically sized heatmaps, resize clears the map
+        heatmap.update(); // adds the buffered points
+        heatmap.display(); // adds the buffered points
+        //heatmap.multiply(0.9995);
+        //heatmap.blur();
+        //heatmap.clamp(0.0, 1.0); // depending on usecase you might want to clamp it
+        raf(update);
+    }
+    raf(update);
+
+    // This function will replay a set of datapoints on the heatmap, putting a new point up every 50 ms.
+    var play = function(list, start, end) {
+      console.log("data.length = " + end);
+      var i = start;
+      var intervalID = setInterval(function(){
+        //heatmap.addPoint(list[i]["x"], list[i]["y"], list[i]["size"], list[i]["intensity"]/2);
+        heatmap.clear();
+        //heatmap.addPoints(list.slice(0, i));
+        //paintAtCoord(list[i]["x"], list[i]["y"]);
+        paintAtCoords(list.slice(0,i));
+        i++;
+        if (i >= end)
+          window.clearInterval(intervalID);
+      }, 50);
+      console.log("finished!");
+    }
+
+    //play(data, 0,data.length);
+    
+
+}
+</script>
 
 
 </body>

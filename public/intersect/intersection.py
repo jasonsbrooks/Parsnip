@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 def intersection2c(p0, p1):
 	[x0, y0, r0] = p0
 	[x1, y1, r1] = p1
