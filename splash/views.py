@@ -22,3 +22,7 @@ def visuals():
 @splash.route('/heatmap')
 def heatmap():
     return render_template('templates/heatmap.html')
+
+@splash.route('/editor')
+def editor():
+	return render_template('templates/svg-edit-2.6/editor.html')
