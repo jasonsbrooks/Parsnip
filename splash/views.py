@@ -7,9 +7,7 @@ splash = Blueprint('splash', __name__, template_folder="")
 def home():
     return render_template('templates/home.html')
 
-@splash.route('/login')
-def login():
-    return render_template('templates/login.html')
+
 
 @splash.route('/dashboard')
 def dashboard():

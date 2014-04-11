@@ -1,5 +1,5 @@
 """
-app setup
+#heaped app setup
 """
 
 
@@ -9,7 +9,7 @@ from sqlalchemy import distinct, func
 from sqlalchemy.orm import scoped_session, sessionmaker
 import os
 from flask.ext.login import LoginManager
-from user.models import *
+# from user.models import *
 
 
 app = Flask(__name__)
