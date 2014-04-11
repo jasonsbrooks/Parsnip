@@ -51,6 +51,5 @@ $(document).ready(function () {
     $('#replay').click(function() {
         $('#heatmapArea').html("");
         heatmap = h337.create(config);
-        console.log(obj);
     });
 });

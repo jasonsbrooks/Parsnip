@@ -201,6 +201,9 @@ html, body, div{
 
 }
 
+.tools_panel {
+	color: #000;
+}
 /*
 	border-style: solid;
 	border-color: #666;
