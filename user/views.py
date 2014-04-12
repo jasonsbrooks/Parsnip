@@ -18,6 +18,8 @@ def load_user(id):
 
 @user.route('/register', methods=['GET', 'POST'])
 def register():
+    if g.user is not None and g.user.is_authenticated():
+        return redirect(url_for('splash.dashboard'))
     if request.method == 'GET':
         return render_template('register.html')
     firstname = request.form['firstname'].capitalize()
@@ -53,10 +55,15 @@ def login():
 
 
 @user.route('/logout')
+@login_required
 def logout():
-    if g.user is not None and g.user.is_authenticated():
-        email = g.user.email
+    email = g.user.email
     logout_user()
-    return redirect(url_for('user.login', defaultEmail=email)) 
+    return redirect(url_for('user.login', defaultEmail=email))
+
+@user.route('/settings')
+@login_required
+def settings():
+    return render_template('settings.html')
 
 

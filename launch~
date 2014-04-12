@@ -1,3 +1,0 @@
-#!/bin/bash
-export HEAPED_DATABASE_URL="sqlite:////tmp/tfpy.db"
-export USER_AUTH_SECRET_KEY=a23rD8ewdECDDSHEKFDS

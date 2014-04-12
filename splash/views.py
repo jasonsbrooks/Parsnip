@@ -8,9 +8,8 @@ splash = Blueprint('splash', __name__, template_folder="")
 def index():
     return render_template('templates/home.html')
 
-
-
 @splash.route('/dashboard')
+@login_required
 def dashboard():
     return render_template('templates/dashboard.html')
 
