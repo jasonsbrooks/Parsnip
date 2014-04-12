@@ -30,8 +30,8 @@ def save_floorplan():
 def edit_floorplan():
     return render_template('edit.html')
 
-@floorplan.route('/edit2')
-def edit_floorplan1():
+@floorplan.route('/edit_tmp')
+def edit_floorplan_tmp():
     return render_template('edit_old.html')
 
 # @floorplan.route('/michael', methods=["POST"])
