@@ -37,7 +37,6 @@ def register():
 
 @user.route('/login', methods=['GET', 'POST'])
 def login():
-    print g.user
     if g.user is not None and g.user.is_authenticated():
         return redirect(url_for('splash.dashboard'))
     if request.method == 'GET':

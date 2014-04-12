@@ -22,7 +22,11 @@
 			<span class="underline" id="header-links"><a href="/#home">About</a></span>
 			<span class="underline" id="header-links"><a href="/#analytics">Analytics</a></span>
 			<span class="underline" id="header-links"><a href="/#interface">Interface</a></span>
-			<span id="header-links"><a href="/user/login"><button id="sign-in">Sign In</button></a></span>
+			{% if g.user.is_authenticated() %}
+				<span id="header-links"><a href="/user/logout"><button id="sign-in">Sign Out, {{g.user.firstname}}</button></a></span>
+			{% else %}
+				<span id="header-links"><a href="/user/login"><button id="sign-in">Sign In</button></a></span>
+			{% endif %}
 		</div>
 	</div>
 

@@ -1,5 +1,6 @@
 from flask import (Flask, render_template, Response, request, 
     Blueprint, redirect, send_from_directory, send_file, jsonify, g, url_for)
+from flask.ext.login import login_user, logout_user, current_user, login_required
 
 splash = Blueprint('splash', __name__, template_folder="")
 
