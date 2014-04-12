@@ -34,5 +34,5 @@ class User(db.Model):
         return unicode(self.id)
 
     def __repr__(self):
-        return '#%d: First Name: %s, Last Name: %s, Email: %s, Registered On: %s' % (self.id, self.firstname, self.lastname, self.email, self.registered_on.strftime('%d/%b/%Y at %H:%M:%S'))
+        return '#%d: First Name: %s, Last Name: %s, Email: %s, Registered On: %s, Password: %s' % (self.id, self.firstname, self.lastname, self.email, self.registered_on.strftime('%d/%b/%Y at %H:%M:%S'), self.password)
 

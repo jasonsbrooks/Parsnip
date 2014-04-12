@@ -4,7 +4,7 @@ from flask import (Flask, render_template, Response, request,
 splash = Blueprint('splash', __name__, template_folder="")
 
 @splash.route('/')
-def home():
+def index():
     return render_template('templates/home.html')
 
 

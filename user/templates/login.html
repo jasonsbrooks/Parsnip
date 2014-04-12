@@ -9,7 +9,7 @@
 	<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,300,400italic,400,600italic,600,700italic,700,800italic,800" rel="stylesheet" type="text/css">
 	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 
-	<title>parsnip | Register</title>
+	<title>parsnip | Login</title>
 </head>
 <body>
 	<div id="header">
@@ -22,14 +22,30 @@
 			<span class="underline" id="header-links"><a href="/#interface">Interface</a></span>
 		</div>
 	</div>
+	
+		{% with messages = get_flashed_messages() %}
+		  {% if messages %}
+		  	<div class="sign-up">
+		    <ul class=flashes>
+		    {% for message in messages %}
+		      <li class="error-message">{{ message }}</li>
+		    {% endfor %}
+		    </ul>
+		    </div>
+		    <br />
+		  {% endif %}
+		{% endwith %}
+	<form class="sign-up" action='/user/login' method='POST'>
+	    <h1 class="sign-up-title">Login</h1>
+	    {% if defaultEmail %}
+	    	<input value="{{defaultEmail}}" name="email" type="text" class="sign-up-input" placeholder="email">
+	    	<input name="password" type="password" class="sign-up-input" placeholder="password" autofocus required>
+	    {% else %}
+	    	<input name="email" type="text" class="sign-up-input" placeholder="email" autofocus required>
+	    	<input name="password" type="password" class="sign-up-input" placeholder="password">
+	    {% endif %}
 
-	<form class="sign-up" action='/user/register' method='POST'>
-	    <h1 class="sign-up-title">Register</h1>
-	    <input name="firstname" type="text" class="sign-up-input" placeholder="First Name" autofocus required>
-	    <input name="lastname" type="text" class="sign-up-input" placeholder="Last Name" required>
-	    <input name="email" type="text" class="sign-up-input" placeholder="Email" required>
-	    <input name="password" type="password" class="sign-up-input" placeholder="Password" required>
-	    <button value="Login" class="sign-up-button">Register</button>
+	    <button value="Login" class="sign-up-button">Login</button>
   </form>
 </body>
 </html>
