@@ -30,9 +30,9 @@ def save_floorplan():
 def edit_floorplan():
     return render_template('edit.html')
 
-@floorplan.route('/editor2')
+@floorplan.route('/edit2')
 def edit_floorplan1():
-    return render_template('templates/svg-edit-2.6/svg-editor.html')
+    return render_template('edit_old.html')
 
 # @floorplan.route('/michael', methods=["POST"])
 # def michael():
