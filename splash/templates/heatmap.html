@@ -179,7 +179,8 @@
       <!-- Some statistics -->
       <div class="row">
         <div class="col-xs-12">
-            <input type="text" value="" class="slider form-control" data-slider-min="0" data-slider-max="500" data-slider-step="5" data-slider-value="[0,100]" data-slider-orientation="horizontal" data-slider-selection="before" data-slider-tooltip="show" data-slider-id="blue" style="">
+            <!-- Always set range to max range. Initialization depends on this. -->
+            <input type="text" value="" class="slider form-control" data-slider-min="0" data-slider-max="500" data-slider-step="5" data-slider-value="[0,500]" data-slider-orientation="horizontal" data-slider-selection="before" data-slider-tooltip="show" data-slider-id="blue" style="">
         </div>
       </div>
       <div class="row">
@@ -461,6 +462,8 @@
         paintAtCoords(data.slice(e.value[0],e.value[1]));
     });
 
+    //console.log($('.slider').slider('getValue'));
+
     var paintAtCoord = function(x, y){
         var count = 0;
         while(count < 100){
@@ -539,6 +542,8 @@
     }
 
     //play(data, 0,data.length);
+
+    paintAtCoords(data);
     
 
 }

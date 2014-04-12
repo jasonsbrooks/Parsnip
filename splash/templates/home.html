@@ -10,27 +10,31 @@
 	<script type="text/javascript" src="static/javascript/home.js"></script>
 	<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,300,400italic,400,600italic,600,700italic,700,800italic,800" rel="stylesheet" type="text/css">
 	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-	<title>#heaped</title>
+	<title>parsnip</title>
 </head>
 
 <body>
 	<div id="header">
 		<div id="name-container">
-			<a href="/#home"><span id="site-title">#heaped</span></a>
+			<a href="/#home"><span id="site-title">parsnip</span></a>
 		</div>
 		<div id="links-container">
 			<span class="underline" id="header-links"><a href="/#home">About</a></span>
 			<span class="underline" id="header-links"><a href="/#analytics">Analytics</a></span>
 			<span class="underline" id="header-links"><a href="/#interface">Interface</a></span>
-			<span id="header-links"><a href="/login"><button id="sign-in">Sign In</button></a></span>
+			{% if g.user.is_authenticated() %}
+				<span id="header-links"><a href="/user/logout"><button id="sign-in">Sign Out, {{g.user.firstname}}</button></a></span>
+			{% else %}
+				<span id="header-links"><a href="/user/login"><button id="sign-in">Sign In</button></a></span>
+			{% endif %}
 		</div>
 	</div>
 
 	<div class="section active" id="home-view">
 		<div class="text-shadow color-white" id="body-container">
-			<h1> Real-time analytics for brick &amp; mortar with <span id="content-title">#heaped</span></h1>
+			<h1> Real-time analytics for brick &amp; mortar with <span id="content-title">parsnip</span></h1>
 			<h2 id="main-text-2">a powerful interface to manage your customers in meatspace</h2></br></br>
-			<a href="/login"><button id="sign-in">Get Started</button></a>
+			<a href="/user/register"><button id="sign-in">Get Started</button></a>
 		</div>
 		<a href="#analytics"><div class="arrow animated bounce"></div></a>
 	</div>

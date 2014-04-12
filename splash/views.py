@@ -1,17 +1,15 @@
 from flask import (Flask, render_template, Response, request, 
     Blueprint, redirect, send_from_directory, send_file, jsonify, g, url_for)
+from flask.ext.login import login_user, logout_user, current_user, login_required
 
 splash = Blueprint('splash', __name__, template_folder="")
 
 @splash.route('/')
-def home():
+def index():
     return render_template('templates/home.html')
 
-@splash.route('/login')
-def login():
-    return render_template('templates/login.html')
-
 @splash.route('/dashboard')
+@login_required
 def dashboard():
     return render_template('templates/dashboard.html')
 

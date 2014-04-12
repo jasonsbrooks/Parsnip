@@ -1,7 +1,9 @@
 ﻿body {
 	background: #D0D0D0;
 }
-
+html{
+	background-color: #F9F9F9;
+}
 html, body, div{
         -webkit-user-select: text;
         -khtml-user-select: text;
@@ -198,6 +200,7 @@ html, body, div{
 	margin: 0px;
 	-moz-user-select: none;
 	-webkit-user-select: none;
+	visibility: hidden;
 
 }
 
@@ -222,6 +225,7 @@ html, body, div{
 	-webkit-border-radius: 5px;
 	-moz-user-select: none;
 	-webkit-user-select: none;
+	visibility: hidden;
 }
 
  #sidepanel_handle:hover {
@@ -345,6 +349,7 @@ div.palette_item:first-child {
 	top: 4px;
 	left: 5px;
 	z-index: 5;
+	display: none;
 }
 
  #main_icon {
@@ -470,7 +475,7 @@ div.palette_item:first-child {
 
 #tools_top {
 	position: absolute;
-	left: 108px;
+	left: 10px;
 	right: 2px;
 	top: 2px;
 	height: 40px;
@@ -480,6 +485,7 @@ div.palette_item:first-child {
 
 #tools_top .tool_sep {
 	margin-top: 5px;
+	display: none;
 }
 
 #tools_left {
@@ -490,7 +496,7 @@ div.palette_item:first-child {
 	left: 1px;
 	margin-top: -2px;
 	padding-left: 2px;
-	background: #D0D0D0; /* Needed so flyout icons don't appear on the left */
+	background: #FFF; /* Needed so flyout icons don't appear on the left */
 	z-index: 4;
 }
 
@@ -1468,6 +1474,9 @@ span.zoom_tool {
 	border-top: solid 1px #E3E3E3;
 	padding-top: 5px;
 	margin-top: 5px;
+}
+#tool_source{
+	display: none;
 }
 
 /*
