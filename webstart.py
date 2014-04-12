@@ -13,6 +13,10 @@ print "Starting webapp!"
 from floorplan.views import floorplan
 app.register_blueprint(floorplan, url_prefix='/floorplan')
 
+#user
+from user.views import user
+app.register_blueprint(user, url_prefix='/user')
+
 # splash
 from splash.views import splash
 app.register_blueprint(splash)
