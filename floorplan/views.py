@@ -26,9 +26,14 @@ def save_floorplan():
     print url
     return url
 
-@floorplan.route('/editor')
+@floorplan.route('/edit')
 def edit_floorplan():
-    return render_template('edit.html', pranav="goon")
+    return render_template('edit.html')
+
+@floorplan.route('/editor2')
+def edit_floorplan1():
+    return render_template('templates/svg-edit-2.6/svg-editor.html')
+
 # @floorplan.route('/michael', methods=["POST"])
 # def michael():
 #     points = request.get_json().get('points')
