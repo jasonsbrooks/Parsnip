@@ -1,7 +1,9 @@
 ﻿body {
 	background: #D0D0D0;
 }
-
+html{
+	background-color: #F9F9F9;
+}
 html, body, div{
         -webkit-user-select: text;
         -khtml-user-select: text;
@@ -198,6 +200,7 @@ html, body, div{
 	margin: 0px;
 	-moz-user-select: none;
 	-webkit-user-select: none;
+	visibility: hidden;
 
 }
 
@@ -222,6 +225,7 @@ html, body, div{
 	-webkit-border-radius: 5px;
 	-moz-user-select: none;
 	-webkit-user-select: none;
+	visibility: hidden;
 }
 
  #sidepanel_handle:hover {
@@ -490,7 +494,7 @@ div.palette_item:first-child {
 	left: 1px;
 	margin-top: -2px;
 	padding-left: 2px;
-	background: #D0D0D0; /* Needed so flyout icons don't appear on the left */
+	background: #FFF; /* Needed so flyout icons don't appear on the left */
 	z-index: 4;
 }
 

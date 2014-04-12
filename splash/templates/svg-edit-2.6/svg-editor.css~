@@ -1,7 +1,9 @@
 ﻿body {
 	background: #D0D0D0;
 }
-
+html{
+	background-color: #F9F9F9;
+}
 html, body, div{
         -webkit-user-select: text;
         -khtml-user-select: text;
@@ -490,7 +492,7 @@ div.palette_item:first-child {
 	left: 1px;
 	margin-top: -2px;
 	padding-left: 2px;
-	background: #D0D0D0; /* Needed so flyout icons don't appear on the left */
+	background: #F2921B; /* Needed so flyout icons don't appear on the left */
 	z-index: 4;
 }
 
@@ -826,6 +828,7 @@ span.zoom_tool {
 	bottom: 0;
 	height: 40px;
 	overflow: visible;
+	display: none;
 }
 
  #tools_bottom_1 {
