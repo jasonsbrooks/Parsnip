@@ -3,9 +3,12 @@
 	<link rel="stylesheet" type="text/css" href="/static/css/reset.css" />
 	<link rel="stylesheet" type="text/css" href="/static/css/home.css" />
 	<link rel="stylesheet" type="text/css" href="static/css/login.css" />
+	<link rel="stylesheet" href="static/css/validationEngine.jquery.css" type="text/css"/>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="js/login.js"></script>
+	<script type="text/javascript" src="static/js/login.js"></script>
+	<script src="static/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
+	<script src="static/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
 	<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,300,400italic,400,600italic,600,700italic,700,800italic,800" rel="stylesheet" type="text/css">
 	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 
@@ -20,6 +23,7 @@
 			<span class="underline" id="header-links"><a href="/#home">About</a></span>
 			<span class="underline" id="header-links"><a href="/#analytics">Analytics</a></span>
 			<span class="underline" id="header-links"><a href="/#interface">Interface</a></span>
+			<span id="header-links"><a href="/user/register"><button id="sign-in-login">Register</button></a></span>
 		</div>
 	</div>
 	
@@ -35,13 +39,13 @@
 		    <br />
 		  {% endif %}
 		{% endwith %}
-	<form class="sign-up" action='/user/login' method='POST'>
+	<form class="sign-up" id="login" action='/user/login' method='POST'>
 	    <h1 class="sign-up-title">Login</h1>
 	    {% if defaultEmail %}
-	    	<input value="{{defaultEmail}}" name="email" type="text" class="sign-up-input" placeholder="email">
+	    	<input value="{{defaultEmail}}" name="email" type="email" class="sign-up-input validate[required,custom[email]]" placeholder="email">
 	    	<input name="password" type="password" class="sign-up-input" placeholder="password" autofocus required>
 	    {% else %}
-	    	<input name="email" type="text" class="sign-up-input" placeholder="email" autofocus required>
+	    	<input name="email" type="email" class="sign-up-input validate[required,custom[email]]" placeholder="email" autofocus required>
 	    	<input name="password" type="password" class="sign-up-input" placeholder="password">
 	    {% endif %}
 

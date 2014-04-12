@@ -20,9 +20,9 @@ def load_user(id):
 def register():
     if request.method == 'GET':
         return render_template('register.html')
-    firstname = request.form['firstname']
-    lastname = request.form['lastname']
-    email = request.form['email']
+    firstname = request.form['firstname'].capitalize()
+    lastname = request.form['lastname'].capitalize()
+    email = request.form['email'].lower()
     password = request.form['password']
     if User.query.filter(User.email == email).first() is not None:
         flash('Account already exists for this email address! Please try signing in.')
@@ -37,12 +37,13 @@ def register():
 
 @user.route('/login', methods=['GET', 'POST'])
 def login():
+    print g.user
     if g.user is not None and g.user.is_authenticated():
         return redirect(url_for('splash.dashboard'))
     if request.method == 'GET':
         email = request.args.get('defaultEmail')
         return render_template('login.html', defaultEmail=email)
-    email = request.form['email']
+    email = request.form['email'].lower()
     password = request.form['password']
     user = User.query.filter(User.email == email).first()
     if (user is None) or (user.verify_password(password) is False):
@@ -54,7 +55,9 @@ def login():
 
 @user.route('/logout')
 def logout():
+    if g.user is not None and g.user.is_authenticated():
+        email = g.user.email
     logout_user()
-    return redirect(url_for('user.login')) 
+    return redirect(url_for('user.login', defaultEmail=email)) 
 
 
