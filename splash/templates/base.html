@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>parsnip | Dashboard</title>
+<title>parsnip | {{ active_page|capitalize() }}</title>
 <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 <!-- bootstrap 3.0.2 -->
 <link href="/static/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -110,7 +110,7 @@
           <i class="fa fa-map-marker"></i> <span>Heatmap</span>
         </a>
         </li>
-        <li>
+        <li {% if active_page == 'settings' %}class="active" {% endif %}>
         <a href="/user/settings">
           <i class="fa fa-calendar"></i> <span>Settings</span>
         </a>

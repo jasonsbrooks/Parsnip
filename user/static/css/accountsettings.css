@@ -695,3 +695,7 @@ input[type="file"]{
 #success-update-message{
   color: green;
 }
+
+#change-settings{
+  padding-bottom: 25px;
+}

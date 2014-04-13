@@ -56,8 +56,11 @@ def login():
     email = request.form['email'].lower()
     password = request.form['password']
     user = User.query.filter(User.email == email).first()
-    if (user is None) or (user.verify_password(password) is False):
-        flash('Username or Password is invalid')
+    if user is None:
+        flash('Email is invalid!')
+        return redirect(url_for('user.login'))
+    if user.verify_password(password) is False:
+        flash('Password is invalid!')
         return redirect(url_for('user.login'))
     login_user(user)
     return redirect(url_for('splash.dashboard'))
@@ -65,8 +68,8 @@ def login():
 @user.route('/edit_account', methods=['POST'])
 @login_required
 def edit_account():
-    firstname = request.form['firstname']
-    lastname = request.form['lastname']
+    firstname = request.form['firstname'].capitalize()
+    lastname = request.form['lastname'].capitalize()
     password1 = request.form['password1']
     password2 = request.form['password2']
     u = g.user
@@ -95,7 +98,7 @@ def photo_upload():
     file = request.files['photo']
     filename = secure_filename(file.filename)
     conn = boto.connect_s3(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)
-    bucket = conn.get_bucket('lifemax')
+    bucket = conn.get_bucket(bucket_name)
     k = Key(bucket)
     extension = "." + filename.split('.')[-1]
     k.key =  hashlib.sha224(file.read()).hexdigest() + extension
