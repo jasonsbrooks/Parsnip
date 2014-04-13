@@ -1,5 +1,5 @@
 """
-#heaped app setup
+parsnip app setup
 """
 
 

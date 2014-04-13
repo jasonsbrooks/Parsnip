@@ -1,0 +1,697 @@
+/* line 8, ../sass/main.scss */
+.cf:before, .game:before,
+.cf:after,
+.game:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+
+/* line 13, ../sass/main.scss */
+.cf:after, .game:after {
+  clear: both;
+}
+
+/* line 18, ../sass/main.scss */
+#lean_overlay {
+  position: fixed;
+  z-index: 100;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  display: none;
+}
+
+/* line 29, ../sass/main.scss */
+/*body {
+  margin: 0;
+  font: 400 1.25em/1.5 "Open Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}*/
+
+/* line 35, ../sass/main.scss */
+.main-container {
+  width: 730px;
+  margin: 0 auto;
+  padding-top: 200px;
+}
+
+/* line 41, ../sass/main.scss */
+.homepage-container {
+  width: 350px;
+  float: left;
+  text-align: center;
+  position: relative;
+  -webkit-transition: left 0.3s;
+  transition: left 0.3s;
+  left: 200px;
+}
+/* line 50, ../sass/main.scss */
+.homepage-container.with-form {
+  left: 0;
+}
+
+/* line 55, ../sass/main.scss */
+.homepage-about {
+  font: 400 1.2em/1.5 "Open Sans", sans-serif;
+  color: #23052d;
+}
+
+
+/* line 68, ../sass/main.scss */
+.header-logo {
+  display: inline;
+}
+
+/* line 72, ../sass/main.scss */
+.account-dropdown {
+  color: white;
+  float: right;
+}
+
+/* line 77, ../sass/main.scss */
+.account-name {
+  font: 400 1.2em/1 "Open Sans", sans-serif;
+  margin: 15px;
+  display: inline-block;
+  float: right;
+}
+
+/* line 84, ../sass/main.scss */
+.account-settings {
+  width: 30px;
+  height: 30px;
+  margin: 15px;
+  float: right;
+  display: inline-block;
+  background: url("../gear-icon.png") center no-repeat;
+  cursor: pointer;
+}
+
+/* line 94, ../sass/main.scss */
+.logout {
+  width: 30px;
+  height: 30px;
+  margin: 15px;
+  float: right;
+  display: inline-block;
+  background: url("../logout-icon.png") center no-repeat;
+  cursor: pointer;
+}
+
+/* line 104, ../sass/main.scss */
+.error-message {
+  width: 100%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  background-color: #ea6060;
+  color: #6f0f0f;
+  font-style: italic;
+  padding: .6em;
+  font-size: 17px;
+  display: none;
+}
+
+/* line 116, ../sass/main.scss */
+button {
+  display: inline-block;
+  -webkit-appearance: none;
+  padding: 1em 1.3em;
+  margin: 0 10px;
+  font: 700 18px/1 "Open Sans", sans-serif;
+  letter-spacing: 1px;
+  border: none;
+  color: white;
+  position: relative;
+}
+
+/* line 128, ../sass/main.scss */
+button:not(.facebook) {
+  background-color: #4783c4;
+  box-shadow: 0px 6px #28517d;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+/* line 134, ../sass/main.scss */
+button:not(.facebook).blue {
+  background-color: #4783c4;
+  box-shadow: 0px 6px #28517d;
+}
+/* line 138, ../sass/main.scss */
+button:not(.facebook).green {
+  background-color: #4ed198;
+  box-shadow: 0px 6px #269364;
+}
+/* line 142, ../sass/main.scss */
+button:not(.facebook).green.disabled {
+  background-color: transparent;
+  border: 1px solid #4ed198;
+  color: #4ed198;
+}
+/* line 148, ../sass/main.scss */
+button:not(.facebook).red {
+  background-color: #ea6060;
+  box-shadow: 0px 6px #c91b1b;
+}
+/* line 152, ../sass/main.scss */
+button:not(.facebook).red.disabled {
+  background-color: transparent;
+  border: 1px solid #ea6060;
+  color: #ea6060;
+}
+/* line 160, ../sass/main.scss */
+button:not(.facebook):active, button:not(.facebook).pressed, .game.voted button:not(.facebook) {
+  top: 6px;
+  box-shadow: none;
+}
+
+/* line 166, ../sass/main.scss */
+button.form-button {
+  padding: 0;
+}
+
+/* line 170, ../sass/main.scss */
+button.facebook {
+  font: 400 16px/1 "Open Sans", sans-serif;
+  margin: 30px auto;
+  padding-left: 70px;
+  background: #3b5998 url("../fb-icon.png") left no-repeat;
+}
+
+/* line 178, ../sass/main.scss */
+.login-form,
+.signup-form {
+  width: 300px;
+  float: right;
+  text-align: center;
+  position: relative;
+  -webkit-transition: top 0.2s, opacity 0.2s;
+  transition: top 0.2s, opacity 0.2s;
+  top: 0;
+  opacity: 1;
+  display: none;
+}
+/* line 189, ../sass/main.scss */
+.login-form.hidden,
+.signup-form.hidden {
+  opacity: 0;
+  top: 30px;
+}
+
+/* line 195, ../sass/main.scss */
+.text-input {
+  border-radius: 5px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-shadow: none;
+  -webkit-appearance: none;
+  background-color: #ddd;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  font-weight: 400;
+  padding: .6em;
+  display: block;
+  width: 100%;
+  margin: 15px 0;
+}
+/* line 210, ../sass/main.scss */
+button > .text-input {
+  margin: 0;
+}
+/* line 214, ../sass/main.scss */
+.number > .text-input {
+  width: 70px;
+  display: inline-block;
+  margin: 0;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+/* line 262, ../sass/main.scss */
+.moderate-page,
+.participate-page,
+.tokens-page,
+.login-page,
+.raffles-page,
+.account-page {
+  width: 960px;
+  margin: 50px auto 0 auto;
+}
+
+/* line 267, ../sass/main.scss */
+.global-moderator-controls {
+  text-align: center;
+}
+
+/* line 273, ../sass/main.scss */
+.game.dummy {
+  display: none;
+}
+
+/* line 277, ../sass/main.scss */
+.game {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+/* line 287, ../sass/main.scss */
+.game.voted button.red {
+  background-color: #c68484;
+}
+/* line 288, ../sass/main.scss */
+.game.voted button.green {
+  background-color: #7ba492;
+}
+/* line 293, ../sass/main.scss */
+.game.over .game-title {
+  text-decoration: line-through;
+}
+/* line 296, ../sass/main.scss */
+.game.over .the-winner {
+  font: 700 16px/1 "Open Sans", sans-serif;
+  text-transform: uppercase;
+}
+/* line 300, ../sass/main.scss */
+.game.over .winning-outcome {
+  font: 700 1.4em/1 "Open Sans", sans-serif;
+  color: #4ed198;
+}
+/* line 304, ../sass/main.scss */
+.game.over .bets {
+  padding: 0 !important;
+  margin: 30px 0 !important;
+}
+/* line 310, ../sass/main.scss */
+.game .moderator-info {
+  width: 140px;
+  float: left;
+  text-align: center;
+  text-transform: uppercase;
+}
+/* line 316, ../sass/main.scss */
+.game .moderator-info h2 {
+  font: 400 14px/1 "Open Sans", sans-serif;
+  color: #23052d;
+}
+/* line 321, ../sass/main.scss */
+.game .moderator-info h1 {
+  font: 200 20px/1 "Open Sans", sans-serif;
+  color: #4783c4;
+}
+/* line 327, ../sass/main.scss */
+.game .game-info {
+  background: #eee;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  width: 790px;
+  float: left;
+  margin-left: 20px;
+  padding: 1em;
+  padding-top: calc(1em - 5px);
+  padding-top: -webkit-calc(1em - 5px);
+  position: relative;
+}
+/* line 339, ../sass/main.scss */
+.game .game-info:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -20px;
+  width: 0;
+  height: 0;
+  border: 10px solid #eee;
+  border-left: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+/* line 351, ../sass/main.scss */
+.game .game-info .game-title {
+  margin-top: 0;
+  font: 700 30px/1.3 "Open Sans", sans-serif;
+}
+/* line 357, ../sass/main.scss */
+.game .game-info .yes-option,
+.game .game-info .no-option {
+  width: 352px;
+  float: left;
+  margin-right: 20px;
+}
+/* line 362, ../sass/main.scss */
+.game .game-info .yes-option button,
+.game .game-info .no-option button {
+  width: 100%;
+  margin: 0;
+  margin-bottom: 1px;
+}
+/* line 369, ../sass/main.scss */
+.game .game-info .bet-dropdown {
+  display: none;
+  margin-top: 20px;
+  border: 1px solid #eee;
+}
+/* line 374, ../sass/main.scss */
+.game .game-info .bet-dropdown .text-input {
+  display: inline-block;
+  width: 233px;
+  margin-right: 10px;
+}
+/* line 380, ../sass/main.scss */
+.game .game-info .bet-dropdown button {
+  width: 100px;
+}
+/* line 384, ../sass/main.scss */
+.game .game-info .bet-dropdown span {
+  display: block;
+  float: none;
+  margin-top: 10px;
+}
+/* line 391, ../sass/main.scss */
+.game .game-info .odds {
+  border-right: 1px solid #ccc;
+  width: 40%;
+}
+/* line 396, ../sass/main.scss */
+.game .game-info .bets {
+  padding-left: 1em;
+  width: 60%;
+}
+/* line 401, ../sass/main.scss */
+.game .game-info .number-label {
+  font: 700 14px/1 "Open Sans", sans-serif;
+  text-transform: uppercase;
+  color: black;
+  clear: both;
+}
+/* line 409, ../sass/main.scss */
+.game .game-info .odds,
+.game .game-info .bets {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  float: left;
+}
+/* line 416, ../sass/main.scss */
+.game .game-info .odds .number,
+.game .game-info .bets .number {
+  margin-top: 14px;
+  font: 200 1.4em/1 "Open Sans", sans-serif;
+}
+/* line 420, ../sass/main.scss */
+.game .game-info .odds span,
+.game .game-info .bets span {
+  display: block;
+}
+/* line 426, ../sass/main.scss */
+.game .game-info .tokens,
+.game .game-info .people {
+  float: left;
+  position: relative;
+}
+/* line 430, ../sass/main.scss */
+.game .game-info .tokens span,
+.game .game-info .people span {
+  background: url("../wintrade-sprites.png") top left no-repeat;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  left: -2px;
+}
+/* line 441, ../sass/main.scss */
+.game .game-info .tokens .people-icon,
+.game .game-info .people .people-icon {
+  background-position: -23px;
+}
+/* line 446, ../sass/main.scss */
+.game .game-info .people {
+  margin-left: 10px;
+}
+/* line 450, ../sass/main.scss */
+.game .game-info .participants {
+  clear: left;
+  padding-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-bottom: 10px;
+  display: block;
+}
+/* line 457, ../sass/main.scss */
+.game .game-info .participants .number-label {
+  vertical-align: middle;
+}
+/* line 461, ../sass/main.scss */
+.game .game-info .participants .participant-list {
+  list-style: none;
+  display: inline;
+  vertical-align: middle;
+}
+/* line 466, ../sass/main.scss */
+.game .game-info .participants .participant-list li {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+}
+/* line 475, ../sass/main.scss */
+.game .game-info .moderator-controls {
+  border-top: 1px solid #ccc;
+  padding-top: 1em;
+}
+/* line 479, ../sass/main.scss */
+.game .game-info .moderator-controls .moderator-button {
+  color: #4783c4;
+  font: 400 14px/1 "Open Sans", sans-serif;
+  margin-left: 10px;
+  padding: 0.6em 1em;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/* line 487, ../sass/main.scss */
+.game .game-info .moderator-controls .moderator-button:hover {
+  background: #4783c4;
+  color: white;
+}
+
+/* line 496, ../sass/main.scss */
+.modal {
+  background: white;
+  padding: 2em;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  display: none;
+}
+/* line 503, ../sass/main.scss */
+.modal h1 {
+  margin-top: 0;
+  font-size: 1em;
+}
+
+/* line 509, ../sass/main.scss */
+.friends-list {
+  overflow: scroll;
+  width: 450px;
+  max-height: 300px;
+  list-style: none;
+  padding: 0;
+}
+/* line 516, ../sass/main.scss */
+.friends-list li {
+  cursor: pointer;
+  background-color: #eee;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+  position: relative;
+}
+/* line 524, ../sass/main.scss */
+.friends-list li:hover {
+  background-color: #ddd;
+}
+/* line 528, ../sass/main.scss */
+.friends-list li.active:after {
+  content: "";
+  background: url("../check-icon.png");
+  width: 26px;
+  height: 26px;
+  color: #4ed198;
+  font-weight: bold;
+  font-size: 1.5em;
+  position: absolute;
+  right: 13px;
+  top: 13px;
+}
+/* line 541, ../sass/main.scss */
+.friends-list li img {
+  vertical-align: middle;
+}
+/* line 545, ../sass/main.scss */
+.friends-list li span {
+  vertical-align: middle;
+  margin: 0 10px 0 20px;
+}
+
+/* line 553, ../sass/main.scss */
+.win-notification {
+  background-color: #4783c4;
+  color: white;
+  font: 400 1em/1 "Open Sans", sans-serif;
+  padding: 1em;
+}
+/* line 559, ../sass/main.scss */
+.win-notification .close-button {
+  float: right;
+  cursor: pointer;
+}
+
+/* line 565, ../sass/main.scss */
+.token-count-message {
+  margin-top: 70px;
+  text-align: center;
+  font: 400 1.5em/1 "Open Sans", sans-serif;
+}
+/* line 570, ../sass/main.scss */
+.token-count-message .token-count {
+  font-weight: bold;
+}
+
+/* line 575, ../sass/main.scss */
+.token-exchange-rate {
+  text-align: center;
+}
+
+/* line 579, ../sass/main.scss */
+.pay-buttons {
+  text-align: center;
+}
+
+/* line 585, ../sass/main.scss */
+.login-page,
+.account-page {
+  width: 450px;
+  text-align: center;
+}
+/* line 588, ../sass/main.scss */
+.login-page form,
+.account-page form {
+  display: block;
+  float: none;
+  margin: 100px auto 0 auto;
+}
+
+/* line 595, ../sass/main.scss */
+.account-page form {
+  margin-top: 0;
+/*  padding-bottom: 100px; */
+}
+
+/* line 601, ../sass/main.scss */
+.raffle-image {
+  width: 300px;
+  margin-right: 20px;
+  float: left;
+}
+
+/* line 608, ../sass/main.scss */
+.raffle-info,
+.bet-dropdown {
+  width: 620px;
+  float: left;
+  padding-bottom: 1.2em;
+  border-bottom: 1px solid #ccc;
+}
+
+/* line 615, ../sass/main.scss */
+.bet-dropdown {
+  display: none;
+}
+
+/* line 619, ../sass/main.scss */
+.current-raffle-label {
+  margin: 0;
+}
+
+/* line 623, ../sass/main.scss */
+.current-raffle-title {
+  margin: 0;
+}
+
+/* line 629, ../sass/main.scss */
+.raffles-page .entrants,
+.raffles-page .wagered {
+  float: left;
+  width: 200px;
+}
+/* line 633, ../sass/main.scss */
+.raffles-page .number-label {
+  margin-top: 30px;
+  font: 700 1em/1 "Open Sans", sans-serif;
+  display: block;
+}
+/* line 638, ../sass/main.scss */
+.raffles-page .number {
+  font-size: 1.4em;
+}
+/* line 642, ../sass/main.scss */
+.raffles-page .tokens,
+.raffles-page .people {
+  float: left;
+  position: relative;
+}
+/* line 646, ../sass/main.scss */
+.raffles-page .tokens span,
+.raffles-page .people span {
+  background: url("../wintrade-sprites.png") top left no-repeat;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  left: -2px;
+}
+/* line 657, ../sass/main.scss */
+.raffles-page .tokens .people-icon,
+.raffles-page .people .people-icon {
+  background-position: -23px;
+}
+/* line 661, ../sass/main.scss */
+.raffles-page button {
+  float: right;
+  margin-top: 30px;
+}
+
+/* line 668, ../sass/main.scss */
+.profile-pic-container {
+  position: relative;
+}
+
+/* line 671, ../sass/main.scss */
+.profile-pic-container:hover .edit {
+  display: block;
+}
+
+/* line 675, ../sass/main.scss */
+.edit {
+  font-size: 14px;
+  color: white;
+  text-decoration: none;
+  display: none;
+  padding: 10px 15px;
+  background-color: #4783c4;
+  border-radius: 5px;
+  position: absolute;
+  top: 2px;
+  left: 75px;
+}
+
+input[type="file"]{
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+#success-update-message{
+  color: green;
+}

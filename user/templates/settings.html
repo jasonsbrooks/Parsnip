@@ -1,1 +1,52 @@
-{{g.user.firstname}} {{g.user.lastname}}
+{% extends "templates/base.html" %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="static/css/accountsettings.css" />
+<link rel="stylesheet" href="static/css/validationEngine.jquery.css" type="text/css"/>
+{% endblock %}
+
+{% block content %}
+<div class="account-page">
+	<h1>Account Settings</h1>
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	    {% for message in messages %}
+	      <li id="success-update-message">{{ message }}</li>
+	    {% endfor %}
+	    </ul>
+	  {% endif %}
+	{% endwith %}
+	<form id="photo-change-form" method="post" enctype="multipart/form-data" action="/user/photo_upload/">
+		<label for="">Change Picture:</label>
+		<div class="profile-pic-container">
+			{% if g.user.profilepic %}
+			<img id="profile-img" src="{{ g.user.profilepic }}" width="300px" alt="" class="profile-picture">
+	        {% else %}
+	        <img id="profile-img" src="/static/images/genericAvatar.png" width="300px" alt="" class="profile-picture">
+	        {% endif %}
+	        <input id="fileElem" type="file" name="photo">
+			<button class="edit" id="fileSelect" type="button">edit</button>
+		</div>
+	</form>
+	<form action="/user/edit_account" method="post" class="login-form" id="change-settings">
+		<label for="change-email">Email:</label>
+		<input id="change-email" type="email" class="text-input" value="{{ g.user.email }}" disabled="true">
+		<label for="change-firstname">Change first name:</label>
+		<input id="change-firstname" name="firstname" type="text" class="validate[required,maxSize[40]] text-input" value="{{ g.user.firstname }}">
+		<label for="change-lastname">Change last name:</label>
+		<input id="change-lastname" name="lastname" type="text" class="validate[required,maxSize[40]] text-input" value="{{ g.user.lastname }}">
+		<label for="change-password">Change password:</label>
+		<input id="change-password" name="password1" type="password" class="validate[optional,minSize[6],maxSize[15]] text-input" placeholder="password">
+		<label for="change-password-confirm">Confirm password:</label>
+		<input id="change-password-confirm" name="password2" type="password" class="validate[optional,equals[change-password]] text-input" placeholder="password">
+		<button class="blue" type="submit">Save</button>
+	</form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="http://malsup.github.com/jquery.form.js"></script> 
+<script src="static/js/settings.js"></script>
+<script src="static/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
+<script src="static/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+{% endblock %}

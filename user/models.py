@@ -9,6 +9,7 @@ class User(db.Model):
     lastname = db.Column(db.String(80))
     email = db.Column(db.String(80), unique=True, index=True)
     password = db.Column(db.String(15))
+    profilepic = db.Column(db.String(100))
     registered_on = db.Column(db.DateTime)
 
     # def __init__(self, firstname, lastname, email, password):

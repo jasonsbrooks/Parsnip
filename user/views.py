@@ -5,6 +5,15 @@ from user.models import *
 from datetime import datetime
 from main import login_manager
 from main import app
+import boto
+from boto.s3.key import Key
+from werkzeug.utils import secure_filename
+import hashlib
+import os
+
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+bucket_name = 'heaped'
 
 user = Blueprint('user', __name__, template_folder="templates")
 
@@ -53,6 +62,21 @@ def login():
     login_user(user)
     return redirect(url_for('splash.dashboard'))
 
+@user.route('/edit_account', methods=['POST'])
+@login_required
+def edit_account():
+    firstname = request.form['firstname']
+    lastname = request.form['lastname']
+    password1 = request.form['password1']
+    password2 = request.form['password2']
+    u = g.user
+    u.firstname = firstname
+    u.lastname = lastname
+    if password1 is not None:
+        u.hash_password(password1)
+    db.session.commit()
+    flash('Account settings successfully changed!')
+    return redirect(url_for('user.settings'))
 
 @user.route('/logout')
 @login_required
@@ -65,5 +89,23 @@ def logout():
 @login_required
 def settings():
     return render_template('settings.html')
+
+@user.route('/photo_upload/', methods=["POST"])
+def photo_upload():
+    file = request.files['photo']
+    filename = secure_filename(file.filename)
+    conn = boto.connect_s3(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)
+    bucket = conn.get_bucket('lifemax')
+    k = Key(bucket)
+    extension = "." + filename.split('.')[-1]
+    k.key =  hashlib.sha224(file.read()).hexdigest() + extension
+    file.seek(0)
+    k.set_contents_from_string(file.read())
+    k.make_public()
+    url = k.generate_url(expires_in=0, query_auth=False)
+    u = g.user
+    u.profilepic = url
+    db.session.commit()
+    return url
 
 
