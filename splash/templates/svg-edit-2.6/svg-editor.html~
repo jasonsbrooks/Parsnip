@@ -18,12 +18,23 @@
   <script type="text/javascript" src="static/jquery.js"></script>
 <!--{endif}-->
 
+<<<<<<< HEAD
+<script type="text/javascript" src="js-hotkeys/jquery.hotkeys.min.js"></script>
+<script type="text/javascript" src="jquerybbq/jquery.bbq.min.js"></script>
+<script type="text/javascript" src="svgicons/jquery.svgicons.js"></script>
+<script type="text/javascript" src="jgraduate/jquery.jgraduate.min.js"></script>
+<script type="text/javascript" src="spinbtn/JQuerySpinBtn.min.js"></script>
+<script type="text/javascript" src="touch.js"></script>
+<!-- Testing -->
+<script src="./svg-tests.js"></script>
+=======
 <script type="text/javascript" src="static/js-hotkeys/jquery.hotkeys.min.js"></script>
 <script type="text/javascript" src="static/jquerybbq/jquery.bbq.min.js"></script>
 <script type="text/javascript" src="static/svgicons/jquery.svgicons.js"></script>
 <script type="text/javascript" src="static/jgraduate/jquery.jgraduate.min.js"></script>
 <script type="text/javascript" src="static/spinbtn/JQuerySpinBtn.min.js"></script>
 <script type="text/javascript" src="static/touch.js"></script>
+>>>>>>> c51ff3a4b388ec6424b5c182e6c6bb6919de1210
 
 <!--{if svg_edit_release}-->
   <script type="text/javascript" src="static/svgedit.compiled.js"></script>
