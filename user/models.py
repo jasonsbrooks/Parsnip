@@ -12,6 +12,9 @@ class User(db.Model):
     profilepic = db.Column(db.String(100))
     registered_on = db.Column(db.DateTime)
 
+    company_id = db.Column(db.Integer, db.ForeignKey('companies.id'))
+    company = db.relationship('Company', backref='users')
+
     # def __init__(self, firstname, lastname, email, password):
     #     self.firstname = firstname
     #     self.lastname = lastname
