@@ -10,6 +10,8 @@ from boto.s3.key import Key
 from werkzeug.utils import secure_filename
 import hashlib
 import os
+import pdb
+from splash.views import get_pending_users
 
 AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
@@ -20,6 +22,7 @@ user = Blueprint('user', __name__, template_folder="templates")
 @app.before_request
 def before_request():
     g.user = current_user
+
 
 @login_manager.user_loader
 def load_user(id):
@@ -62,8 +65,14 @@ def login():
     if user.verify_password(password) is False:
         flash('Password is invalid!')
         return redirect(url_for('user.login'))
+    if (user.account_approved is False) and (user.company is not None):
+        return redirect(url_for('user.unvalidated'))
     login_user(user)
     return redirect(url_for('splash.dashboard'))
+
+@user.route('/unvalidated')
+def unvalidated():
+    return "Your account has yet to be approved by a member of your team."
 
 @user.route('/edit_account', methods=['POST'])
 @login_required
@@ -88,12 +97,30 @@ def logout():
     logout_user()
     return redirect(url_for('user.login', defaultEmail=email))
 
+@user.route('/approval_status', methods=["POST"])
+@login_required
+def change_approval_status():
+    # pdb.set_trace()
+    email = request.form['email']
+    status = request.form['status']
+    u = User.query.filter(User.email == email).first()
+    if current_user.company != u.company:
+        return jsonify({"success": "false"})
+    if status == "approved":
+        u.account_approved = True
+    else:
+        u.company = None
+    db.session.commit()
+    return jsonify({"success": "true"})
+
 @user.route('/settings')
 @login_required
+@get_pending_users
 def settings():
     return render_template('settings.html')
 
 @user.route('/photo_upload/', methods=["POST"])
+@login_required
 def photo_upload():
     file = request.files['photo']
     filename = secure_filename(file.filename)

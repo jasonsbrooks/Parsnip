@@ -1,5 +1,4 @@
 {% set active_page = active_page|default('dashboard') -%}
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +15,7 @@
 <!--link rel="stylesheet" type="text/css" href="/static/css/dashboard.css" />
 <link rel="stylesheet" type="text/css" href="/static/css/rickshaw.css" /-->
 <link href="/static/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/parsnip-dashboard.css" rel="stylesheet" type="text/css" />
 
 {% block css %}{% endblock %}
 
@@ -45,6 +45,40 @@
     <div class="navbar-right">
       <ul class="nav navbar-nav">
         <!-- User Account: style can be found in dropdown.less -->
+        <li class="dropdown notifications-menu">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <i class="fa fa-warning"></i>
+          <span class="label label-warning">{% if g.pending_users|count() > 0 %}{{ g.pending_users|count() }}{% endif %}</span>
+        </a>
+        <ul class="dropdown-menu">
+          <li class="header">You have {{ g.pending_users|count() }} notifications</li>
+          <li>
+          <!-- inner menu: contains the actual data -->
+          <ul class="menu">
+            {% for user in g.pending_users %}
+              <li>
+              <a class="disable">
+                <i class="fa fa-users warning"></i> {{user.firstname}} {{user.lastname}}
+                <div class="float-right">
+                  <form class="sign-up" action='/user/approval_status' method='POST' style='margin: 0; padding: 0; display:inline;'>
+                    <input type="hidden" name="email" type="email" value="{{ user.email }}">
+                    <input type="hidden" name="status" type="text" value="approved">
+                    <button class="approve-store">Yes</button>
+                  </form>
+                  <form class="sign-up" action='/user/approval_status' method='POST' style='margin: 0; padding: 0; display:inline;'>
+                    <input type="hidden" name="email" type="email" value="{{ user.email }}">
+                    <input type="hidden" name="status" type="text" value="denied">
+                    <button class="deny-store">No</button>
+                  </form>
+                </div>
+              </a>
+              </li>
+            {% endfor %}
+          </ul>
+          </li>
+          <li class="footer"><a href="#">View all</a></li>
+        </ul>
+        </li>
         <li class="dropdown user user-menu">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
           <i class="glyphicon glyphicon-user"></i>
@@ -59,7 +93,7 @@
           <img src="/static/images/genericAvatar.png" id="dropdown-profile" class="img-circle" alt="User Image" />
           {% endif %}
           <p>
-          {{g.user.firstname}} {{g.user.lastname}} - COMPANY
+          {{g.user.firstname}} {{g.user.lastname}} - {{g.user.company.name}}
           </p>
           </li>
           <!-- Menu Body -->

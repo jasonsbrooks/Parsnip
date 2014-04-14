@@ -17,6 +17,12 @@ app.register_blueprint(floorplan, url_prefix='/floorplan')
 from user.views import user
 app.register_blueprint(user, url_prefix='/user')
 
+from beacon.views import beacon
+app.register_blueprint(beacon, url_prefix='/beacon')
+
+from company.views import company
+app.register_blueprint(company, url_prefix='/company')
+
 # splash
 from splash.views import splash
 app.register_blueprint(splash)

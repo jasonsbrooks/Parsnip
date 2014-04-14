@@ -1,5 +1,6 @@
 from main import db
 from passlib.apps import custom_app_context as pwd_context
+from company.models import *
 # from datetime import datetime
 
 class User(db.Model):
@@ -11,9 +12,10 @@ class User(db.Model):
     password = db.Column(db.String(15))
     profilepic = db.Column(db.String(100))
     registered_on = db.Column(db.DateTime)
+    account_approved = db.Column(db.Boolean, default=False)
 
     company_id = db.Column(db.Integer, db.ForeignKey('companies.id'))
-    company = db.relationship('Company', backref='users')
+    # company = db.relationship('Company', backref='users')
 
     # def __init__(self, firstname, lastname, email, password):
     #     self.firstname = firstname

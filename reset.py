@@ -12,10 +12,13 @@ db.session.add(company1)
 db.session.commit()
 
 
-u1 = User(firstname="Jason", lastname="Brooks", email="jason.brooks@yale.edu", profilepic="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-ash2/t1.0-9/536283_218804554919317_1952113665_n.jpg", company=company1)
-u2 = User(firstname="Pranav", lastname="Maddi", email="pranav.maddi@yale.edu", profilepic="https://scontent-b-iad.xx.fbcdn.net/hphotos-prn2/t1.0-9/9749_10202200719724608_650155214_n.jpg", company=company1)
+u1 = User(firstname="Jason", lastname="Brooks", email="jason.brooks@yale.edu", profilepic="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-ash2/t1.0-9/536283_218804554919317_1952113665_n.jpg", company=company1, account_approved=False)
+u2 = User(firstname="Pranav", lastname="Maddi", email="pranav.maddi@yale.edu", profilepic="https://scontent-b-iad.xx.fbcdn.net/hphotos-prn2/t1.0-9/9749_10202200719724608_650155214_n.jpg", company=company1, account_approved=True)
+u3 = User(firstname="Charles", lastname="Jin", email="charles.jin@yale.edu", profilepic="https://fbcdn-sphotos-c-a.akamaihd.net/hphotos-ak-ash2/t31.0-8/462503_10201093936700713_711489518_o.jpg", company=company1, account_approved=False)
+
 u1.hash_password("helloworld")
 u2.hash_password("goodbyeworld")
+u3.hash_password("helloworld")
 u1.registered_on=datetime.utcnow()
 u2.registered_on=datetime.utcnow()
 db.session.add(u1)
