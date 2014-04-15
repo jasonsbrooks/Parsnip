@@ -4,10 +4,21 @@ $(document).ready(function(){
 	});
 
 	$('#fileElem').change(function() {
-		if (CheckFileName() == true){
+		if (CheckFileName("fileElem") == true){
 			$('#photo-change-form').submit();
 		}
     });
+
+    $( "#fileSelectCompany" ).click(function() {
+      $('#fileElemCompany').click();
+    });
+
+    $('#fileElemCompany').change(function() {
+        if (CheckFileName("fileElemCompany") == true){
+            $('#photo-change-form-company').submit();
+        }
+    });
+
 
 	$('#photo-change-form').ajaxForm({url: '/user/photo_upload/user', type: 'post',
         success: function(data){
@@ -15,6 +26,12 @@ $(document).ready(function(){
             $('#dropdown-profile').attr("src", data);
             $('#main-profile').attr("src", data);
     }});
+
+    $('#photo-change-form-company').ajaxForm({url: '/user/photo_upload/company', type: 'post',
+        success: function(data){
+            $('#profile-img-company').attr("src", data);
+    }});
+
 
 	$("#change-settings").validationEngine('attach', {bindMethod:"live"});
 
@@ -35,18 +52,18 @@ $(document).ready(function(){
     });
 });
 
-function CheckFileName() {
-    var fileName = document.getElementById("fileElem").value;
+function CheckFileName(fileFieldName) {
+    var fileName = document.getElementById(fileFieldName).value;
     var pieces = fileName.split(/[\s.]+/);
     var finalS = pieces[pieces.length-1].toUpperCase();
     if (fileName == "") {
         alert("Browse to upload a valid File with png extension");
         return false;
     }
-    else if (finalS == "PNG" || finalS == "JPG" || finalS == "BMP" || finalS == "JPEG" || finalS == "TIF" || finalS == "TIFF" || finalS == "GIT")
+    else if (finalS == "PNG" || finalS == "JPG" || finalS == "BMP" || finalS == "JPEG")
         return true;
     else {
-        alert("File with " + pieces[pieces.length-1] + " is invalid. Upload a valid file with JPG, PNG, BMP, JPEG, TIF, TIFF, GIF or BMP extensions.");
+        alert("File with " + pieces[pieces.length-1] + " is invalid. Upload a valid file with JPG, PNG, JPEG, or BMP extensions.");
         return false;
     }
     return true;
