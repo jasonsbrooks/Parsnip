@@ -1,5 +1,6 @@
 from main import db
 from floorplan.models import *
+from user.models import *
 
 class Company(db.Model):
     __tablename__ = 'companies'

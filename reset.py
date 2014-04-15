@@ -32,9 +32,9 @@ floorplan2 = Floorplan(name="Floorplan 2", floorplan_url="http://www.myspace.com
 db.session.add(floorplan1)
 db.session.commit()
 
-beacon1 = Beacon(name="Elm City Market",major="33335",minor="27636",uuid="B9407F30-F5F8-466E-AFF9-25556B57FE6D",floorplan=floorplan1)
-beacon2 = Beacon(name="Elm City Market",major="33334",minor="42933",uuid="B9407F30-F5F8-466E-AFF9-25556B57FE6D",floorplan=floorplan2)
-beacon3 = Beacon(name="Elm City Market",major="33333",minor="52769",uuid="B9407F30-F5F8-466E-AFF9-25556B57FE6D",floorplan=floorplan1)
+beacon1 = Beacon(name="Elm City Market",major="33335",minor="27636", floorplan=floorplan1)
+beacon2 = Beacon(name="Elm City Market",major="33334",minor="42933", floorplan=floorplan2)
+beacon3 = Beacon(name="Elm City Market",major="33333",minor="52769", floorplan=floorplan1)
 db.session.add(beacon1)
 db.session.commit()
 

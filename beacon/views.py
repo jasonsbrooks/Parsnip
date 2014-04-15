@@ -4,6 +4,7 @@ from flask.ext.login import login_user, logout_user, current_user, login_require
 from main import login_manager
 from main import app
 import pdb
+from datetime import datetime
 from beacon.models import *
 
 beacon = Blueprint('beacon', __name__, template_folder="templates")
@@ -20,8 +21,11 @@ def get_store_information():
 
 @beacon.route('/add_coordinate_data', methods=["POST"])
 def add_coordinate_data():
-    major = request.get_json().get('major')
     points = request.get_json().get('points')
-    uuid = request.get_json().get('UUID')
-    # print major, points, uuid
+    UUID = request.get_json().get('UUID')
+    currenttime = datetime.utcnow()
+    for dist in points:
+        entry = Distance(distance=dist[2], time=currenttime, beacon=Beacon.query.filter(Beacon.major == dist[0]).filter(Beacon.minor == dist[1]).first())
+        db.session.add(entry)
+        db.session.commit()
     return jsonify({'success': True})
