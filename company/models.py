@@ -1,4 +1,5 @@
 from main import db
+from floorplan.models import *
 
 class Company(db.Model):
     __tablename__ = 'companies'
@@ -19,6 +20,7 @@ class Company(db.Model):
     hourssaturday = db.Column(db.String(50))
     hourssunday = db.Column(db.String(50))
     users = db.relationship('User', backref='company', lazy='dynamic')
+    floorplans = db.relationship('Floorplan', backref='company', lazy='dynamic')
 
     def __repr__(self):
         return '#%d: Name: %s, Address1: %s, Address2: %s, City: %s, State: %s, Zip: %s, Profile Image: %s, Phone: %s, Hours Monday: %s, Hours Tuesday: %s, Hours Wednesday: %s, Hours Thursday: %s, Hours Friday: %s, Hours Saturday: %s, Hours Sunday: %s' % (self.id, self.name, self.address1, self.address2, self.city, self.state, self.zipcode, self.profile_image, self.phone, self.hoursmonday, self.hourstuesday, self.hourswednesday, self.hoursthursday, self.hoursfriday, self.hourssaturday, self.hourssunday)

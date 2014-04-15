@@ -90,6 +90,22 @@ def edit_account():
     flash('Account settings successfully changed!')
     return redirect(url_for('user.settings'))
 
+@user.route('/edit_store_settings', methods=['POST'])
+@login_required
+def edit_store_settings():
+    # firstname = request.form['firstname'].capitalize()
+    # lastname = request.form['lastname'].capitalize()
+    # password1 = request.form['password1']
+    # password2 = request.form['password2']
+    # u = g.user
+    # u.firstname = firstname
+    # u.lastname = lastname
+    # if password1 is not None:
+    #     u.hash_password(password1)
+    # db.session.commit()
+    # flash('Account settings successfully changed!')
+    return redirect(url_for('user.settings'))
+
 @user.route('/logout')
 @login_required
 def logout():
@@ -119,9 +135,9 @@ def change_approval_status():
 def settings():
     return render_template('settings.html')
 
-@user.route('/photo_upload/', methods=["POST"])
+@user.route('/photo_upload/<ptype>', methods=["POST"])
 @login_required
-def photo_upload():
+def photo_upload(ptype):
     file = request.files['photo']
     filename = secure_filename(file.filename)
     conn = boto.connect_s3(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)
@@ -134,8 +150,13 @@ def photo_upload():
     k.make_public()
     url = k.generate_url(expires_in=0, query_auth=False)
     u = g.user
-    u.profilepic = url
+    if ptype == "user":
+        u.profilepic = url
+    if ptype == "company":
+        u.company.profile_image = url
     db.session.commit()
     return url
+
+
 
 

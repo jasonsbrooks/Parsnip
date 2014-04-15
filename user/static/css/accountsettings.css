@@ -115,70 +115,14 @@
   display: none;
 }
 
-/* line 116, ../sass/main.scss */
-button {
-  display: inline-block;
-  -webkit-appearance: none;
-  padding: 1em 1.3em;
-  margin: 0 10px;
-  font: 700 18px/1 "Open Sans", sans-serif;
-  letter-spacing: 1px;
-  border: none;
-  color: white;
-  position: relative;
-}
-
-/* line 128, ../sass/main.scss */
-button:not(.facebook) {
-  background-color: #4783c4;
-  box-shadow: 0px 6px #28517d;
-  border-radius: 5px;
-  text-transform: uppercase;
-}
-/* line 134, ../sass/main.scss */
-button:not(.facebook).blue {
-  background-color: #4783c4;
-  box-shadow: 0px 6px #28517d;
-}
-/* line 138, ../sass/main.scss */
-button:not(.facebook).green {
-  background-color: #4ed198;
-  box-shadow: 0px 6px #269364;
-}
-/* line 142, ../sass/main.scss */
-button:not(.facebook).green.disabled {
-  background-color: transparent;
-  border: 1px solid #4ed198;
-  color: #4ed198;
-}
-/* line 148, ../sass/main.scss */
-button:not(.facebook).red {
-  background-color: #ea6060;
-  box-shadow: 0px 6px #c91b1b;
-}
-/* line 152, ../sass/main.scss */
-button:not(.facebook).red.disabled {
-  background-color: transparent;
-  border: 1px solid #ea6060;
-  color: #ea6060;
-}
-/* line 160, ../sass/main.scss */
-button:not(.facebook):active, button:not(.facebook).pressed, .game.voted button:not(.facebook) {
-  top: 6px;
-  box-shadow: none;
-}
-
-/* line 166, ../sass/main.scss */
-button.form-button {
-  padding: 0;
-}
-
-/* line 170, ../sass/main.scss */
-button.facebook {
-  font: 400 16px/1 "Open Sans", sans-serif;
-  margin: 30px auto;
-  padding-left: 70px;
-  background: #3b5998 url("../fb-icon.png") left no-repeat;
+button{
+  outline: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /* line 178, ../sass/main.scss */
@@ -698,4 +642,39 @@ input[type="file"]{
 
 #change-settings{
   padding-bottom: 25px;
+}
+
+#choose-settings{
+  font-size: 30px;
+  padding-left: 25px;
+  padding-top: 15px;
+}
+
+#choose-settings span:hover{
+  border-bottom: 1px solid black;
+  /*color: #FF6600;*/
+  padding-bottom: 5px;
+  cursor: pointer;
+}
+
+.bold-text{
+  font-weight: bold;
+}
+
+.blue {
+  display: inline-block;
+  -webkit-appearance: none;
+  padding: 1em 1.3em;
+  margin: 0 10px;
+  letter-spacing: 1px;
+  border: none;
+  color: white;
+  position: relative;
+  background-color: #4783c4;
+  box-shadow: 0px 6px #28517d;
+}
+
+.blue:active{
+  top: 6px;
+  box-shadow: none;
 }

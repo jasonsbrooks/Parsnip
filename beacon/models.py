@@ -9,7 +9,6 @@ class Beacon(db.Model):
     minor = db.Column(db.String(40))
     uuid = db.Column(db.String(40))
     floorplan_id = db.Column(db.Integer, db.ForeignKey('floorplans.id'))
-    floorplan = db.relationship('Floorplan', backref="beacons")
 
 
     def __repr__(self):

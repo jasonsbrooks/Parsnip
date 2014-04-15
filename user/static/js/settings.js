@@ -1,5 +1,4 @@
 $(document).ready(function(){
-	console.log("got here");
 	$( "#fileSelect" ).click(function() {
 	  $('#fileElem').click();
 	});
@@ -10,7 +9,7 @@ $(document).ready(function(){
 		}
     });
 
-	$('#photo-change-form').ajaxForm({url: '/user/photo_upload/', type: 'post',
+	$('#photo-change-form').ajaxForm({url: '/user/photo_upload/user', type: 'post',
         success: function(data){
             $('#profile-img').attr("src", data);
             $('#dropdown-profile').attr("src", data);
@@ -18,6 +17,22 @@ $(document).ready(function(){
     }});
 
 	$("#change-settings").validationEngine('attach', {bindMethod:"live"});
+
+    $("#company-settings").click(function() {
+        console.log("got here 2");
+        $("#personal-settings-form").fadeOut();
+        $("#company-settings-form").fadeIn(300);
+        $("#personal-settings").removeClass("bold-text");
+        $("#company-settings").addClass("bold-text");
+    });
+
+    $("#personal-settings").click(function() {
+        console.log("got here 2");
+        $("#company-settings-form").fadeOut();
+        $("#personal-settings-form").fadeIn();
+        $("#company-settings").removeClass("bold-text");
+        $("#personal-settings").addClass("bold-text");
+    });
 });
 
 function CheckFileName() {
