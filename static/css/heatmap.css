@@ -1,10 +1,5 @@
-#heatmapArea {
-	cursor:pointer;
-	width: 540px;
-	padding:2px;
-	height: 540px;
-	display: inline-block;
-	border: 5px solid black;
+#heatmap-area {
+  position: absolute;
 }
 
 #data-table {
@@ -20,3 +15,4 @@
 	position: fixed;
 	z-index:10000001;
 }
+
