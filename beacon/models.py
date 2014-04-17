@@ -9,11 +9,12 @@ class Beacon(db.Model):
     major = db.Column(db.String(40))
     minor = db.Column(db.String(40))
     uuid = db.Column(db.String(40), default="B9407F30-F5F8-466E-AFF9-25556B57FE6D")
+    userID = db.Column(db.String(40))
     floorplan_id = db.Column(db.Integer, db.ForeignKey('floorplans.id'))
     distances = db.relationship('Distance', backref='beacon', lazy='dynamic')
 
     def __repr__(self):
-        return '#%d: Name: %s, Major: %s, Minor: %s, UUID: %s, Floorplan: [%s]' % (self.id, self.name, self.major, self.minor, self.uuid, self.floorplan)
+        return '#%d: Name: %s, Major: %s, Minor: %s, UUID: %s, Floorplan ID: %d, User ID: %s' % (self.id, self.name, self.major, self.minor, self.uuid, self.floorplan_id, self.userID)
 
 
 

@@ -23,9 +23,11 @@ def get_store_information():
 def add_coordinate_data():
     points = request.get_json().get('points')
     UUID = request.get_json().get('UUID')
+    userID = request.get_json().get('userID')
     currenttime = datetime.utcnow()
+    print points
     for dist in points:
-        entry = Distance(distance=dist[2], time=currenttime, beacon=Beacon.query.filter(Beacon.major == dist[0]).filter(Beacon.minor == dist[1]).first())
+        entry = Distance(distance=dist[2], time=currenttime, beacon=Beacon.query.filter(Beacon.major == dist[0]).filter(Beacon.minor == dist[1]).first(), userID=userID)
         db.session.add(entry)
         db.session.commit()
     return jsonify({'success': True})

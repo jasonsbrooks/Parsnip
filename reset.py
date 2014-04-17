@@ -27,8 +27,8 @@ db.session.add(u1)
 db.session.add(u2)
 db.session.commit()
 
-floorplan1 = Floorplan(name="Floorplan 1", floorplan_url="http://www.google.com", company=company1)
-floorplan2 = Floorplan(name="Floorplan 2", floorplan_url="http://www.myspace.com", company=company2)
+floorplan1 = Floorplan(name="Floorplan 1", floorplan_url="https://s3.amazonaws.com/heaped/hello.svg", company=company1)
+floorplan2 = Floorplan(name="Floorplan 2", floorplan_url="https://s3.amazonaws.com/heaped/hello.svg", company=company2)
 db.session.add(floorplan1)
 db.session.commit()
 
