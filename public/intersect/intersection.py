@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 def intersection2c(p0, p1):
 	[x0, y0, r0] = p0
 	[x1, y1, r1] = p1
@@ -61,9 +60,9 @@ def intersection(ptdists):
 		return intersection3c(ptdists[0], ptdists[1], ptdists[2])
 
 ## Bad usage
-print intersection([2,0,8])
+# print intersection([2,0,8])
 
 ## Good usage
-print intersection([[2,0,8]])
-print intersection([[2,0,8],[10,0,5]])
-print intersection([[2,0,8],[10,0,5],[5,5,5],[100,100,1000]])
+# print intersection([[2,0,8]])
+# print intersection([[2,0,8],[10,0,5]])
+# print intersection([[2,0,8],[10,0,5],[5,5,5],[100,100,1000]])
