@@ -1,6 +1,7 @@
 /* Extension that adds a button to draw iBeacons on canvas.
  */
 var zzz;
+
 svgEditor.addExtension("iBeacon", function() {
 
 		return {
@@ -104,9 +105,6 @@ svgEditor.addExtension("iBeacon", function() {
 			// Autosave
 			elementChanged: function(e){
 				zzz = e;
-				elemText = e.elems[0].innerHTML;
-				if (elemText.indexOf("beacon=\"yes\""))
-					console.log(elemText[elemText.indexOf("beacon=\"yes\"")])
 				var data = {fileContents: svgCanvas.getSvgString()}
 				$.ajax({
 				  type: "POST",
@@ -116,7 +114,6 @@ svgEditor.addExtension("iBeacon", function() {
 					console.log(data);
 				  }
 				});
-				// Need to find element id!
 			}
 		};
 });
