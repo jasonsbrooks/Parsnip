@@ -3,6 +3,7 @@ from floorplan.models import *
 from datetime import datetime
 from beacon.models import *
 from company.models import *
+from advertisement.models import *
 
 db.drop_all()
 db.create_all()
@@ -37,4 +38,15 @@ beacon2 = Beacon(name="Elm City Market",major="33334",minor="42933", floorplan=f
 beacon3 = Beacon(name="Elm City Market",major="33333",minor="52769", floorplan=floorplan1)
 db.session.add(beacon1)
 db.session.commit()
+
+ad1 = Advertisement(name="Sale 30%% off", description="Summer is coming and we are trying to clear our winter items. Hats, gloves scarves, sweaters, and anything with a red tag are an extra 30%% off for up to 70%% off current-season stock.", details="Take an extra 30%% off all sale items for up to 70%% off", image_url="http://cdnd.lystit.com/photos/2013/10/08/urban-outfitters-pink-stone-cold-fox-x-uo-lacestrap-cami-product-1-13926596-249764859_large_flex.jpeg", company=company1)
+ad2 = Advertisement(name="Spring shirting NOW $39", description="The lightweight, warm weather-ready Koto Breezy, available in new colors and prints, exclusively at UO. Limited time only.", details="We've got your MOST LOVED SHIRT.", image_url="http://www.luckymag.com/shopping/2013/06/urban-outfitters-stone-cold-fox/_jcr_content/par/cn_contentwell/par-main/cn_blogpost/cn_slideshow/item1.rendition.slideshowVertical.stone-cold-fox-uo-scallop-top.jpg", company=company2)
+ad3 = Advertisement(name="JEANS for $29.99", description="The denim we're dreaming of this summer, from overall dresses and bodysuits or zip-front vests and the perfect cutoff jean shorts.", details="Warm evenings and cool drinks", image_url="http://picture-cdn.wheretoget.it/xov726-i.jpg", company=company1)
+ad4 = Advertisement(name="10%% off STONE COLD FOX X UO", description="Introducing our newest exclusive collection from LA label Stone Cold Fox: Perfectly playful and vintage-inspired garments made for springtime fun.", details="Limited-time exclusive designer collab: 10%% off with this app", image_url="http://cdn-s3-3.wanelo.com/product/image/8866481/x200.jpg", company=company2)
+db.session.add(ad1)
+db.session.add(ad2)
+db.session.add(ad3)
+db.session.add(ad4)
+db.session.commit()
+
 

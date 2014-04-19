@@ -9,12 +9,12 @@ class Beacon(db.Model):
     major = db.Column(db.String(40))
     minor = db.Column(db.String(40))
     uuid = db.Column(db.String(40), default="B9407F30-F5F8-466E-AFF9-25556B57FE6D")
-    userID = db.Column(db.String(40))
+    
     floorplan_id = db.Column(db.Integer, db.ForeignKey('floorplans.id'))
     distances = db.relationship('Distance', backref='beacon', lazy='dynamic')
 
     def __repr__(self):
-        return '#%d: Name: %s, Major: %s, Minor: %s, UUID: %s, Floorplan ID: %d, User ID: %s' % (self.id, self.name, self.major, self.minor, self.uuid, self.floorplan_id, self.userID)
+        return '#%d: Name: %s, Major: %s, Minor: %s, UUID: %s, Floorplan ID: %d' % (self.id, self.name, self.major, self.minor, self.uuid, self.floorplan_id)
 
 
 
@@ -24,6 +24,7 @@ class Distance(db.Model):
     distance = db.Column(db.Float)
     time = db.Column(db.DateTime)
     beacon_id = db.Column(db.Integer, db.ForeignKey('beacons.id'))
+    userID = db.Column(db.String(40))
 
     def __repr__(self):
-        return '#%d: Beacon: %d, Distance: %.2f' % (self.id, self.beacon_id, self.distance)
+        return '#%d: Beacon: %d, Distance: %.2f, User ID: %s' % (self.id, self.beacon_id, self.distance, self.userID)

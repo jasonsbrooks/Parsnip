@@ -1,6 +1,11 @@
 $(document).ready(function() {
-
-
+  $('.change-user-status').ajaxForm({url: '/user/approval_status', type: 'post',
+        success: function(data){
+            var email = data.email;
+            var remInput = $('input').filter(function() { return this.value == email })[0];
+            $(remInput).closest('li').fadeOut(300, function() { $(this).remove(); });
+            $('#user-pending-count').html(parseInt($('#user-pending-count').html())-1);
+    }});
 }); 
 
 function initBarChart(target) {

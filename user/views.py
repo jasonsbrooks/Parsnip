@@ -30,6 +30,7 @@ def load_user(id):
 
 @user.route('/register', methods=['GET', 'POST'])
 def register():
+    # pdb.set_trace()
     if g.user is not None and g.user.is_authenticated():
         return redirect(url_for('splash.dashboard'))
     if request.method == 'GET':
@@ -127,7 +128,7 @@ def change_approval_status():
     else:
         u.company = None
     db.session.commit()
-    return jsonify({"success": "true"})
+    return jsonify({"success": "true", "email": email})
 
 @user.route('/settings')
 @login_required

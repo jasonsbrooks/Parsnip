@@ -1,0 +1,11 @@
+{% set active_page = "settings" -%}
+{% extends "templates/base.html" %}
+
+{% block content %}
+<ul>
+{% for fp in floorplans %}
+<li>{{fp.name}}: <h1><a href="{{fp.floorplan_url}}">{{ fp.floorplan_url }}</a></h1></li>
+{% endfor %}
+</ul>
+
+{% endblock %}
