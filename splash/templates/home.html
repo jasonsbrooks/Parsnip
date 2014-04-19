@@ -8,9 +8,12 @@
 	<script type="text/javascript" src="static/javascript/jquery.fullPage.js"></script>
 	<script type="text/javascript" src="static/javascript/jquery.slimscroll.min.js"></script>    
 	<script type="text/javascript" src="static/javascript/home.js"></script>
+	<script type="text/javascript" src="//use.typekit.net/mlu7gnj.js"></script>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 	<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,300,400italic,400,600italic,600,700italic,700,800italic,800" rel="stylesheet" type="text/css">
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-	<title>parsnip</title>
+	<title>Parsnip</title>
 </head>
 
 <body>
@@ -19,22 +22,24 @@
 			<a href="/#home"><span id="site-title">parsnip</span></a>
 		</div>
 		<div id="links-container">
-			<span class="underline" id="header-links"><a href="/#home">About</a></span>
-			<span class="underline" id="header-links"><a href="/#analytics">Analytics</a></span>
-			<span class="underline" id="header-links"><a href="/#interface">Interface</a></span>
+			<span class="underline header-links"><a href="/#home">About</a></span>
+			<span class="underline header-links"><a href="/#analytics">Analytics</a></span>
+			<span class="underline header-links"><a href="/#interface">Interface</a></span>
 			{% if g.user.is_authenticated() %}
-				<span id="header-links"><a href="/user/logout"><button id="sign-in">Sign Out, {{g.user.firstname}}</button></a></span>
+				<span class="header-links header-sign"><a href="/user/logout">Sign Out, {{g.user.firstname}}</a></span>
 			{% else %}
-				<span id="header-links"><a href="/user/login"><button id="sign-in">Sign In</button></a></span>
+				<span class="header-links header-sign"><a href="/user/login">Sign In</a></span>
 			{% endif %}
 		</div>
 	</div>
 
 	<div class="section active" id="home-view">
-		<div class="text-shadow color-white" id="body-container">
-			<h1> Real-time analytics for brick &amp; mortar with <span id="content-title">parsnip</span></h1>
-			<h2 id="main-text-2">a powerful interface to manage your customers in meatspace</h2></br></br>
-			<a href="/user/register"><button id="sign-in">Get Started</button></a>
+		<div class="color-white" id="body-container">
+			<div id="splash_text">
+				<h1> Real-time analytics for brick &amp; mortar with <span id="content-title">Parsnip</span></h1>
+				<h2 id="main-text-2">Know <b>exactly</b> what your customers want.</h2>
+			</div>
+			<a id="sign-in" href="/user/register">Get Started</a>
 		</div>
 		<a href="#analytics"><div class="arrow animated bounce"></div></a>
 	</div>
