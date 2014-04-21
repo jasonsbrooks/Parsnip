@@ -51,7 +51,7 @@
           <span id="user-pending-count" class="label label-warning">{% if g.pending_users|count() > 0 %}{{ g.pending_users|count() }}{% endif %}</span>
         </a>
         <ul class="dropdown-menu">
-          <li class="header">You have {{ g.pending_users|count() }} notifications</li>
+          <li class="header" id="dropdown-pending-count">You have {{ g.pending_users|count() }} notifications</li>
           <li>
           <!-- inner menu: contains the actual data -->
           <ul class="menu">
@@ -178,7 +178,7 @@
 <!-- Custom Javascript -->
 <script src="/static/javascript/dashboard.js"></script>
 
-<script src="http://malsup.github.com/jquery.form.js"></script> 
+<script src="/static/javascript/jquery.form.js"></script> 
 
 <!-- Bootstrap -->
 <script src="/static/javascript/bootstrap.min.js" type="text/javascript"></script>

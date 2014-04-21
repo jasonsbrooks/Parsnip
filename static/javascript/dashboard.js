@@ -5,6 +5,15 @@ $(document).ready(function() {
             var remInput = $('input').filter(function() { return this.value == email })[0];
             $(remInput).closest('li').fadeOut(300, function() { $(this).remove(); });
             $('#user-pending-count').html(parseInt($('#user-pending-count').html())-1);
+            var newPendingCount = (parseInt($("#dropdown-pending-count").text().split(' ')[2])-1).toString();
+            if (parseInt(newPendingCount) == 1){
+              var newPendingText = "You have 1 notification";
+            }
+            else{
+              var newPendingText ="You have " + newPendingCount + " notifications";
+            }
+            $('#dropdown-pending-count').html(newPendingText);
+            
     }});
 }); 
 

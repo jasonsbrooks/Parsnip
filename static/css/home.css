@@ -8,10 +8,8 @@ h1{
     font-weight: 200;
     font-size: 48px;
     font-style: normal;
-    text-shadow: rgba(0, 0, 0, 0.4) 0 -2px 0px;
     font-family: "ff-tisa-web-pro", serif;
     font-weight: 400;
-    text-align: right;
 }
 
 h2{
@@ -79,10 +77,12 @@ p{
 #main-text-2 b {
   font-weight: 700;
 }
-#splash_text {
+#splash-text {
   display: block;
   width: 50%;
   margin-left: 45%;
+  text-align: right;
+  text-shadow: rgba(0, 0, 0, 0.4) 0 -2px 0px;
 }
 #links-container{
 	color: white;
@@ -101,19 +101,36 @@ p{
     letter-spacing: 0.02em;
 }
 
-.header-sign {
+.header-sign{
+  transition: background-color 0.4s ease;
   border: 1px solid #ffffff;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
   padding:8px;
 }
-.header-sign a {
+
+.header-sign-lower{
+  transition: background-color 0.4s ease;
+  border: 1px solid black;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding:8px;
+}
+
+.header-sign a, .header-sign-lower a {
   padding: 10px;
 }
+
 .header-sign:hover {
-  background-color: black;
+  background-color: rgba(255, 255, 255, 0.3);
   border-bottom: 2px solid #ffffff;
+}
+
+.header-sign-lower:hover {
+  background-color: rgba(0,0,0,0.5);
+  color: white;
 }
 
 .underline:hover{
@@ -358,5 +375,13 @@ li:before {
   -moz-transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+#main-iphone{
+  width: auto;
+  height: 600px;
+  position: absolute;
+  left: 30;
+  bottom: 0;
 }
 
