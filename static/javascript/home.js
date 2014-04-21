@@ -6,11 +6,14 @@ $(document).ready(function(){
             onLeave: function(index, direction){
 	            //after leaving section 2
 	            if(index == '1' && direction =='down'){
-	                // $('#header').animate({'height': '50px'}, 100);
+                 //    console.log("got here");
+	                // $("#links-container").css("color", "black");
+                 //    $(".header-sign").removeClass("header-sign").addClass("header-sign-lower");
 	            }
 
 	            else if(index == '2' && direction == 'up'){
-	                // alert("Going to section 1!");
+	                // $("#links-container").css("color", "white");
+                 //    $(".header-sign-lower").removeClass("header-sign-lower").addClass("header-sign");
 	            }
 	        }
             // navigation: true,

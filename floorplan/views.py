@@ -5,12 +5,22 @@ import boto
 from boto.s3.key import Key
 import os
 from flask import jsonify
+from flask.ext.login import login_user, logout_user, current_user, login_required
+
 
 floorplan = Blueprint('floorplan', __name__, template_folder="templates")
 
 AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
 bucket_name = 'heaped'
+
+
+@floorplan.route('/my-floorplans')
+@login_required
+def my_floorplans():
+    user = g.user
+    floorplans = user.company.floorplans.all()
+    return render_template('my-floorplans.html', floorplans=floorplans)
 
 
 @floorplan.route('/save_floorplan', methods=["POST"])
