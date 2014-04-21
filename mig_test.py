@@ -23,7 +23,7 @@ import tempfile
 class TestCase(unittest.TestCase):
 
     def setUp(self):
-        self.db_fd, main.app.config['DATABASE'] = tempfile.mkstemp()
+        self.db_fd, main.app.config['HEAPED_DATABASE_URL'] = tempfile.mkstemp()
         app.config['TESTING'] = True
         # app.config['CSRF_ENABLED'] = False
         # webstart.app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'test.db')
@@ -31,6 +31,9 @@ class TestCase(unittest.TestCase):
         self.app = app.test_client()
         db.drop_all()
         db.create_all()
+
+        # self.seq = range(10)
+
 
     def create_user(self, firstname, lastname, email, password):
         return self.app.post('/user/register', data=dict(
@@ -47,19 +50,21 @@ class TestCase(unittest.TestCase):
             password=password
         ), follow_redirects=True)
 
-    def register_user(self):
-        rv = self.create_user('jason','brooks','jason.brooks@yale.edu', 'helloworld')
+    def test_register_user(self):
+        response = self.create_user('jason','brooks','jason.brooks@yale.edu', 'helloworld')
+        self.assertEquals(response.status, "200 OK")
+
         # self.assert_redirects(rv, url_for('user.asdfafasdffs'))
         # return
         # pdb.set_trace()
-        self.assert_403(rv)
+        # self.assert_403(rv)
 
     def test_login_logout(self):
         # print "potatos"
         # with main.app.test_request_context():
         #     g.user
-        rv = self.login('jason.brooks@yale.edu', 'helloworld')
-        return
+        response = self.login('jason.brooks@yale.edu', 'helloworld')
+        self.assertEquals(response.status, "200 OK")
         # pdb.set_trace()
 
 
@@ -68,42 +73,8 @@ class TestCase(unittest.TestCase):
 
     def test_homepage(self):
         response = self.app.get('/', follow_redirects=True)
-        return
-        # self.assertEquals(response.status, "200 OK")
+        self.assertEquals(response.status, "200 OK")
 
-
-        # print usrs
-        # assert 'You were logged in' in rv.data
-        # rv = self.logout()
-        # assert 'You were logged out' in rv.data
-        # rv = self.login('adminx', 'default')
-        # assert 'Invalid username' in rv.data
-        # rv = self.login('admin', 'defaultx')
-        # assert 'Invalid password' in rv.data
-        # pass
-
-
-    # def test_avatar(self):
-    #     u = User(firstname = 'john', lastname = 'doe', email = "jon.doe@gmail.com")
-    #     db.session.add(u)
-    #     db.session.commit()
-    #     # avatar = u.avatar(128)
-    #     # expected = 'http://www.gravatar.com/avatar/d4c74594d841139328695756648b6bd6'
-    #     # assert avatar[0:len(expected)] == expected
-    #     assert True
-
-    # def test_make_unique_nickname(self):
-    #     u = User(nickname = 'john', email = 'john@example.com')
-    #     db.session.add(u)
-    #     db.session.commit()
-    #     nickname = User.make_unique_nickname('john')
-    #     assert nickname != 'john'
-    #     u = User(nickname = nickname, email = 'susan@example.com')
-    #     db.session.add(u)
-    #     db.session.commit()
-    #     nickname2 = User.make_unique_nickname('john')
-    #     assert nickname2 != 'john'
-    #     assert nickname2 != nickname
 
     def tearDown(self):
         db.session.remove()
