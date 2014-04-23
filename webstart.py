@@ -23,6 +23,9 @@ app.register_blueprint(beacon, url_prefix='/beacon')
 from company.views import company
 app.register_blueprint(company, url_prefix='/company')
 
+from advertisement.views import advertisement
+app.register_blueprint(advertisement, url_prefix='/advertisement')
+
 # splash
 from splash.views import splash
 app.register_blueprint(splash)

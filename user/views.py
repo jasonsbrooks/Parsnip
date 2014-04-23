@@ -12,6 +12,8 @@ import hashlib
 import os
 import pdb
 from splash.views import get_pending_users
+from company.models import *
+from flask_mail import Mail, Message
 
 AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
@@ -34,20 +36,29 @@ def register():
     if g.user is not None and g.user.is_authenticated():
         return redirect(url_for('splash.dashboard'))
     if request.method == 'GET':
-        return render_template('register.html')
+        currentCompanies = Company.query.all()
+        return render_template('register.html', currentCompanies=currentCompanies)
     firstname = request.form['firstname'].capitalize()
     lastname = request.form['lastname'].capitalize()
     email = request.form['email'].lower()
+    company_id = request.form['company-id']
     password = request.form['password']
     if User.query.filter(User.email == email).first() is not None:
         flash('Account already exists for this email address! Please try signing in.')
         return redirect(url_for('user.login', defaultEmail=email))
-    user = User(firstname=firstname, lastname=lastname, email=email)
+    if company_id == '':
+        return "Please give a company for now"
+    user = User(firstname=firstname, lastname=lastname, email=email, company=Company.query.get(int(company_id)), account_approved=False)
     user.hash_password(password)
     user.registered_on=datetime.utcnow()
     db.session.add(user)
     db.session.commit()
     flash('User successfully registered')
+    # msg = Message(subject="Thank You for Registering for Parsnip",
+    #               recipients=email,
+    #               body="Dear Jason, \n\n Thank you for registering for Parsnip.  Please visit a url to log in to your account.\n\n Best, The Parsnip Team")
+    # mail.send(msg)
+    # http://localhost:5000/user/login?defaultEmail=juan.pablo%40yale.edu
     return redirect(url_for('user.login', defaultEmail=email))
 
 @user.route('/login', methods=['GET', 'POST'])
@@ -71,9 +82,13 @@ def login():
     login_user(user)
     return redirect(url_for('splash.dashboard'))
 
+@user.route('/new-company', methods=['GET', 'POST'])
+def add_company():
+    pass
+
 @user.route('/unvalidated')
 def unvalidated():
-    return "Your account has yet to be approved by a member of your team."
+    return render_template('unvalidated.html')
 
 @user.route('/edit_account', methods=['POST'])
 @login_required

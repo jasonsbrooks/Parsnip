@@ -1,10 +1,10 @@
-{% set active_page = "settings" -%}
+{% set active_page = "modify floorplan" -%}
 {% extends "templates/base.html" %}
 
 {% block content %}
 <ul>
 {% for fp in floorplans %}
-<li>{{fp.name}}: <h1><a href="{{fp.floorplan_url}}">{{ fp.floorplan_url }}</a></h1></li>
+<li>{{fp.name}}: <h1><a href="/floorplan/edit-floorplan/{{fp.id}}">{{ fp.floorplan_url }}</a></h1></li>
 {% endfor %}
 </ul>
 

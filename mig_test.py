@@ -37,13 +37,15 @@ class TestCase(unittest.TestCase):
         # os.close(self.db_fd)
         # os.unlink(self.db_fd)
 
-    def create_user(self, firstname, lastname, email, password):
+    def create_user(self, firstname, lastname, email, password, profilepic, company_id, account_approved):
         return self.app.post('/user/register', data=dict(
             firstname=firstname,
             lastname=lastname,
             email=email,
-            password=password
+            password=password,
         ), follow_redirects=True)
+
+    def create_company(self, )
 
     def login(self, email, password):
         return self.app.post('/user/login', data=dict(
@@ -55,16 +57,18 @@ class TestCase(unittest.TestCase):
         return self.app.get('/user/logout', follow_redirects=True)
 
     def test_registration(self):
-        rv = self.create_user('jason','brooks','jason.brooks@yale.edu', 'helloworld')
+        rv = self.create_user('jason','brooks','jason.brooks@yale.edu', 'https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-ash2/t1.0-9/536283_218804554919317_1952113665_n.jpg', 'helloworld', 1, False)
         self.assertEquals(rv.status_code, 200)
         assert "User successfully registered" in rv.data
-        rv = self.create_user('jason','brooks','jason.brooks@yale.edu', 'helloworld')
+        rv = self.create_user('jason','brooks','jason.brooks@yale.edu', 'https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-ash2/t1.0-9/536283_218804554919317_1952113665_n.jpg', 'helloworld', 1, False)
         self.assertEquals(rv.status_code, 200)
         assert "Account already exists for this email address! Please try signing in." in rv.data
+        # rv = self.login('jason.brooks@yale.edu', 'helloworld')
+        # pdb.set_trace()
 
-    def test_approve_account(self):
-        rv = self.login('jason.brooks@yale.edu', 'helloworld')
-        print rv.data        
+    # def test_approve_account(self):
+    #     rv = self.login('jason.brooks@yale.edu', 'helloworld')
+    #     print rv.data        
 
     # def register_user(self):
     #     rv = self.create_user('jason','brooks','jason.brooks@yale.edu', 'helloworld')

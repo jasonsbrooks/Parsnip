@@ -5,4 +5,6 @@ $(document).ready(function() {
 	if ($('#register').length > 0){
 		$("#register").validationEngine('attach', {bindMethod:"live"});
 	}
+
+	$("#choose-company").select2({placeholder: "Company (leave blank for new)", allowClear: true, width:'280px', height: '50px'});
 });
