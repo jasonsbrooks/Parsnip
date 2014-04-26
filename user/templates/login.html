@@ -15,15 +15,16 @@
 	<title>parsnip | Login</title>
 </head>
 <body>
+
 	<div id="header">
 		<div id="name-container">
-			<a href="/#home"><span id="site-title">parsnip</span></a>
+			<a href="/#home"><span id="site-title-black">parsnip</span></a>
 		</div>
 		<div id="links-container">
-			<span class="underline" id="header-links"><a href="/#home">About</a></span>
-			<span class="underline" id="header-links"><a href="/#analytics">Analytics</a></span>
-			<span class="underline" id="header-links"><a href="/#interface">Interface</a></span>
-			<span id="header-links"><a href="/user/register"><button id="sign-in-login">Register</button></a></span>
+			<span class="underline header-links"><a href="/#home">About</a></span>
+			<span class="underline header-links"><a href="/#analytics">Analytics</a></span>
+			<span class="underline header-links"><a href="/#interface">Interface</a></span>
+			<span class="header-links header-sign-lower"><a href="/user/register">Register</a></span>
 		</div>
 	</div>
 	
@@ -40,7 +41,7 @@
 		  {% endif %}
 		{% endwith %}
 	<form class="sign-up" id="login" action='/user/login' method='POST'>
-	    <h1 class="sign-up-title">Login</h1>
+	    <h1 class="sign-up-title">Welcome!</h1>
 	    {% if defaultEmail %}
 	    	<input value="{{defaultEmail}}" name="email" type="email" class="sign-up-input validate[required,custom[email]]" placeholder="email">
 	    	<input name="password" type="password" class="sign-up-input" placeholder="password" autofocus required>

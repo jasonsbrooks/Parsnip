@@ -4,6 +4,7 @@ from flask.ext.login import login_user, logout_user, current_user, login_require
 from user.models import *
 from main import app
 from functools import wraps
+from floorplan.models import *
 
 
 
@@ -38,7 +39,8 @@ def visuals():
 @splash.route('/heatmap')
 @get_pending_users
 def heatmap():
-    return render_template('templates/heatmap.html')
+    fp_link = Floorplan.query.first().floorplan_url
+    return render_template('templates/heatmap.html', floorplan_url=fp_link)
 
 @splash.route('/editor')
 @get_pending_users

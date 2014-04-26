@@ -9,12 +9,22 @@ body {
   background: url(../images/furley_bg.png) repeat center center;
 }
 
+h1{
+  font: 13px/20px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
 #site-title{
   color: white;
 }
 
 #header{
   background: none;
+  border-bottom: none;
+  color: black;
+}
+
+#links-container{
+  color: black;
 }
 
 #site-title, #header-links{
@@ -22,18 +32,19 @@ body {
   text-shadow: none;
 }
 
+
 .underline:hover{
   border-bottom: 1px solid black;
   /*color: #FF6600;*/
   padding-bottom: 5px;
-  text-shadow: rgba(0, 0, 0, 0.5) 0 1px 1px;
+  text-shadow: none;
 }
 
 .sign-up {
   position: relative;
   top: 22%;
   margin: auto;
-  width: 280px;
+  width: 330px;
   padding: 33px 25px 29px;
   background: white;
   border-bottom: 1px solid #c4c4c4;
@@ -41,6 +52,8 @@ body {
   -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
   max-width:500px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .sign-up:before, .sign-up:after {
@@ -106,6 +119,14 @@ input {
   border-radius: 4px;
   -webkit-box-shadow: inset 0 -2px #ebebeb;
   box-shadow: inset 0 -2px #ebebeb;
+}
+
+.sign-up-input-half{
+  width: 50%;
+}
+
+#select2-container-parsnip{
+  padding-bottom: 25px;
 }
 
 .sign-up-input:focus {

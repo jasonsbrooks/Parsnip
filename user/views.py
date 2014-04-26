@@ -12,6 +12,8 @@ import hashlib
 import os
 import pdb
 from splash.views import get_pending_users
+from company.models import *
+from flask_mail import Mail, Message
 
 AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
@@ -30,24 +32,60 @@ def load_user(id):
 
 @user.route('/register', methods=['GET', 'POST'])
 def register():
+    newCompanyBool = False
     if g.user is not None and g.user.is_authenticated():
         return redirect(url_for('splash.dashboard'))
     if request.method == 'GET':
-        return render_template('register.html')
+        currentCompanies = Company.query.all()
+        return render_template('register.html', currentCompanies=currentCompanies)
     firstname = request.form['firstname'].capitalize()
     lastname = request.form['lastname'].capitalize()
     email = request.form['email'].lower()
+    company_id = request.form['company-id']
     password = request.form['password']
     if User.query.filter(User.email == email).first() is not None:
         flash('Account already exists for this email address! Please try signing in.')
         return redirect(url_for('user.login', defaultEmail=email))
-    user = User(firstname=firstname, lastname=lastname, email=email)
+    if company_id == '':
+        # pdb.set_trace()
+        company_id = create_company(request)
+        newCompanyBool = True
+    if Company.query.get(int(company_id)) is None:
+        return "You hacked the system!"
+    user = User(firstname=firstname, lastname=lastname, email=email, company=Company.query.get(int(company_id)))
+    if newCompanyBool:
+        user.account_approved = True
+    else:
+        user.account_approved = False
     user.hash_password(password)
     user.registered_on=datetime.utcnow()
     db.session.add(user)
     db.session.commit()
     flash('User successfully registered')
     return redirect(url_for('user.login', defaultEmail=email))
+
+def create_company(requestObj):
+    companyname = request.form['companyname']
+    address1 = request.form['address1']
+    address2 = request.form['address2']
+    city = request.form['city']
+    state = request.form['state']
+    zipcode = request.form['zipcode']
+    phone = request.form['phone']
+    hoursmonday = request.form['hoursmonday-start'] + ' - ' + request.form['hoursmonday-end']
+    hourstuesday = request.form['hourstuesday-start'] + ' - ' + request.form['hourstuesday-end']
+    hourswednesday = request.form['hourswednesday-start'] + ' - ' + request.form['hourswednesday-end']
+    hoursthursday = request.form['hoursthursday-start'] + ' - ' + request.form['hoursthursday-end']
+    hoursfriday = request.form['hoursfriday-start'] + ' - ' + request.form['hoursfriday-end']
+    hourssaturday = request.form['hourssaturday-start'] + ' - ' + request.form['hourssaturday-end']
+    hourssunday = request.form['hourssunday-start'] + ' - ' + request.form['hourssunday-end']
+
+    comp = Company(name=companyname, address1=address1, address2=address2, city=city, state=state, zipcode=zipcode, phone=phone, hoursmonday=hoursmonday, hourstuesday=hourstuesday, hourswednesday=hourswednesday, hoursthursday=hoursthursday, hoursfriday=hoursfriday, hourssaturday=hourssaturday, hourssunday=hourssunday)
+    db.session.add(comp)
+    db.session.commit()
+    return comp.id
+
+
 
 @user.route('/login', methods=['GET', 'POST'])
 def login():
@@ -70,9 +108,13 @@ def login():
     login_user(user)
     return redirect(url_for('splash.dashboard'))
 
+@user.route('/new-company', methods=['GET', 'POST'])
+def add_company():
+    pass
+
 @user.route('/unvalidated')
 def unvalidated():
-    return "Your account has yet to be approved by a member of your team."
+    return render_template('unvalidated.html')
 
 @user.route('/edit_account', methods=['POST'])
 @login_required
@@ -127,7 +169,7 @@ def change_approval_status():
     else:
         u.company = None
     db.session.commit()
-    return jsonify({"success": "true"})
+    return jsonify({"success": "true", "email": email})
 
 @user.route('/settings')
 @login_required
@@ -156,7 +198,3 @@ def photo_upload(ptype):
         u.company.profile_image = url
     db.session.commit()
     return url
-
-
-
-

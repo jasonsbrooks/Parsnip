@@ -6,6 +6,7 @@ from main import app
 import pdb
 from datetime import datetime
 from beacon.models import *
+from advertisement.models import *
 
 beacon = Blueprint('beacon', __name__, template_folder="templates")
 
@@ -16,7 +17,17 @@ def get_store_information():
     if beacon is None:
         return jsonify({'success': False})
     company = beacon.floorplan.company
-    return jsonify({'name': company.name, 'address1': company.address1, 'address2': company.address2, 'city': company.city, 'state': company.state, 'zipcode': company.zipcode, 'profile_image': company.profile_image, 'phone': company.phone, 'hoursmonday': company.hoursmonday, 'hourstuesday': company.hourstuesday, 'hourswednesday': company.hourswednesday, 'hoursthursday': company.hoursthursday, 'hoursfriday': company.hoursfriday, 'hourssaturday': company.hourssaturday, 'hourssunday': company.hourssunday})
+    advertisements = company.advertisements.all()
+    deals = []
+    details = []
+    descriptions = []
+    images = []
+    for ad in advertisements:
+        deals.append(ad.name)
+        details.append(ad.details)
+        descriptions.append(ad.description)
+        images.append(ad.image_url)
+    return jsonify({'deals': deals, 'details': details, 'descriptions': descriptions, 'images': images, 'name': company.name, 'address1': company.address1, 'address2': company.address2, 'city': company.city, 'state': company.state, 'zipcode': company.zipcode, 'profile_image': company.profile_image, 'phone': company.phone, 'hoursmonday': company.hoursmonday, 'hourstuesday': company.hourstuesday, 'hourswednesday': company.hourswednesday, 'hoursthursday': company.hoursthursday, 'hoursfriday': company.hoursfriday, 'hourssaturday': company.hourssaturday, 'hourssunday': company.hourssunday})
 
 
 @beacon.route('/add_coordinate_data', methods=["POST"])
@@ -25,7 +36,7 @@ def add_coordinate_data():
     UUID = request.get_json().get('UUID')
     userID = request.get_json().get('userID')
     currenttime = datetime.utcnow()
-    print points
+    print points, userID
     for dist in points:
         entry = Distance(distance=dist[2], time=currenttime, beacon=Beacon.query.filter(Beacon.major == dist[0]).filter(Beacon.minor == dist[1]).first(), userID=userID)
         db.session.add(entry)
