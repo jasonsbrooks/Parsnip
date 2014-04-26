@@ -32,7 +32,7 @@ def load_user(id):
 
 @user.route('/register', methods=['GET', 'POST'])
 def register():
-    # pdb.set_trace()
+    newCompanyBool = False
     if g.user is not None and g.user.is_authenticated():
         return redirect(url_for('splash.dashboard'))
     if request.method == 'GET':
@@ -47,19 +47,45 @@ def register():
         flash('Account already exists for this email address! Please try signing in.')
         return redirect(url_for('user.login', defaultEmail=email))
     if company_id == '':
-        return "Please give a company for now"
-    user = User(firstname=firstname, lastname=lastname, email=email, company=Company.query.get(int(company_id)), account_approved=False)
+        # pdb.set_trace()
+        company_id = create_company(request)
+        newCompanyBool = True
+    if Company.query.get(int(company_id)) is None:
+        return "You hacked the system!"
+    user = User(firstname=firstname, lastname=lastname, email=email, company=Company.query.get(int(company_id)))
+    if newCompanyBool:
+        user.account_approved = True
+    else:
+        user.account_approved = False
     user.hash_password(password)
     user.registered_on=datetime.utcnow()
     db.session.add(user)
     db.session.commit()
     flash('User successfully registered')
-    # msg = Message(subject="Thank You for Registering for Parsnip",
-    #               recipients=email,
-    #               body="Dear Jason, \n\n Thank you for registering for Parsnip.  Please visit a url to log in to your account.\n\n Best, The Parsnip Team")
-    # mail.send(msg)
-    # http://localhost:5000/user/login?defaultEmail=juan.pablo%40yale.edu
     return redirect(url_for('user.login', defaultEmail=email))
+
+def create_company(requestObj):
+    companyname = request.form['companyname']
+    address1 = request.form['address1']
+    address2 = request.form['address2']
+    city = request.form['city']
+    state = request.form['state']
+    zipcode = request.form['zipcode']
+    phone = request.form['phone']
+    hoursmonday = request.form['hoursmonday-start'] + ' - ' + request.form['hoursmonday-end']
+    hourstuesday = request.form['hourstuesday-start'] + ' - ' + request.form['hourstuesday-end']
+    hourswednesday = request.form['hourswednesday-start'] + ' - ' + request.form['hourswednesday-end']
+    hoursthursday = request.form['hoursthursday-start'] + ' - ' + request.form['hoursthursday-end']
+    hoursfriday = request.form['hoursfriday-start'] + ' - ' + request.form['hoursfriday-end']
+    hourssaturday = request.form['hourssaturday-start'] + ' - ' + request.form['hourssaturday-end']
+    hourssunday = request.form['hourssunday-start'] + ' - ' + request.form['hourssunday-end']
+
+    comp = Company(name=companyname, address1=address1, address2=address2, city=city, state=state, zipcode=zipcode, phone=phone, hoursmonday=hoursmonday, hourstuesday=hourstuesday, hourswednesday=hourswednesday, hoursthursday=hoursthursday, hoursfriday=hoursfriday, hourssaturday=hourssaturday, hourssunday=hourssunday)
+    db.session.add(comp)
+    db.session.commit()
+    return comp.id
+
+
 
 @user.route('/login', methods=['GET', 'POST'])
 def login():
@@ -172,7 +198,3 @@ def photo_upload(ptype):
         u.company.profile_image = url
     db.session.commit()
     return url
-
-
-
-

@@ -3,11 +3,13 @@
 	<link rel="stylesheet" type="text/css" href="/static/css/reset.css" />
 	<link rel="stylesheet" type="text/css" href="/static/css/home.css" />
 	<link rel="stylesheet" type="text/css" href="static/css/login.css" />
+	<link rel="stylesheet" type="text/css" href="static/css/jquery.datetimepicker.css" />
 	<link rel="stylesheet" type="text/css" href="/static/css/select2.css" />
 	<link rel="stylesheet" href="static/css/validationEngine.jquery.css" type="text/css"/>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="static/js/login.js"></script>
+	<script type="text/javascript" src="static/js/jquery.datetimepicker.js"></script>
 	<script type="text/javascript" src="/static/javascript/select2.js"></script>
 	<script src="static/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
 	<script src="static/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
@@ -31,17 +33,19 @@
 	
 	<form class="sign-up" id="register" action='/user/register' method='POST'>
 	    <h1 class="sign-up-title">Register</h1>
-	    <input name="firstname" type="text" class="validate[required,maxSize[40]] sign-up-input" placeholder="First Name" autofocus required>
-	    <input name="lastname" type="text" class="validate[required,maxSize[40]] sign-up-input" placeholder="Last Name" required>
-	    <input name="email" type="email" class="validate[required,custom[email]] sign-up-input" placeholder="Email" required>
-	    <input id="password-field" name="password" type="password" class="validate[required,minSize[6],maxSize[15]] sign-up-input" placeholder="Password" required>
-	    <div id="select2-container-parsnip">
-		    <select id="choose-company" name="company-id" >
-		    	<option></option>
-		    	{% for company in currentCompanies %}
-					<option value="{{ company.id}}">{{ company.name }} - {{ company.address1 }}</option>
-				{% endfor %}
-			</select>
+	    <div id="initial-form">
+		    <input name="firstname" type="text" class="validate[required,maxSize[40]] sign-up-input" placeholder="First Name" autofocus required>
+		    <input name="lastname" type="text" class="validate[required,maxSize[40]] sign-up-input" placeholder="Last Name" required>
+		    <input name="email" type="email" class="validate[required,custom[email]] sign-up-input" placeholder="Email" required>
+		    <input id="password-field" name="password" type="password" class="validate[required,minSize[6],maxSize[15]] sign-up-input" placeholder="Password" required>
+		    <div id="select2-container-parsnip">
+			    <select id="choose-company" name="company-id" >
+			    	<option></option>
+			    	{% for company in currentCompanies %}
+						<option value="{{ company.id}}">{{ company.name }} - {{ company.address1 }}</option>
+					{% endfor %}
+				</select>
+			</div>
 		</div>
 	    <button value="Login" class="sign-up-button">Register</button>
   </form>
