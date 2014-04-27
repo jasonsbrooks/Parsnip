@@ -36,20 +36,14 @@
   <div class="row">
     <div class="col-xs-12">
       <canvas id="heatmap-area" width="540" height="540"></canvas>
-      <svg width="640" height="480" xmlns="http://www.w3.org/2000/svg">
-       <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
-       <g>
-        <title>Layer 1</title>
-        <circle id="svg_1" r="53.41348" cy="183" cx="96" stroke-width="5" stroke="#000000" fill="#FF0000"/>
-       </g>
-      </svg>
-
+      {% autoescape False %} 
+      {{ svgData }}
+      {% endautoescape %}
     </div>
   </div><!-- /.row -->
 </section><!-- /.content -->
 {% endblock %}
 {% block scripts %}
-<script>var fpURL="{{ fp.floorplan_url }}";</script>
 <!-- Bootstrap slider -->
 <script src="/floorplan/static/js/plugins/bootstrap-slider/bootstrap-slider.js" type="text/javascript"></script>
 <!-- Heatmap WebGL -->
