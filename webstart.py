@@ -9,20 +9,23 @@ from flask import send_from_directory, Blueprint, send_file
 
 print "Starting webapp!"
 
-
+# floorplan sub-app
 from floorplan.views import floorplan
 app.register_blueprint(floorplan, url_prefix='/floorplan')
 
-#user
+# user sub-app
 from user.views import user
 app.register_blueprint(user, url_prefix='/user')
 
+# beacon sub-app
 from beacon.views import beacon
 app.register_blueprint(beacon, url_prefix='/beacon')
 
+# company sub-app
 from company.views import company
 app.register_blueprint(company, url_prefix='/company')
 
+# advertisements sub-app
 from advertisement.views import advertisement
 app.register_blueprint(advertisement, url_prefix='/advertisement')
 

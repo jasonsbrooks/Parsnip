@@ -36,7 +36,6 @@ $(document).ready(function(){
 	$("#change-settings").validationEngine('attach', {bindMethod:"live"});
 
     $("#company-settings").click(function() {
-        console.log("got here 2");
         $("#personal-settings-form").fadeOut();
         $("#company-settings-form").fadeIn(300);
         $("#personal-settings").removeClass("bold-text");
@@ -44,7 +43,6 @@ $(document).ready(function(){
     });
 
     $("#personal-settings").click(function() {
-        console.log("got here 2");
         $("#company-settings-form").fadeOut();
         $("#personal-settings-form").fadeIn();
         $("#company-settings").removeClass("bold-text");
