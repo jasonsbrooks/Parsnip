@@ -4,7 +4,8 @@
 {% block content %}
 <ul>
 {% for fp in floorplans %}
-<li>{{fp.name}}: <h1><a href="/floorplan/edit-floorplan/{{fp.id}}">{{ fp.floorplan_url }}</a></h1></li>
+<li>Edit {{fp.name}}: <h1><a href="/floorplan/edit-floorplan/{{fp.id}}">{{ fp.floorplan_url }}</a></h1></li>
+<li>Heat Map {{fp.name}}: <h1><a href="/floorplan/heatmap/{{fp.id}}">{{ fp.floorplan_url }}</a></h1></li>
 {% endfor %}
 </ul>
 

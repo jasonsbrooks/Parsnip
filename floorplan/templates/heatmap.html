@@ -3,12 +3,11 @@
 
 {% block css %}
 <!-- bootstrap slider -->
-<link href="static/css/bootstrap-slider/slider.css" rel="stylesheet" type="text/css" />
+<link href="/floorplan/static/css/bootstrap-slider/slider.css" rel="stylesheet" type="text/css" />
 <!-- Theme style -->
 <!--link rel="stylesheet" type="text/css" href="static/css/dashboard.css" />
 <link rel="stylesheet" type="text/css" href="static/css/rickshaw.css" /-->
-<link href="static/css/AdminLTE.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="static/css/heatmap.css" />
+<link rel="stylesheet" type="text/css" href="/floorplan/static/css/heatmap.css" />
 {% endblock %}
 
 {% block content %}
@@ -50,10 +49,11 @@
 </section><!-- /.content -->
 {% endblock %}
 {% block scripts %}
+<script>var fpURL="{{ fp.floorplan_url }}";</script>
 <!-- Bootstrap slider -->
-<script src="static/javascript/plugins/bootstrap-slider/bootstrap-slider.js" type="text/javascript"></script>
+<script src="/floorplan/static/js/plugins/bootstrap-slider/bootstrap-slider.js" type="text/javascript"></script>
 <!-- Heatmap WebGL -->
-<script type="text/javascript" src="static/javascript/webgl-heatmap.js"></script>
+<script type="text/javascript" src="/floorplan/static/js/webgl-heatmap.js"></script>
 <script type="text/javascript">
   window.onload = function(){
     var data = [

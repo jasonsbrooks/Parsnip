@@ -37,6 +37,17 @@ def edit_floorplan(fpid):
     fp = Floorplan.query.get(fpID)
     return render_template('edit.html', fp=fp)
 
+@floorplan.route('/heatmap/<fpid>')
+@login_required
+@get_pending_users
+def heatmap(fpid):
+    fpID = fpid
+    current_user = g.user
+    if current_user.company.floorplans.filter(Floorplan.id == fpID).first() is None:
+        return redirect(url_for('floorplan.my_floorplans'))
+    fp = Floorplan.query.get(fpID)
+    return render_template('heatmap.html', fp=fp)
+
 
 @floorplan.route('/save_floorplan', methods=["POST"])
 def save_floorplan():
