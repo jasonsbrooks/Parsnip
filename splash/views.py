@@ -30,19 +30,3 @@ def index():
 @get_pending_users
 def dashboard():
     return render_template('templates/dashboard.html')
-
-@splash.route('/visuals')
-@get_pending_users
-def visuals():
-    return render_template('templates/visuals.html')
-
-@splash.route('/heatmap')
-@get_pending_users
-def heatmap():
-    fp_link = Floorplan.query.first().floorplan_url
-    return render_template('templates/heatmap.html', floorplan_url=fp_link)
-
-@splash.route('/editor')
-@get_pending_users
-def editor():
-    return render_template('templates/svg-edit-2.6/editor.html')

@@ -1,0 +1,18 @@
+#heatmap-area {
+  position: absolute;
+}
+
+#data-table {
+	width:30%;
+	height:600px;
+	margin-left: 100px;
+	display: inline-block;
+	overflow-y:scroll;
+	right:0px;
+}
+
+#replay {
+	position: fixed;
+	z-index:10000001;
+}
+
