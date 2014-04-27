@@ -50,6 +50,18 @@ def heatmap(fpid):
     svgd = urllib2.urlopen(fp.floorplan_url).read()
     return render_template('heatmap.html', fp=fp, svgData=svgd)
 
+@floorplan.route('/delete-floorplan/<fpid>')
+@login_required
+@get_pending_users
+def delete_heatmap(fpid):
+    fpID = fpid
+    current_user = g.user
+    if current_user.company.floorplans.filter(Floorplan.id == fpID).first() is None:
+        return redirect(url_for('floorplan.my_floorplans'))
+    fp = Floorplan.query.get(fpID)
+    db.session.delete(fp)
+    db.session.commit()
+    return redirect(url_for('floorplan.my_floorplans'))
 
 @floorplan.route('/save_floorplan', methods=["POST"])
 def save_floorplan():
