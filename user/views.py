@@ -38,6 +38,9 @@ def register():
     if request.method == 'GET':
         currentCompanies = Company.query.all()
         return render_template('register.html', currentCompanies=currentCompanies)
+    testAccountApprove = False
+    if request.form.get('testAccountApprove', None) == "ok":
+        newCompanyBool = True
     firstname = request.form['firstname'].capitalize()
     lastname = request.form['lastname'].capitalize()
     email = request.form['email'].lower()

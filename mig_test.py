@@ -37,14 +37,15 @@ class TestCase(unittest.TestCase):
         # os.close(self.db_fd)
         # os.unlink(self.db_fd)
 
-    def create_user(self, firstname, lastname, email, password, profilepic, company_id, account_approved):
+    def create_user(self, firstname, lastname, email, password, profilepic, company_id, testAccountApprove):
         return self.app.post('/user/register', data=dict(
             firstname=firstname,
             lastname=lastname,
             email=email,
             password=password,
             profile_pic=profilepic,
-            company_id=1
+            company_id=1,
+            testAccountApprove=testAccountApprove
         ), follow_redirects=True)
 
 
@@ -82,8 +83,8 @@ class TestCase(unittest.TestCase):
         password='helloworld', 
         profilepic='https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-ash2/t1.0-9/536283_218804554919317_1952113665_n.jpg',
         company_id=1, 
-        account_approved=True):
-        return self.create_user(firstname, lastname, email, password, profilepic, company_id, account_approved)
+        testAccountApprove='ok'):
+        return self.create_user(firstname, lastname, email, password, profilepic, company_id, testAccountApprove)
 
     #### STATIC TESTS ####
 
@@ -113,6 +114,14 @@ class TestCase(unittest.TestCase):
         rv = self.createadd_fake_user()
         self.assertEquals(rv.status_code, 200)
         assert "Account already exists for this email address! Please try signing in." in rv.data
+        pdb.set_trace()
+
+    def test_dashboard(self):
+        self.createadd_fake_company()
+        rv = self.createadd_fake_user()
+        rv = self.login('jason.brooks@yale.edu', 'helloworld')
+        self.assertEquals(rv.status_code, 200)
+        pdb.set_trace()
 
     def test_logout(self):
         self.createadd_fake_company()
