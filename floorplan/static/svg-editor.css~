@@ -201,9 +201,6 @@ html, body, div{
 
 }
 
-.tools_panel {
-	color: #000;
-}
 /*
 	border-style: solid;
 	border-color: #666;
@@ -829,7 +826,6 @@ span.zoom_tool {
 	bottom: 0;
 	height: 40px;
 	overflow: visible;
-	display: none;
 }
 
  #tools_bottom_1 {

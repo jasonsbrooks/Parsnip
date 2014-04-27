@@ -299,7 +299,7 @@ svgEditor.addExtension("Connector", function(S) {
 	
 	return {
 		name: "Connector",
-		svgicons: "static/images/conn.svg",
+		svgicons: "images/conn.svg",
 		buttons: [{
 			id: "mode_connect",
 			type: "mode",
