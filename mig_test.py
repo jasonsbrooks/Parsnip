@@ -89,11 +89,34 @@ class TestCase(unittest.TestCase):
 
     #### STATIC TESTS ####
 
-    def test_homepage(self):
+    def test_access_homepage(self):
         rv = self.app.get('/', follow_redirects=True)
         assert "Visualize location data as a time-varying heat map so you can see where your customers spent most of their time browsing" in rv.data
 
-    #### USER TESTS ####
+    def test_access_home_registration_page_fails(self):
+        rv = self.app.post('/', follow_redirects=True)
+        self.assertEquals(rv.status_code, 405)
+
+    def test_access_loginpage(self):
+        rv = self.app.get('/user/login', follow_redirects=True)
+        assert "Welcome!" in rv.data
+
+    def test_access_user_login_page_fails(self):
+        rv = self.app.post('/user/login', data=dict(
+            banana="hi",
+            glat="cheese"
+        ), follow_redirects=True)
+        self.assertEquals(rv.status_code, 400)
+
+    def test_access_user_registration_page(self):
+        rv = self.app.get('/user/register', follow_redirects=True)
+        assert "Register" in rv.data
+    
+    def test_access_user_registration_page_fails(self):
+        rv = self.app.post('/user/register', follow_redirects=True)
+        self.assertEquals(rv.status_code, 400)
+
+    #### REGISTRATION AND LOGIN ####
 
     def test_registration(self):
         self.createadd_fake_company()
@@ -101,7 +124,6 @@ class TestCase(unittest.TestCase):
         self.assertEquals(rv.status_code, 200)
         assert "User successfully registered" in rv.data
         rv = self.login('jason.brooks@yale.edu', 'helloworld')
-        # print rv.data
 
     def test_registration_login(self):
         self.createadd_fake_company()
@@ -115,14 +137,13 @@ class TestCase(unittest.TestCase):
         rv = self.createadd_fake_user()
         self.assertEquals(rv.status_code, 200)
         assert "Account already exists for this email address! Please try signing in." in rv.data
-        pdb.set_trace()
 
-    def test_dashboard(self):
+    def test_registration_login_needs_approval(self):
         self.createadd_fake_company()
-        rv = self.createadd_fake_user()
+        rv = self.createadd_fake_user(testAccountApprove=False)
         rv = self.login('jason.brooks@yale.edu', 'helloworld')
         self.assertEquals(rv.status_code, 200)
-        pdb.set_trace()
+        assert "Please wait to be approved" in rv.data
 
     def test_logout(self):
         self.createadd_fake_company()
@@ -133,29 +154,54 @@ class TestCase(unittest.TestCase):
         rv = self.logout()
         self.assertEquals(rv.status_code, 200)
 
-    # def test_approve_account(self):
-    #     rv = self.login('jason.brooks@yale.edu', 'helloworld')
-    #     print rv.data        
+    #### USER TESTS ####
 
-    # def register_user(self):
-    #     rv = self.create_user('jason','brooks','jason.brooks@yale.edu', 'helloworld')
-    #     pdb.set_trace()
-    #     # self.assert_redirects(rv, url_for('user.asdfafasdffs'))
-    #     # return
-    #     # pdb.set_trace()
-    #     self.assert_403(rv)
+    def test_registration_login_redirects_to_dashboard(self):
+        self.createadd_fake_company()
+        rv = self.createadd_fake_user()
+        rv = self.login('jason.brooks@yale.edu', 'helloworld')
+        self.assertEquals(rv.status_code, 200)
+        assert "Control panel" in rv.data
 
-    # def test_login_logout(self):
-    #     # print "potatos"
-    #     # with main.app.test_request_context():
-    #     #     g.user
-    #     rv = self.login('jason.brooks@yale.edu', 'helloworld')
-    #     return
-    #     # pdb.set_trace()
+    def test_settings_page(self):
+        self.createadd_fake_company()
+        rv = self.createadd_fake_user()
+        rv = self.login('jason.brooks@yale.edu', 'helloworld')
+        self.assertEquals(rv.status_code, 200)
+
+    # def test_settings_page(self):
+    #     pass
+
+    # def test_settings_page(self):
+    #     pass
+    # def test_settings_page(self):
+    #     pass
+    # def test_settings_page(self):
+    #     pass
+
+    # def test_settings_page(self):
+    #     pass
+    # def test_settings_page(self):
+    #     pass
+    # def test_settings_page(self):
+    #     pass
+
+    # def test_settings_page(self):
+    #     pass
+    # def test_settings_page(self):
+    #     pass
+    # def test_settings_page(self):
+    #     pass
+
+    # def test_settings_page(self):
+    #     pass
+    # def test_settings_page(self):
+    #     pass
+    # def test_settings_page(self):
+    #     pass
 
 
-    # def logout(self):
-    #     return self.app.get('/logout', follow_redirects=True)
+
 
 
 if __name__ == '__main__':
