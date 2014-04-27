@@ -211,40 +211,5 @@ class TestCase(unittest.TestCase):
 
 
 
-
-
-
-    # def test_settings_page(self):
-    #     pass
-    # def test_settings_page(self):
-    #     pass
-    # def test_settings_page(self):
-    #     pass
-
-    # def test_settings_page(self):
-    #     pass
-    # def test_settings_page(self):
-    #     pass
-    # def test_settings_page(self):
-    #     pass
-
-    # def test_settings_page(self):
-    #     pass
-    # def test_settings_page(self):
-    #     pass
-    # def test_settings_page(self):
-    #     pass
-
-    # def test_settings_page(self):
-    #     pass
-    # def test_settings_page(self):
-    #     pass
-    # def test_settings_page(self):
-    #     pass
-
-
-
-
-
 if __name__ == '__main__':
     unittest.main()
