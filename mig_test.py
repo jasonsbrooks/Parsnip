@@ -57,18 +57,71 @@ class TestCase(unittest.TestCase):
     def logout(self):
         return self.app.get('/user/logout', follow_redirects=True)
 
-    def test_registration(self):
+    def createadd_fake_company(self,
+        name="Elm City Market", 
+        address1="777 Chapel St.", 
+        city="New Haven", 
+        state="Connecticut", 
+        zipcode="06520", 
+        profile_image="https://www.elmcitymarket.coop/wp-content/themes/elmcity/images/layout/header.logo.jpg", 
+        phone="12036240441", 
+        hoursmonday="8:00am - 9:00pm", 
+        hourstuesday="8:00am - 9:00pm", 
+        hourswednesday="8:00am - 9:00pm", 
+        hoursthursday="8:00am - 9:00pm", 
+        hoursfriday="8:00am - 9:00pm", 
+        hourssaturday="8:00am - 9:00pm", 
+        hourssunday="9:00am - 9:00pm"):
         company1 = Company(name="Elm City Market", address1="777 Chapel St.", city="New Haven", state="Connecticut", zipcode="06520", profile_image="https://www.elmcitymarket.coop/wp-content/themes/elmcity/images/layout/header.logo.jpg", phone="12036240441", hoursmonday="8:00am - 9:00pm", hourstuesday="8:00am - 9:00pm", hourswednesday="8:00am - 9:00pm", hoursthursday="8:00am - 9:00pm", hoursfriday="8:00am - 9:00pm", hourssaturday="8:00am - 9:00pm", hourssunday="9:00am - 9:00pm")
         db.session.add(company1)
         db.session.commit()
-        rv = self.create_user('jason','brooks','jason.brooks@yale.edu', 'helloworld', 'https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-ash2/t1.0-9/536283_218804554919317_1952113665_n.jpg', 1, True)
+    def createadd_fake_user(self, 
+        firstname='jason', 
+        lastname='brooks', 
+        email='jason.brooks@yale.edu',
+        password='helloworld', 
+        profilepic='https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-ash2/t1.0-9/536283_218804554919317_1952113665_n.jpg',
+        company_id=1, 
+        account_approved=True):
+        return self.create_user(firstname, lastname, email, password, profilepic, company_id, account_approved)
+
+    #### STATIC TESTS ####
+
+    def test_homepage(self):
+        rv = self.app.get('/', follow_redirects=True)
+        assert "Visualize location data as a time-varying heat map so you can see where your customers spent most of their time browsing" in rv.data
+
+    #### USER TESTS ####
+
+    def test_registration(self):
+        self.createadd_fake_company()
+        rv = self.createadd_fake_user()
         self.assertEquals(rv.status_code, 200)
         assert "User successfully registered" in rv.data
-        rv = self.create_user('jason','brooks','jason.brooks@yale.edu', 'helloworld','https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-ash2/t1.0-9/536283_218804554919317_1952113665_n.jpg', 1, True)
+        rv = self.login('jason.brooks@yale.edu', 'helloworld')
+        # print rv.data
+
+    def test_registration_login(self):
+        self.createadd_fake_company()
+        rv = self.createadd_fake_user()
+        rv = self.login('jason.brooks@yale.edu', 'helloworld')
+        self.assertEquals(rv.status_code, 200)
+
+    def test_registration_duplicate(self):
+        self.createadd_fake_company()
+        rv = self.createadd_fake_user()
+        rv = self.createadd_fake_user()
         self.assertEquals(rv.status_code, 200)
         assert "Account already exists for this email address! Please try signing in." in rv.data
+
+    def test_logout(self):
+        self.createadd_fake_company()
+        rv = self.createadd_fake_user()
+        self.assertEquals(rv.status_code, 200)
         rv = self.login('jason.brooks@yale.edu', 'helloworld')
-        print rv.data
+        self.assertEquals(rv.status_code, 200)
+        rv = self.logout()
+        self.assertEquals(rv.status_code, 200)
 
     # def test_approve_account(self):
     #     rv = self.login('jason.brooks@yale.edu', 'helloworld')
@@ -94,9 +147,6 @@ class TestCase(unittest.TestCase):
     # def logout(self):
     #     return self.app.get('/logout', follow_redirects=True)
 
-    # def test_homepage(self):
-    #     response = self.app.get('/', follow_redirects=True)
-    #     return
 
 if __name__ == '__main__':
     unittest.main()

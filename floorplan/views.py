@@ -7,6 +7,7 @@ from boto.s3.key import Key
 import os
 from flask import jsonify
 import pdb
+import urllib2
 from splash.views import get_pending_users
 from flask.ext.login import login_user, logout_user, current_user, login_required
 
@@ -46,7 +47,8 @@ def heatmap(fpid):
     if current_user.company.floorplans.filter(Floorplan.id == fpID).first() is None:
         return redirect(url_for('floorplan.my_floorplans'))
     fp = Floorplan.query.get(fpID)
-    return render_template('heatmap.html', fp=fp)
+    svgd = urllib2.urlopen(fp.floorplan_url).read()
+    return render_template('heatmap.html', fp=fp, svgData=svgd)
 
 
 @floorplan.route('/save_floorplan', methods=["POST"])

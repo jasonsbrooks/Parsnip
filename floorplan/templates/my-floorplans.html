@@ -2,11 +2,34 @@
 {% extends "templates/base.html" %}
 
 {% block content %}
-<ul>
-{% for fp in floorplans %}
-<li>Edit {{fp.name}}: <h1><a href="/floorplan/edit-floorplan/{{fp.id}}">{{ fp.floorplan_url }}</a></h1></li>
-<li>Heat Map {{fp.name}}: <h1><a href="/floorplan/heatmap/{{fp.id}}">{{ fp.floorplan_url }}</a></h1></li>
-{% endfor %}
-</ul>
+
+
+<div class="row">
+	{% for fp in floorplans %}
+    <div class="col-md-4">
+        <!-- Primary tile -->
+        <div class="box box-solid bg-light-blue">
+            <div class="box-header">
+                <h3 class="box-title">{{ fp.name }}</h3>
+            </div>
+            <div class="box-body">
+                <a href="/floorplan/heatmap/{{ fp.id }}"><button class="btn btn-success btn-lg">Heatmap</button></a>
+                <a href="/floorplan/edit-floorplan/{{ fp.id }}"><button class="btn btn-warning btn-lg">Edit</button></a>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+    {% endfor %}
+    <div class="col-md-4">
+        <!-- Primary tile -->
+        <div class="box box-solid bg-light-blue">
+            <div class="box-header">
+                <h3 class="box-title">New Floorplan</h3>
+            </div>
+            <div class="box-body">
+                <a href="/floorplan/new"><button class="btn btn-success btn-lg">+ Create New</button></a>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+</div>
 
 {% endblock %}
