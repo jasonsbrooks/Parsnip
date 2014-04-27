@@ -145,6 +145,12 @@ class TestCase(unittest.TestCase):
         self.assertEquals(rv.status_code, 200)
         assert "Please wait to be approved" in rv.data
 
+    def test_login_bad_password(self):
+        self.createadd_fake_company()
+        self.createadd_fake_user()
+        rv = self.login('jason.brooks@yale.edu', 'hiworld')
+        assert "Password is invalid" in rv.data
+
     def test_logout(self):
         self.createadd_fake_company()
         rv = self.createadd_fake_user()
@@ -168,9 +174,45 @@ class TestCase(unittest.TestCase):
         rv = self.createadd_fake_user()
         rv = self.login('jason.brooks@yale.edu', 'helloworld')
         self.assertEquals(rv.status_code, 200)
+        rv = self.app.get('/user/settings', follow_redirects=True)
+        self.assertEquals(rv.status_code, 200)
+        assert "Personal Settings" in rv.data
 
-    # def test_settings_page(self):
-    #     pass
+    def test_settings_update_safe(self):
+        self.createadd_fake_company()
+        rv = self.createadd_fake_user()
+        rv = self.login('jason.brooks@yale.edu', 'helloworld')
+        self.assertEquals(rv.status_code, 200)
+        rv = self.app.post('/user/settings',data=dict(
+            email="a@a.com",
+            password="heyworld"
+        ), follow_redirects=True)
+        self.assertEquals(rv.status_code, 405)
+        # not, Account settings successfully changed
+
+    def test_floorplan_page(self):
+        self.createadd_fake_company()
+        rv = self.createadd_fake_user()
+        rv = self.login('jason.brooks@yale.edu', 'helloworld')
+        self.assertEquals(rv.status_code, 200)
+        rv = self.app.get('/floorplan/my-floorplans', follow_redirects=True)
+        self.assertEquals(rv.status_code, 200)
+        assert "New Floorplan" in rv.data
+
+    def test_floorplan_page_safe(self):
+        self.createadd_fake_company()
+        rv = self.createadd_fake_user()
+        rv = self.login('jason.brooks@yale.edu', 'helloworld')
+        self.assertEquals(rv.status_code, 200)
+        rv = self.app.post('/floorplan/my-floorplans',data=dict(
+            floorplan="some link",
+        ), follow_redirects=True)
+        self.assertEquals(rv.status_code, 405)
+
+
+
+
+
 
     # def test_settings_page(self):
     #     pass
