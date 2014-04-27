@@ -12,7 +12,7 @@ beacon = Blueprint('beacon', __name__, template_folder="templates")
 
 @beacon.route('/get_store_information', methods=["POST"])
 def get_store_information():
-    major = int(request.get_json().get('major'))
+    major = int(request.json.get('major'))
     beacon = Beacon.query.filter(Beacon.major == major).first()
     if beacon is None:
         return jsonify({'success': False})
@@ -32,9 +32,9 @@ def get_store_information():
 
 @beacon.route('/add_coordinate_data', methods=["POST"])
 def add_coordinate_data():
-    points = request.get_json().get('points')
-    UUID = request.get_json().get('UUID')
-    userID = request.get_json().get('userID')
+    points = request.json.get('points')
+    UUID = request.json.get('UUID')
+    userID = request.json.get('userID')
     currenttime = datetime.utcnow()
     print points, userID
     for dist in points:

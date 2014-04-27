@@ -55,7 +55,7 @@
 				initOpacity: 1,
 				imgPath: 'images/',
 				langPath: 'locale/',
-				extPath: 'extensions/',
+				extPath: '../extensions/',
 				jGraduatePath: 'jgraduate/images/',
 				extensions: ['ext-markers.js','ext-connector.js', 'ext-eyedropper.js', 'ext-shapes.js', 'ext-imagelib.js','ext-grid.js', 'ext-beacon.js'],
 				initTool: 'select',
