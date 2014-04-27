@@ -78,7 +78,7 @@ db.session.add(u3)
 db.session.commit()
 
 # Create three floorplans among the companies
-floorplan1 = Floorplan(name="Main Floor", floorplan_url="https://s3.amazonaws.com/heaped/hello.svg", company=company1)
+floorplan1 = Floorplan(name="Main Floor", floorplan_url="https://s3.amazonaws.com/heaped/DFee.svg", company=company1)
 floorplan2 = Floorplan(name="Main Floor", floorplan_url="https://s3.amazonaws.com/heaped/hello.svg", company=company2)
 floorplan3 = Floorplan(name="Upstairs", floorplan_url="https://s3.amazonaws.com/heaped/hello.svg", company=company1)
 db.session.add(floorplan1)
