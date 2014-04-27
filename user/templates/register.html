@@ -39,7 +39,7 @@
 		    <input name="email" type="email" class="validate[required,custom[email]] sign-up-input" placeholder="Email" required>
 		    <input id="password-field" name="password" type="password" class="validate[required,minSize[6],maxSize[15]] sign-up-input" placeholder="Password" required>
 		    <div id="select2-container-parsnip">
-			    <select id="choose-company" name="company-id" >
+			    <select id="choose-company" name="company_id" >
 			    	<option></option>
 			    	{% for company in currentCompanies %}
 						<option value="{{ company.id}}">{{ company.name }} - {{ company.address1 }}</option>

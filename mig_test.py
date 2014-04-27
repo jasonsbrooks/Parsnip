@@ -43,9 +43,10 @@ class TestCase(unittest.TestCase):
             lastname=lastname,
             email=email,
             password=password,
+            profile_pic=profilepic,
+            company_id=1
         ), follow_redirects=True)
 
-    def create_company(self, )
 
     def login(self, email, password):
         return self.app.post('/user/login', data=dict(
@@ -57,14 +58,17 @@ class TestCase(unittest.TestCase):
         return self.app.get('/user/logout', follow_redirects=True)
 
     def test_registration(self):
-        rv = self.create_user('jason','brooks','jason.brooks@yale.edu', 'https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-ash2/t1.0-9/536283_218804554919317_1952113665_n.jpg', 'helloworld', 1, False)
+        company1 = Company(name="Elm City Market", address1="777 Chapel St.", city="New Haven", state="Connecticut", zipcode="06520", profile_image="https://www.elmcitymarket.coop/wp-content/themes/elmcity/images/layout/header.logo.jpg", phone="12036240441", hoursmonday="8:00am - 9:00pm", hourstuesday="8:00am - 9:00pm", hourswednesday="8:00am - 9:00pm", hoursthursday="8:00am - 9:00pm", hoursfriday="8:00am - 9:00pm", hourssaturday="8:00am - 9:00pm", hourssunday="9:00am - 9:00pm")
+        db.session.add(company1)
+        db.session.commit()
+        rv = self.create_user('jason','brooks','jason.brooks@yale.edu', 'helloworld', 'https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-ash2/t1.0-9/536283_218804554919317_1952113665_n.jpg', 1, True)
         self.assertEquals(rv.status_code, 200)
         assert "User successfully registered" in rv.data
-        rv = self.create_user('jason','brooks','jason.brooks@yale.edu', 'https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-ash2/t1.0-9/536283_218804554919317_1952113665_n.jpg', 'helloworld', 1, False)
+        rv = self.create_user('jason','brooks','jason.brooks@yale.edu', 'helloworld','https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-ash2/t1.0-9/536283_218804554919317_1952113665_n.jpg', 1, True)
         self.assertEquals(rv.status_code, 200)
         assert "Account already exists for this email address! Please try signing in." in rv.data
-        # rv = self.login('jason.brooks@yale.edu', 'helloworld')
-        # pdb.set_trace()
+        rv = self.login('jason.brooks@yale.edu', 'helloworld')
+        print rv.data
 
     # def test_approve_account(self):
     #     rv = self.login('jason.brooks@yale.edu', 'helloworld')

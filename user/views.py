@@ -41,13 +41,12 @@ def register():
     firstname = request.form['firstname'].capitalize()
     lastname = request.form['lastname'].capitalize()
     email = request.form['email'].lower()
-    company_id = request.form['company-id']
+    company_id = request.form['company_id']
     password = request.form['password']
     if User.query.filter(User.email == email).first() is not None:
         flash('Account already exists for this email address! Please try signing in.')
         return redirect(url_for('user.login', defaultEmail=email))
     if company_id == '':
-        # pdb.set_trace()
         company_id = create_company(request)
         newCompanyBool = True
     if Company.query.get(int(company_id)) is None:
