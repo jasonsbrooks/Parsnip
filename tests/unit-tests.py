@@ -212,6 +212,10 @@ class TestCase(unittest.TestCase):
         assert (intersection([[2,0,8]]) == [2,0])
     def test_trilateration_two(self):
         assert (intersection([[2,0,8],[10,0,5]]) != False)
+    def test_trilateration_three(self):
+        assert (intersection([[2,0,8],[10,0,5],[5,5,5],[100,100,1000]]) != False)
+
+
 
 
 if __name__ == '__main__':
