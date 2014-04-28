@@ -18,7 +18,7 @@ db.session.add(company2)
 db.session.commit()
 
 # assign three users, 1 who is not the first user for the company, and 2 who are the first users
-u1 = User(firstname="Jason", lastname="Brooks", email="jason.brooks@yale.edu", profilepic="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-ash2/t1.0-9/536283_218804554919317_1952113665_n.jpg", company=company2, account_approved=False)
+u1 = User(firstname="Jason", lastname="Brooks", email="jason.brooks@yale.edu", profilepic="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-ash2/t1.0-9/536283_218804554919317_1952113665_n.jpg", company=company1, account_approved=False)
 u2 = User(firstname="Pranav", lastname="Maddi", email="pranav.maddi@yale.edu", profilepic="https://scontent-b-iad.xx.fbcdn.net/hphotos-prn2/t1.0-9/9749_10202200719724608_650155214_n.jpg", company=company1, account_approved=True)
 u3 = User(firstname="Charles", lastname="Jin", email="charles.jin@yale.edu", profilepic="https://fbcdn-sphotos-c-a.akamaihd.net/hphotos-ak-ash2/t31.0-8/462503_10201093936700713_711489518_o.jpg", company=company2, account_approved=True)
 # Extra data for when we want to test user approval
