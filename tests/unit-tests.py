@@ -208,8 +208,10 @@ class TestCase(unittest.TestCase):
         self.assertEquals(rv.status_code, 405)
 
     #### TRILATERATION TESTS ####
-    
+    def test_trilateration_one(self):
+        assert (intersection([[2,0,8]]) == [2,0])
 
+    
 
 
 if __name__ == '__main__':
