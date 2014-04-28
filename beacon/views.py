@@ -8,6 +8,7 @@ from datetime import datetime
 from beacon.models import *
 from beacon import *
 from advertisement.models import *
+import hashlib
 
 beacon = Blueprint('beacon', __name__, template_folder="templates")
 
@@ -35,9 +36,10 @@ def get_store_information():
 def add_coordinate_data():
     points = request.json.get('points')
     UUID = request.json.get('UUID')
-    userID = request.json.get('userID')
+    userID = hashlib.sha224(request.json.get('userID')).hexdigest()
+    print "User ID: %s" %(userID)
     currenttime = datetime.utcnow()
-    print points, userID
+    print points
     xyDistList = []
     for dist in points:
         b = Beacon.query.filter(Beacon.major == dist[0]).filter(Beacon.minor == dist[1]).first()
@@ -45,7 +47,6 @@ def add_coordinate_data():
         xyDistList.append([b.xPos, b.yPos, dist[2]])
         db.session.add(entry)
         db.session.commit()
-    # print xyDistList
     intersect = intersection(xyDistList)
     print intersect
     if intersect is not False:
