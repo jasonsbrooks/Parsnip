@@ -21,6 +21,8 @@ from beacon.models import *
 from company.models import *
 import tempfile
 
+from beacon import *
+
 class TestCase(unittest.TestCase):
 
     def setUp(self):
@@ -204,6 +206,9 @@ class TestCase(unittest.TestCase):
             floorplan="some link",
         ), follow_redirects=True)
         self.assertEquals(rv.status_code, 405)
+
+    #### TRILATERATION TESTS ####
+    
 
 
 
