@@ -66,19 +66,16 @@ def delete_heatmap(fpid):
 
 @floorplan.route('/save_floorplan', methods=["POST"])
 def save_floorplan():
+    # pdb.set_trace()
+    fileURL = request.form['fileURL']
+    fileKey = fileURL.split('/')[-1]
     contents = request.form['fileContents']
     conn = boto.connect_s3(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)
     bucket = conn.get_bucket(bucket_name)
     k = Key(bucket)
-    k.key = "hello.svg"
+    k.key = fileKey
     k.set_contents_from_string(contents)
     k.make_public()
     url = k.generate_url(expires_in=0, query_auth=False)
     print url
     return url
-
-
-
-@floorplan.route('/edit_tmp')
-def edit_floorplan_tmp():
-    return render_template('edit_old.html')

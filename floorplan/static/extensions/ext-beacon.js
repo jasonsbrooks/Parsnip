@@ -2,6 +2,7 @@
  */
 
 svgEditor.addExtension("iBeacon", function() {
+		console.log(svgText);
 		svgCanvas.setSvgString(svgText);
 		return {
 			name: "Beacons",
@@ -37,7 +38,7 @@ svgEditor.addExtension("iBeacon", function() {
 				// Events
 				events: {
 					'click': function() {
-						var data = {fileContents: svgCanvas.getSvgString()}
+						var data = {fileContents: svgCanvas.getSvgString(), fileURL: saveURL}
 						$.ajax({
 						  type: "POST",
 						  url: '/floorplan/save_floorplan',
@@ -104,7 +105,7 @@ svgEditor.addExtension("iBeacon", function() {
 			// Autosave
 			elementChanged: function(e){
 				zzz = e;
-				var data = {fileContents: svgCanvas.getSvgString()}
+				var data = {fileContents: svgCanvas.getSvgString(), fileURL: saveURL}
 				$.ajax({
 				  type: "POST",
 				  url: '/floorplan/save_floorplan',
