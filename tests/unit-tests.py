@@ -21,6 +21,8 @@ from beacon.models import *
 from company.models import *
 import tempfile
 
+from beacon import *
+
 class TestCase(unittest.TestCase):
 
     def setUp(self):
@@ -205,6 +207,15 @@ class TestCase(unittest.TestCase):
         ), follow_redirects=True)
         self.assertEquals(rv.status_code, 405)
 
+    #### TRILATERATION TESTS ####
+    def test_trilateration_one(self):
+        assert (intersection([[2,0,8]]) == [2,0])
+    def test_trilateration_two(self):
+        assert (intersection([[2,0,8],[10,0,5]]) != False)
+    def test_trilateration_three(self):
+        assert (intersection([[2,0,8],[10,0,5],[5,5,5],[100,100,1000]]) != False)
+    def test_trilateration_bad(self):
+        assert (intersection([2,0,8]))
 
 
 if __name__ == '__main__':
