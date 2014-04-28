@@ -9,8 +9,8 @@ class Beacon(db.Model):
     major = db.Column(db.String(40))
     minor = db.Column(db.String(40))
     uuid = db.Column(db.String(40), default="B9407F30-F5F8-466E-AFF9-25556B57FE6D")
-    xPos = db.Column(db.String(40))
-    yPos = db.Column(db.String(40))
+    xPos = db.Column(db.Float)
+    yPos = db.Column(db.Float)
     
     floorplan_id = db.Column(db.Integer, db.ForeignKey('floorplans.id'))
     distances = db.relationship('Distance', backref='beacon', lazy='dynamic')
@@ -30,4 +30,15 @@ class Distance(db.Model):
 
     def __repr__(self):
         return '#%d: Beacon: %d, Distance: %.2f, User ID: %s' % (self.id, self.beacon_id, self.distance, self.userID)
+
+class Position(db.Model):
+    __tablename__ = 'positions'
+    id = db.Column(db.Integer, primary_key=True)
+    xPos = db.Column(db.Float)
+    yPos = db.Column(db.Float)
+    timeRegistered = db.Column(db.DateTime)
+    floorplan_id = db.Column(db.Integer, db.ForeignKey('floorplans.id'))
+
+    def __repr__(self):
+        return '#%d: Floorplan: %d, XPos: %.2f, YPos: %.2f, Time: %s' % (self.id, self.floorplan_id, self.xPos, self.yPos, self.timeRegistered.strftime('%m/%d/%Y at %H:%M:%S GMT'))
 

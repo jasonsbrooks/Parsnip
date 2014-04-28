@@ -36,7 +36,8 @@ def edit_floorplan(fpid):
     if current_user.company.floorplans.filter(Floorplan.id == fpID).first() is None:
         return redirect(url_for('floorplan.my_floorplans'))
     fp = Floorplan.query.get(fpID)
-    return render_template('edit.html', fp=fp)
+    svgd = urllib2.urlopen(fp.floorplan_url).read().replace('\n', '')
+    return render_template('edit.html', fp=fp, svgData=svgd)
 
 @floorplan.route('/heatmap/<fpid>')
 @login_required

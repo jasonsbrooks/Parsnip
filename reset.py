@@ -87,9 +87,9 @@ db.session.add(floorplan3)
 db.session.commit()
 
 # Create three becons in the stores
-beacon1 = Beacon(name="Elm City Market",major="33335",minor="27636", floorplan=floorplan1)
-beacon2 = Beacon(name="Elm City Market",major="33334",minor="42933", floorplan=floorplan2)
-beacon3 = Beacon(name="Elm City Market",major="33333",minor="52769", floorplan=floorplan1)
+beacon1 = Beacon(name="Elm City Market",major="33335",minor="27636", floorplan=floorplan1, xPos=0, yPos=0)
+beacon2 = Beacon(name="Elm City Market",major="33334",minor="42933", floorplan=floorplan2, xPos=0, yPos=5)
+beacon3 = Beacon(name="Elm City Market",major="33333",minor="52769", floorplan=floorplan1, xPos=5, yPos=0)
 db.session.add(beacon1)
 db.session.add(beacon2)
 db.session.add(beacon3)

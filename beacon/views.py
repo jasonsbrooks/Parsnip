@@ -6,6 +6,7 @@ from main import app
 import pdb
 from datetime import datetime
 from beacon.models import *
+from beacon import *
 from advertisement.models import *
 
 beacon = Blueprint('beacon', __name__, template_folder="templates")
@@ -37,8 +38,18 @@ def add_coordinate_data():
     userID = request.json.get('userID')
     currenttime = datetime.utcnow()
     print points, userID
+    xyDistList = []
     for dist in points:
-        entry = Distance(distance=dist[2], time=currenttime, beacon=Beacon.query.filter(Beacon.major == dist[0]).filter(Beacon.minor == dist[1]).first(), userID=userID)
+        b = Beacon.query.filter(Beacon.major == dist[0]).filter(Beacon.minor == dist[1]).first()
+        entry = Distance(distance=dist[2], time=currenttime, beacon=b, userID=userID)
+        xyDistList.append([b.xPos, b.yPos, dist[2]])
         db.session.add(entry)
+        db.session.commit()
+    # print xyDistList
+    intersect = intersection(xyDistList)
+    print intersect
+    if intersect is not False:
+        p = Position(xPos=intersect[0],yPos=intersect[1], timeRegistered=currenttime, floorplan=b.floorplan)
+        db.session.add(p)
         db.session.commit()
     return jsonify({'success': True})

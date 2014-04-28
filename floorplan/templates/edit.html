@@ -752,7 +752,7 @@
 <!{else}-->
 <script type="text/javascript" src="/floorplan/static/jquery.js"></script>
 <!--{endif}-->
-
+<script type="text/javascript" src="/floorplan/static/js/editor.js"></script>
 <script type="text/javascript" src="/floorplan/static/js-hotkeys/jquery.hotkeys.min.js"></script>
 <script type="text/javascript" src="/floorplan/static/jquerybbq/jquery.bbq.min.js"></script>
 <script type="text/javascript" src="/floorplan/static/svgicons/jquery.svgicons.js"></script>
@@ -790,4 +790,5 @@
 <!-- feeds -->
 <link rel="alternate" type="application/atom+xml" title="SVG-edit General Discussion" href="http://groups.google.com/group/svg-edit/feed/atom_v1_0_msgs.xml" />
 <link rel="alternate" type="application/atom+xml" title="SVG-edit Updates (Issues/Fixes/Commits)" href="http://code.google.com/feeds/p/svg-edit/updates/basic" />
+<script>var svgText={% autoescape False %}'{{ svgData }}'{% endautoescape %};</script>
 {% endblock %}
