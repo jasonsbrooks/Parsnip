@@ -27,10 +27,23 @@
                 <h3 class="box-title">New Floorplan</h3>
             </div>
             <div class="box-body">
-                <a href="/floorplan/new"><button class="btn btn-success btn-lg">+ Create New</button></a>
+                <form class="sign-up" id="new-floorplan" action='/floorplan/new' method='POST'>
+                    <button class="btn btn-success btn-lg">+ Create New</button>
+                    <input type="text" class="validate[required,maxSize[15]] transparent" name="floorplan-new-name" placeholder="Floorplan Name">
+                </form>
             </div><!-- /.box-body -->
         </div><!-- /.box -->
     </div><!-- /.col -->
 </div>
 
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="/floorplan/static/css/my-floorplans.css" />
+{% endblock %}
+
+{% block scripts %}
+<script src="/user/static/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
+<script src="/user/static/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+<script src="/floorplan/static/js/my-floorplans.js" type="text/javascript" charset="utf-8"></script>
 {% endblock %}

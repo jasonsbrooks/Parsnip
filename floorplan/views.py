@@ -39,6 +39,15 @@ def edit_floorplan(fpid):
     svgd = urllib2.urlopen(fp.floorplan_url).read().replace('\n', '')
     return render_template('edit.html', fp=fp, svgData=svgd)
 
+@floorplan.route('/new', methods=['POST'])
+@login_required
+@get_pending_users
+def new_floorplan():
+    name = request.form['floorplan-new-name']
+    # return "Success"
+    return render_template('edit.html',fp=Floorplan.query.first(), svgData='')
+
+
 @floorplan.route('/heatmap/<fpid>')
 @login_required
 @get_pending_users
