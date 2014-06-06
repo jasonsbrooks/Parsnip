@@ -1,5 +1,9 @@
-CPSC 439: Software Engineering
+Parsnip
 ------------------------------
+
+Real time data analytics for brick-and-mortar stores using iBeacon technology.
+
+Developed by:
 Jason Brooks
 Charles Jin
 Michael Zhao
